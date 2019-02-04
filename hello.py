@@ -8,9 +8,9 @@ pygame.init();
 
 fenetre = pygame.display.set_mode((width,height))
 
+score = 0;
 
-
-fond = pygame.image.load("images/background.jpeg").convert()
+fond = pygame.image.load(background).convert()
 fond = pygame.transform.scale(fond, (width, height))
 perso = Perso();
 
@@ -32,20 +32,30 @@ while continuer:
     for event in pygame.event.get():
         if event.type == QUIT:
             continuer = 0
+            print(score);
 
         if event.type == KEYDOWN:
             if event.key == K_RIGHT:
-                dir = 10
+                dir = vitesseDir
             elif event.key == K_LEFT:
-                dir = -10
+                dir = -vitesseDir
 
         if event.type == KEYUP:
-            if event.key == K_RIGHT and dir == 10 or event.key == K_LEFT and dir == -10:
+            if event.key == K_RIGHT and dir == vitesseDir or event.key == K_LEFT and dir == -vitesseDir:
                 dir = 0;
 
-    perso.bondir(dir)
+    perso.bondir()
+    fondx = fondx-dir;
+    score = score +dir;
 
-    fenetre.blit(fond, (0, 0))
+    fenetre.blit(fond, (fondx, 0))
+    if fondx <= -width or fondx >= width:
+        fondx = 0
+    if fondx < 0:
+        fenetre.blit(fond, (fondx+width, 0))
+    elif fondx > 0:
+        fenetre.blit(fond, (fondx-width, 0))
+
     #hitbox
     pygame.draw.rect(fenetre, (255, 0, 0), pygame.Rect(perso.hitbox[0], perso.hitbox[1], perso.hitbox[2], perso.hitbox[3]))
 
