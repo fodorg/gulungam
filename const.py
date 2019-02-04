@@ -1,10 +1,10 @@
-width=1280
-height=720
+width=1024
+height=768
 
 fondx = 0;
 
 background = "images/background.jpg"
 
-acceleration = 4
-vitesse = 40
-vitesseDir = 20
+acceleration = 2
+vitesse = 30
+vitesseDir = 8

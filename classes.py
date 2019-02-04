@@ -19,13 +19,13 @@ class Perso:
         self.x=self.x+dir
         self.y = self.y+self.v
         self.hitbox = (self.x, self.y, 100, 100)
-        if self.v > vitesse:
-            self.v = -self.v
+        if self.y > 500:
+            self.v = -vitesse
         else:
             self.v = self.v + self.a
 
 
-class platform:
+class Platform:
 
     def __init__(self, x, y, w, h):
         self.x = x;
@@ -34,4 +34,16 @@ class platform:
         self.h = h;
 
     def collide(self, hitbox):
-        if self.x < hitbox[0] and self. self.x > hitbox[0]+1
+        #return hitbox[0] + hitbox[2] > self.x and hitbox[0] < self.x + self.w and hitbox[1]+hitbox[3] > self.y and hitbox[1] < self.y + self.h
+        if hitbox[0] + hitbox[2] > self.x and hitbox[0] < self.x + self.w :
+            if hitbox[1]+hitbox[3] > self.y and hitbox[1]+hitbox[3] < self.y+(self.h/2):
+                return 1;
+            elif hitbox[1] < self.y+self.h and hitbox[1] > self.y+(self.h/2):
+                return -1;
+        return 0
+    def afficher(self, fenetre):
+        pygame.draw.rect(fenetre, (153, 51, 0), pygame.Rect(self.x, self.y, self.w, self.h))
+
+    def deplacer(self, dir = 0):
+        self.x = self.x+dir
+
