@@ -20,9 +20,7 @@ def getAllScores():
     return data
 
 def getAllScoresSorted():
-    data = getAllScores(
-
-0    )
+    data = getAllScores()
     i = 0
     dataTuples = []
     while i < len(data):

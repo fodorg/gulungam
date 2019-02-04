@@ -4,8 +4,12 @@ from pygame.locals import *
 
 pygame.init()
 
-fenetre = pygame.display.set_mode((1366, 768), RESIZABLE)
+fenetre = pygame.display.set_mode((1024, 768), RESIZABLE)
 
+fenetre.fill((255, 204, 0))
+pygame.draw.rect(fenetre, (204, 255, 204), [425, 300, 200, 50])
+
+pygame.display.flip()
 
 continuer = 1
 
