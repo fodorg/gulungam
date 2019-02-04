@@ -46,5 +46,8 @@ while continuer:
     perso.bondir(dir)
 
     fenetre.blit(fond, (0, 0))
+    #hitbox
+    pygame.draw.rect(fenetre, (255, 0, 0), pygame.Rect(perso.hitbox[0], perso.hitbox[1], perso.hitbox[2], perso.hitbox[3]))
+
     fenetre.blit(perso.image,(perso.x, perso.y))  # dk.direction = l'image dans la bonne direction
     pygame.display.flip()
