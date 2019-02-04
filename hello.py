@@ -21,8 +21,7 @@ pygame.display.flip()
 #BOUCLE INFINIE
 
 continuer = 1
-a = -10;
-i = 1
+a = -20;
 dir = 0; #dir = 1 > droite dir = -1 > gauche
 
 # BOUCLE D'ACCUEIL
@@ -31,21 +30,24 @@ while continuer:
     # Limitation de vitesse de la boucle
 
     pygame.time.Clock().tick(30)
-    dir = 0;
     for event in pygame.event.get():
         if event.type == QUIT:
             continuer = 0
 
         if event.type == KEYDOWN:
             if event.key == K_RIGHT:
-                perso.bondir(fenetre, fond);
+                dir = 10
+            elif event.key == K_LEFT:
+                dir = -10
+
+        if event.type == KEYUP:
+            if event.key == K_RIGHT or event.key == K_LEFT:
+                dir = 0;
 
     perso.deplacer(a,dir)
-    a = a+i
-    if a < -10:
-        i = 1;
-    elif a > 10:
-        i = -1
+    a = a+1
+    if a > 20:
+        a = -a
     fenetre.blit(fond, (0, 0))
     fenetre.blit(perso.image,(perso.x, perso.y))  # dk.direction = l'image dans la bonne direction
     pygame.display.flip()
