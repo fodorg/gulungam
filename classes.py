@@ -23,3 +23,15 @@ class Perso:
             self.v = -self.v
         else:
             self.v = self.v + self.a
+
+
+class platform:
+
+    def __init__(self, x, y, w, h):
+        self.x = x;
+        self.y = y;
+        self.w = w;
+        self.h = h;
+
+    def collide(self, hitbox):
+        if self.x < hitbox[0] and self. self.x > hitbox[0]+1
