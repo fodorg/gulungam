@@ -11,18 +11,27 @@ class Perso:
         self.y = height*(3/4)
         self.image = pygame.image.load("images/mario.png").convert_alpha()
         self.image = pygame.transform.scale(self.image, (100, 100))
+        self.a = acceleration
+        self.v = -vitesse
+        self.hitbox = (self.x, self.y, 100, 100)
 
-    def bondir(self, fenetre, fond):
-        a = -10;
-
-        while a <= 10:
-            self.y = self.y+a;
-            a = a+1
-            fenetre.blit(fond, (0, 0))
-            pygame.transform.scale(fond, (600,800));
-
-            fenetre.blit(self.image, (self.x, self.y))  # dk.direction = l'image dans la bonne direction
-            pygame.display.flip()
-    def deplacer(self, a, dir):
+    def bondir(self, dir = 0):
         self.x=self.x+dir
-        self.y = self.y+a
+        self.y = self.y+self.v
+        self.hitbox = (self.x, self.y, 100, 100)
+        if self.v > vitesse:
+            self.v = -self.v
+        else:
+            self.v = self.v + self.a
+
+
+class platform:
+
+    def __init__(self, x, y, w, h):
+        self.x = x;
+        self.y = y;
+        self.w = w;
+        self.h = h;
+
+    def collide(self, hitbox):
+        if self.x < hitbox[0] and self. self.x > hitbox[0]+1
