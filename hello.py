@@ -43,12 +43,13 @@ all_sprite_list.add(plat)
 perso = Perso();
 all_sprite_list.add(perso)
 
+getSpritesVisible(all_sprite_visible,0,all_sprite_list, perso)
 
 
 hitbefore = 0
 score = 0;
 dir = 0; #dir = 1 > droite dir = -1 > gauche
-i = 0
+vis = 0
 
 #BOUCLE INFINIE
 
@@ -68,6 +69,9 @@ while continuer:
                 dir = vitesseDir
             elif event.key == K_LEFT:
                 dir = -vitesseDir
+            elif event.key == K_ESCAPE:
+                continuer = 0
+                print(score)
 
         if event.type == KEYUP:
             if event.key == K_RIGHT and dir == vitesseDir or event.key == K_LEFT and dir == -vitesseDir:
@@ -82,7 +86,7 @@ while continuer:
         if hitbefore == 0:
             if perso.rect.y+(perso.rect.height/2) < block.rect.y+(block.rect.height/2):
                 perso.v = -vitesse
-            else:
+            elif perso.v < 0 :
                 perso.v = -perso.v
             perso.changeimg()
         hitbefore = 1
@@ -100,8 +104,6 @@ while continuer:
 
 
     #affichage des fonds
-
-
     for i in range (len(fonds)):
         fondxi = fondsx[i]
         if fondxi <= -2*width or fondxi >= 2*width:
@@ -117,14 +119,12 @@ while continuer:
     #pygame.draw.rect(fenetre, (255, 0, 0), pygame.Rect(perso.hitbox[0], perso.hitbox[1], perso.hitbox[2], perso.hitbox[3]))
 
     #affichage des sprites
-    all_sprite_list.update()
-    all_sprite_list.draw(fenetre)
+    all_sprite_visible.draw(fenetre)
 
     pygame.display.flip()
 
-    if i == fps*2:
-        i = 0
-        #getSpritesVisible(all_sprite_visible, score, all_sprite_list)
-    i = i+1
+    if dir != 0:
+        getSpritesVisible(all_sprite_visible, score, all_sprite_list,perso)
+
 
 
