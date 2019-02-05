@@ -36,5 +36,11 @@ def getAllScoresSorted():
 # saveNew("Adam", 984)
 # saveNew("Antoine", 4064)
 # saveNew("Manu", 1000000000)
+# saveNew("Nico", 73)
+# saveNew("Texas_Granger", 69)
+# saveNew("Bush", 911)
+# saveNew("Trump", 2020)
+# saveNew("God", 999999999)
+# saveNew("Balec", 1)
 # print(getAllScoresSorted())
 # [('Manu', 1000000000), ('Antoine', 4064), ('Audrey', 2800), ('Adam', 984), ('Greg', 42)]
