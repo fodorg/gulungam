@@ -1,6 +1,6 @@
 width=1024
 height=768
-fps = 60
+fps = 200
 
 fondx = 0
 
@@ -11,6 +11,6 @@ persoImgMont = "images/lapinm.png"
 persoImgDesc = "images/lapind.png"
 persoImgBounce = "images/lapinb.png"
 
-acceleration = 2
+acceleration = 3
 vitesse = 30
 vitesseDir = 30

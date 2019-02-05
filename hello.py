@@ -55,12 +55,11 @@ dir = 0; #dir = 1 > droite dir = -1 > gauche
 vis = 0
 
 #BOUCLE INFINIE
-
+start_ticks=pygame.time.get_ticks() #starter tick
 continuer = 1
 while continuer:
     # Limitation de vitesse de la boucle
     pygame.time.Clock().tick(fps)
-
     #events
     for event in pygame.event.get():
         if event.type == QUIT:
@@ -130,6 +129,14 @@ while continuer:
     text_rect.right = width-10  # align to right to 150px
     text_rect.y = 10
     fenetre.blit(text,text_rect)
+
+    #affichage du timer
+    seconds = 180-(pygame.time.get_ticks() - start_ticks) / 1000  # calculate how many seconds
+    min = int(seconds/60)
+    seconds = int(seconds%60)
+
+    text = font.render(str(min)+":"+str(seconds), True, (0, 128, 0))
+    fenetre.blit(text, (10,10))
 
 
     pygame.display.flip()
