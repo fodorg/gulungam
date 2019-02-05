@@ -30,14 +30,14 @@ class Perso(pygame.sprite.Sprite):
             self.changeimg()
 
     def changeimg(self):
-        if self.v == -vitesse:
+        if self.v <= -vitesse:
             self.image = pygame.image.load(persoImgBounce).convert_alpha()
         elif self.v < 0:
             self.image = pygame.image.load(persoImgMont).convert_alpha()
             #self.rect.y = self.rect.y+20
         else:
             self.image = pygame.image.load(persoImgDesc).convert_alpha()
-            #self.rect.y = self.rect.y-6
+            #self.rect.y = self.rect.y-3
         self.rect.width = self.image.get_rect().width
         self.rect.height = self.image.get_rect().height
 

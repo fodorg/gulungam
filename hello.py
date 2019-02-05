@@ -7,6 +7,9 @@ from functions import *
 pygame.init();
 
 fenetre = pygame.display.set_mode((width,height))
+font = pygame.font.SysFont(None, 72)
+
+
 fonds = []
 fondsx = []
 for i in range(len(backgrounds)):
@@ -120,6 +123,14 @@ while continuer:
 
     #affichage des sprites
     all_sprite_visible.draw(fenetre)
+
+    #affichege du score
+    text = font.render(str(score), True, (0, 128, 0))
+    text_rect = text.get_rect()
+    text_rect.right = width-10  # align to right to 150px
+    text_rect.y = 10
+    fenetre.blit(text,text_rect)
+
 
     pygame.display.flip()
 
