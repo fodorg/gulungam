@@ -1,6 +1,7 @@
 #Importation des bibliothèques nécessaires
 import pygame
 from pygame.locals import *
+from save import *
 
 def window_main(): # Menu display
 	fenetre.fill((255, 204, 0)) # BACKGROUND
@@ -21,7 +22,7 @@ def window_main(): # Menu display
 def window_highScores(): # High score display
 	fenetre.fill((104, 194, 226))  # BACKGROUND
 	bigFont = pygame.font.SysFont(None, 60) # FONT
-	smallFont = pygame.font.SysFont(None, 30)
+	smallFont = pygame.font.SysFont(None, 40)
 
 	# TITLE
 	txt_title = bigFont.render("HIGH SCORES", True, (0, 0, 0))
@@ -30,7 +31,7 @@ def window_highScores(): # High score display
 	# TABLE
 	color = (255, 252, 244) # color of the line
 	pygame.draw.rect(fenetre, (26, 103, 219), [40, 90, 936, 638])
-	pygame.draw.line(fenetre, color, [512, 90], [512, 728], 3)
+	pygame.draw.line(fenetre, color, [512, 90], [512, 728], 3) # middle line
 	pygame.draw.line(fenetre, color, [40, 90], [975, 90], 3)
 	pygame.draw.line(fenetre, color, [975, 90], [975, 728], 3)
 	pygame.draw.line(fenetre, color, [40, 90], [40, 728], 3)
@@ -40,12 +41,25 @@ def window_highScores(): # High score display
 		pygame.draw.line(fenetre, color, [40, (i+1)*58+90], [975, (i+1)*58+90], 3)
 
 	# TEXT IN TABLE
-	txt_name = bigFont.render("NAME", True, color)
-	fenetre.blit(txt_name, (220, 100))
-	txt_score = bigFont.render("SCORE", True, color)
-	fenetre.blit(txt_score, (665, 100))
+	txt_nameTitle = bigFont.render("NAME", True, color)
+	fenetre.blit(txt_nameTitle, (220, 100))
+	txt_scoreTitle = bigFont.render("SCORE", True, color)
+	fenetre.blit(txt_scoreTitle, (665, 100))
 
+	i = 0
+	data = getAllScoresSorted()
+	while i < 10 and i < len(data):
+		name, score = data[i]            # tuple unpacking
+		txt_name = smallFont.render(name, True, color)
+		fenetre.blit(txt_name, (50, i*58+165))
+		txt_score = smallFont.render(str(score), True, color)
+		fenetre.blit(txt_score, (525, i*58+165))
+		i += 1
 
+	# RETURN BUTTON
+	pygame.draw.rect(fenetre, (239, 151, 43), [20, 25, 150, 50])
+	txt_menu = bigFont.render("MENU", True, (0, 0, 0))
+	fenetre.blit(txt_menu, (25, 25))
 
 	pygame.display.flip()
 
@@ -66,3 +80,7 @@ while continuer:
 		if status == "main" and event.type == MOUSEBUTTONDOWN and event.button == 1 and 425 < event.pos[0] < 625 and 370 < event.pos[1] < 420: # CLIC ON HIGH SCORES
 			status = "highScores"
 			window_highScores()
+
+		elif status == "highScores" and event.type == MOUSEBUTTONDOWN and event.button == 1 and 20 < event.pos[0] < 170 and 25 < event.pos[1] < 75: # CLIC ON MENU
+			status = "main"
+			window_main()
