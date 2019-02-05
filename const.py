@@ -1,6 +1,6 @@
 width=1024
 height=768
-fps = 200
+fps = 45
 
 fondx = 0
 
