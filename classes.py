@@ -16,8 +16,8 @@ class Perso(pygame.sprite.Sprite):
         self.rect.y = 600
         self.rect.x = 400
         self.hitbox = (self.rect.x+20, self.rect.y, 60, 100)
-        # self.son = pygame.mixer.Sound("sound/ressort1.wav")
-        pygame.mixer.music.load("sound/ressort1.wav")
+        self.son = pygame.mixer.Sound("sound/ressort1.wav")
+        # pygame.mixer.music.load("sound/ressort1.wav")
 
     def bondir(self, dir = 0):
         self.rect.x=self.rect.x+dir
@@ -25,6 +25,8 @@ class Perso(pygame.sprite.Sprite):
         self.hitbox = (self.rect.x+20, self.rect.y, 60, 100)
         if self.rect.y > 500:
             self.v = -vitesse
+            self.son.play()
+            # pygame.mixer.music.play()
             self.changeimg();
         else:
             self.v = self.v + self.a
@@ -34,8 +36,6 @@ class Perso(pygame.sprite.Sprite):
     def changeimg(self):
         if self.v <= -vitesse:
             self.image = pygame.image.load(persoImgBounce).convert_alpha()
-            # self.son.play()
-            pygame.mixer.music.play()
         elif self.v < 0:
             self.image = pygame.image.load(persoImgMont).convert_alpha()
             #self.rect.y = self.rect.y+20
