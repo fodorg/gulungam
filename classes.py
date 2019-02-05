@@ -8,8 +8,8 @@ class Perso(pygame.sprite.Sprite):
         super().__init__()
         # Sprites du personnage
         # Position du personnage en cases et en pixels
-        self.image = pygame.image.load("images/mario.png").convert_alpha()
-        self.image = pygame.transform.scale(self.image, (100, 100))
+        self.image = pygame.image.load(persoImg).convert_alpha()
+        #self.image = pygame.transform.scale(self.image, (100, 133))
         self.a = acceleration
         self.v = -vitesse
         self.rect = self.image.get_rect()
