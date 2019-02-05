@@ -32,6 +32,8 @@ class Perso(pygame.sprite.Sprite):
     def changeimg(self):
         if self.v <= -vitesse:
             self.image = pygame.image.load(persoImgBounce).convert_alpha()
+            son = pygame.mixer.Sound("sound/ressort1.wav")
+            son.play()
         elif self.v < 0:
             self.image = pygame.image.load(persoImgMont).convert_alpha()
             #self.rect.y = self.rect.y+20
