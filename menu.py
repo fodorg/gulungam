@@ -4,18 +4,28 @@ from pygame.locals import *
 from save import *
 
 def window_main(): # Menu display
-	fenetre.fill((255, 204, 0)) # BACKGROUND
+	fenetre.fill((255, 252, 244)) # BACKGROUND
+	plan1 = pygame.image.load("images/plan1.png").convert_alpha()
+	plan2 = pygame.image.load("images/plan2.png").convert_alpha()
+	plan3 = pygame.image.load("images/plan3.png").convert_alpha()
+	plan4 = pygame.image.load("images/plan4.png").convert_alpha()
+	buttons = pygame.image.load("images/Accueil_v2.png").convert_alpha()
+	fenetre.blit(plan4, (0, 0))
+	fenetre.blit(plan3, (0, 0))
+	fenetre.blit(plan2, (0, 0))
+	fenetre.blit(plan1, (0, 0))
+	fenetre.blit(buttons, (0, 0))
 	font = pygame.font.SysFont(None, 50) # FONT
 
-	# NEW GAME
-	pygame.draw.rect(fenetre, (204, 255, 204), [425, 300, 200, 50])
-	txt_newGame = font.render("New Game", True, (0, 0, 0))
-	fenetre.blit(txt_newGame, (435,310))
-
-	#HIGH SCORE
-	pygame.draw.rect(fenetre, (204, 255, 204), [425, 370, 200, 50])
-	txt_highScores = font.render("High Scores", True, (0, 0, 0))
-	fenetre.blit(txt_highScores, (435,390))
+	# # NEW GAME
+	# pygame.draw.rect(fenetre, (204, 255, 204), [425, 300, 200, 50])
+	# txt_newGame = font.render("New Game", True, (0, 0, 0))
+	# fenetre.blit(txt_newGame, (435,310))
+	#
+	# #HIGH SCORE
+	# pygame.draw.rect(fenetre, (204, 255, 204), [425, 370, 200, 50])
+	# txt_highScores = font.render("High Scores", True, (0, 0, 0))
+	# fenetre.blit(txt_highScores, (435,390))
 
 	pygame.display.flip()
 
@@ -77,10 +87,21 @@ while continuer:
 		if event.type == QUIT:
 			continuer = 0
 
-		if status == "main" and event.type == MOUSEBUTTONDOWN and event.button == 1 and 425 < event.pos[0] < 625 and 370 < event.pos[1] < 420: # CLIC ON HIGH SCORES
-			status = "highScores"
-			window_highScores()
+		if event.type == MOUSEBUTTONDOWN and event.button == 1:
+			if status == "main":          # MAIN PAGE
+				if 362 < event.pos[0] < 662 and 438 < event.pos[1] < 588: # CLIC ON HIGH SCORES
+					status = "highScores"
+					window_highScores()
 
-		elif status == "highScores" and event.type == MOUSEBUTTONDOWN and event.button == 1 and 20 < event.pos[0] < 170 and 25 < event.pos[1] < 75: # CLIC ON MENU
-			status = "main"
-			window_main()
+				if 361 < event.pos[0] < 661 and 278 < event.pos[1] < 425: # CLIC ON START
+					print("CLIC START")
+
+				if 361 < event.pos[0] < 661 and 601 < event.pos[1] < 751:  # CLIC ON QUITTER
+					continuer = 0
+
+				if 41 < event.pos[0] < 141 and 610 < event.pos[1] < 729:  # CLIC ON COGWhEEL
+					print("CLIC ENGRENAGE")
+
+			elif status == "highScores" and event.type == MOUSEBUTTONDOWN and event.button == 1 and 20 < event.pos[0] < 170 and 25 < event.pos[1] < 75: # CLIC ON MENU
+				status = "main"
+				window_main()
