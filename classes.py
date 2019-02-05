@@ -31,8 +31,6 @@ class Platform(pygame.sprite.Sprite):
 
     def __init__(self, x, y, w, h):
         super().__init__()
-        self.w = w
-        self.h = h
         self.image = pygame.Surface([w, h])
         self.image.fill((153, 51, 0))
         self.rect = self.image.get_rect()

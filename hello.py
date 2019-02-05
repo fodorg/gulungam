@@ -39,7 +39,7 @@ all_sprite_list.add(perso)
 
 
 
-
+hitbefore = 0
 score = 0;
 
 
@@ -82,17 +82,25 @@ while continuer:
 
 
 
-    perso.bondir()
 
     block_hit_list = pygame.sprite.spritecollide(perso, platforms_list, False)
     for block in block_hit_list:
-        if dir != 0:
-            dir = 0
         # si le perso descend
-        elif perso.v > 0:
-            perso.v = -vitesse
-        elif perso.v < 0:
-            perso.v = vitesse
+        if hitbefore == 0:
+            # if perso.v > 0:
+            #     perso.v = -vitesse
+            # elif perso.v < 0:
+            #     perso.v = vitesse
+            if perso.rect.y+(perso.rect.height/2) < block.rect.y+(block.rect.height/2):
+                perso.v = -vitesse
+            else:
+                perso.v = -perso.v
+        hitbefore = 1
+    perso.bondir()
+
+
+    if len(block_hit_list) == 0:
+        hitbefore = 0;
 
     fondx = fondx-dir;
     score = score +dir;
@@ -118,7 +126,6 @@ while continuer:
 
     all_sprite_list.draw(fenetre)
 #    fenetre.blit(perso.image,(perso.x, perso.y))
-
 
 
 
