@@ -2,6 +2,7 @@ import pygame
 from pygame.locals import *
 from classes import *
 from const import *
+from functions import *
 
 pygame.init();
 
@@ -12,6 +13,7 @@ fond = pygame.transform.scale(fond, (width, height))
 
 
 all_sprite_list = pygame.sprite.Group()
+all_sprite_visible = pygame.sprite.Group()
 
 #platforms
 platforms_list = pygame.sprite.Group()
@@ -42,7 +44,7 @@ all_sprite_list.add(perso)
 hitbefore = 0
 score = 0;
 dir = 0; #dir = 1 > droite dir = -1 > gauche
-
+i = 0
 
 #BOUCLE INFINIE
 
@@ -107,3 +109,11 @@ while continuer:
     all_sprite_list.draw(fenetre)
 
     pygame.display.flip()
+
+    if i == fps*2:
+        print(i)
+        i = 0
+        #getSpritesVisible(all_sprite_visible, score, all_sprite_list)
+    i = i+1
+
+
