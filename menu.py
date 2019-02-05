@@ -63,7 +63,7 @@ def window_highScores(): # High score display
 
 	pygame.display.flip()
 
-######################### MAIN #######################
+#########################             MAIN               ################################################################
 pygame.init()
 fenetre = pygame.display.set_mode((1024, 768))
 
