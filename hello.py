@@ -7,10 +7,12 @@ from functions import *
 pygame.init();
 
 fenetre = pygame.display.set_mode((width,height))
-fond = []
+fonds = []
+fondsx = []
 for i in range(len(backgrounds)):
-    fond.append(pygame.image.load(backgrounds[i]).convert())
-    fond[i] = pygame.transform.scale(fond[i], (width, height))
+    fondsx.append(0)
+    fonds.append(pygame.image.load(backgrounds[i]).convert_alpha())
+    #fonds[i] = pygame.transform.scale(fonds[i], (width*2, height))
 
 
 
@@ -89,23 +91,28 @@ while continuer:
         hitbefore = 0;
 
     #update des pos du fond et des elems
-    fondx = fondx-dir;
+    for i in range(len(fonds)):
+        fondsx[i] = fondsx[i]-(dir*i/4);
+
     score = score +dir;
     for platform in platforms_list:
         platform.rect.x = platform.rect.x-dir
 
 
     #affichage des fonds
-    i = 0
-    for background in backgrounds:
-        fenetre.blit(fond[i], (fondx*i, 0))
-        if fondx <= -width or fondx >= width:
-            fondx = 0
-        if fondx < 0:
-            fenetre.blit(fond[i], (fondx+width, 0))
-        elif fondx > 0:
-            fenetre.blit(fond[i], (fondx-width, 0))
-        i = i+1
+
+
+    for i in range (len(fonds)):
+        fondxi = fondsx[i]
+        if fondxi <= -2*width or fondxi >= 2*width:
+            fondxi = 0
+            fondsx[i] = 0
+        if fondxi < -width:
+            fenetre.blit(fonds[i], ((fondxi)+(2*width), 0))
+        elif fondxi > 0:
+            fenetre.blit(fonds[i], ((fondxi)-(2*width), 0))
+        fenetre.blit(fonds[i], (fondxi, 0))
+
     #hitbox
     #pygame.draw.rect(fenetre, (255, 0, 0), pygame.Rect(perso.hitbox[0], perso.hitbox[1], perso.hitbox[2], perso.hitbox[3]))
 
