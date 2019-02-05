@@ -1,6 +1,6 @@
 width=1024
 height=768
-fps = 1220
+fps = 45   # 45 for sound
 
 fondx = 0
 
@@ -14,4 +14,3 @@ persoImgBounce = "images/lapinb.png"
 acceleration = 3
 vitesse = 30
 vitesseDir = 30
-
