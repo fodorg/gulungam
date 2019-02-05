@@ -7,30 +7,19 @@ all_sprite_list = pygame.sprite.Group()
 all_sprite_visible = pygame.sprite.Group()
 
 #platforms
-f = open("data/props.txt", "r")
-for x in f:
-  print(x)
-
-
 platforms_list = pygame.sprite.Group()
-plat = Platform(400,400,50,50)
-platforms_list.add(plat)
-all_sprite_list.add(plat)
-plat = Platform(300,300,20,20)
-platforms_list.add(plat)
-all_sprite_list.add(plat)
-plat = Platform(800,500,50,50)
-platforms_list.add(plat)
-all_sprite_list.add(plat)
-plat = Platform(900,400,50,10)
-platforms_list.add(plat)
-all_sprite_list.add(plat)
-plat = Platform(1100,400,100,50)
-platforms_list.add(plat)
-all_sprite_list.add(plat)
-plat = Platform(1600,300,50,50)
-platforms_list.add(plat)
-all_sprite_list.add(plat)
+walls_list = pygame.sprite.Group()
 
+f = open("data/props.txt", "r")
 
+for line in f:
+  params = line.split(",")
+  if params[0] == "p":
+    plat = Platform(int(params[1]),int(params[2]),int(params[3]),int(params[4]))
+    platforms_list.add(plat)
+    all_sprite_list.add(plat)
+  elif params[0] == "w":
+    wall = Wall(int(params[1]),int(params[2]),int(params[3]),int(params[4]))
+    walls_list.add(wall)
+    all_sprite_list.add(wall)
 #

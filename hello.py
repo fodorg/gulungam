@@ -20,15 +20,15 @@ for i in range(len(backgrounds)):
 
 
 
-perso = Perso();
+perso = Perso()
 all_sprite_list.add(perso)
 
 getSpritesVisible(all_sprite_visible,0,all_sprite_list, perso)
 
 
-hitbefore = 0
-score = 0;
-dir = 0; #dir = 1 > droite dir = -1 > gauche
+score = 0
+ctrldir = 0
+dir = 0 #dir = 1 > droite dir = -1 > gauche
 vis = 0
 
 #BOUCLE INFINIE
@@ -37,6 +37,14 @@ continuer = 1
 while continuer:
     # Limitation de vitesse de la boucle
     pygame.time.Clock().tick(fps)
+    oldprect = perso.rect
+
+    #pour gerer la colision
+    oldpbottom = perso.rect.bottom
+    oldpy = perso.rect.y
+    oldpx = perso.rect.x
+    oldpright = perso.rect.right
+
     #events
     for event in pygame.event.get():
         if event.type == QUIT:
@@ -45,41 +53,67 @@ while continuer:
 
         if event.type == KEYDOWN:
             if event.key == K_RIGHT:
-                dir = vitesseDir
+                ctrldir = perso.vh
             elif event.key == K_LEFT:
-                dir = -vitesseDir
+                ctrldir = -perso.vh
             elif event.key == K_ESCAPE:
                 continuer = 0
                 print(score)
 
         if event.type == KEYUP:
-            if event.key == K_RIGHT and dir == vitesseDir or event.key == K_LEFT and dir == -vitesseDir:
-                dir = 0;
+            if event.key == K_RIGHT and ctrldir == perso.vh or event.key == K_LEFT and ctrldir == -perso.vh:
+                ctrldir = 0;
 
-
+    dir = ctrldir
     perso.bondir()
 
-    #collision
-    block_hit_list = pygame.sprite.spritecollide(perso, platforms_list, False)
-    for block in block_hit_list:
-        if hitbefore == 0:
-            if perso.rect.y+(perso.rect.height/2) < block.rect.y+(block.rect.height/2):
-                perso.v = -vitesse
-            elif perso.v < 0 :
-                perso.v = -perso.v
-            perso.changeimg()
-        hitbefore = 1
-
-    if len(block_hit_list) == 0:
-        hitbefore = 0;
 
     #update des pos du fond et des elems
     for i in range(len(fonds)):
         fondsx[i] = fondsx[i]-(dir*i/4);
 
-    score = score +dir;
+    score = score +dir
     for platform in platforms_list:
         platform.rect.x = platform.rect.x-dir
+    for w in walls_list:
+        w.rect.x = w.rect.x-dir
+
+    #collision platform
+    block_hit_list = pygame.sprite.spritecollide(perso, platforms_list, False)
+    for block in block_hit_list:
+        if oldpbottom < block.rect.y:
+            perso.v = -vitesse
+            perso.rect.bottom = block.rect.y
+        elif oldpy > block.rect.bottom:
+            perso.v = -perso.v
+            perso.rect.top=block.rect.bottom
+        else:
+            if perso.rect.centerx < block.rect.centerx:
+                dir = -(perso.rect.right-block.rect.x)
+            else:
+                dir = block.rect.right-perso.rect.x
+        perso.changeimg()
+    if len(block_hit_list)>0:
+        # update des pos du fond et des elems
+        for i in range(len(fonds)):
+            fondsx[i] = fondsx[i] - (dir * i / 4);
+
+        score = score + dir
+        for platform in platforms_list:
+            platform.rect.x = platform.rect.x - dir
+        for w in walls_list:
+            w.rect.x = w.rect.x - dir
+
+
+
+    #collision wall
+    block_hit_list = pygame.sprite.spritecollide(perso, walls_list, False)
+    for block in block_hit_list:
+        print("")
+        # if hitbefore == 0:
+        #     #perso.vh = -perso.vh
+        # hitbefore = 1
+
 
 
     #affichage des fonds
@@ -94,11 +128,18 @@ while continuer:
             fenetre.blit(fonds[i], ((fondxi)-(2*width), 0))
         fenetre.blit(fonds[i], (fondxi, 0))
 
-    #hitbox
-    #pygame.draw.rect(fenetre, (255, 0, 0), pygame.Rect(perso.hitbox[0], perso.hitbox[1], perso.hitbox[2], perso.hitbox[3]))
-
     #affichage des sprites
+
     all_sprite_visible.draw(fenetre)
+
+    #affichage du sol
+    pygame.draw.rect(fenetre, (153, 70, 0), pygame.Rect(0, height-150, width, 150))
+
+
+
+
+
+
 
     #affichege du score
     text = font.render(str(score), True, (0, 128, 0))
