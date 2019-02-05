@@ -1,6 +1,6 @@
 width=1024
 height=768
-fps = 200
+fps = 1220
 
 fondx = 0
 
@@ -14,3 +14,4 @@ persoImgBounce = "images/lapinb.png"
 acceleration = 3
 vitesse = 30
 vitesseDir = 30
+

@@ -3,6 +3,7 @@ from pygame.locals import *
 from classes import *
 from const import *
 from functions import *
+from init import *
 
 pygame.init();
 
@@ -18,30 +19,6 @@ for i in range(len(backgrounds)):
     #fonds[i] = pygame.transform.scale(fonds[i], (width*2, height))
 
 
-
-all_sprite_list = pygame.sprite.Group()
-all_sprite_visible = pygame.sprite.Group()
-
-#platforms
-platforms_list = pygame.sprite.Group()
-plat = Platform(400,400,50,50)
-platforms_list.add(plat)
-all_sprite_list.add(plat)
-plat = Platform(300,300,20,20)
-platforms_list.add(plat)
-all_sprite_list.add(plat)
-plat = Platform(800,500,50,50)
-platforms_list.add(plat)
-all_sprite_list.add(plat)
-plat = Platform(900,400,50,10)
-platforms_list.add(plat)
-all_sprite_list.add(plat)
-plat = Platform(1100,400,100,50)
-platforms_list.add(plat)
-all_sprite_list.add(plat)
-plat = Platform(1600,300,50,50)
-platforms_list.add(plat)
-all_sprite_list.add(plat)
 
 perso = Perso();
 all_sprite_list.add(perso)
@@ -134,8 +111,13 @@ while continuer:
     seconds = 180-(pygame.time.get_ticks() - start_ticks) / 1000  # calculate how many seconds
     min = int(seconds/60)
     seconds = int(seconds%60)
-
-    text = font.render(str(min)+":"+str(seconds), True, (0, 128, 0))
+    if seconds <= 0 and min == 0:
+        continuer = 0
+    if seconds >= 10:
+        seconds = str(seconds)
+    else:
+        seconds = "0"+str(seconds)
+    text = font.render(str(min)+":"+seconds, True, (0, 128, 0))
     fenetre.blit(text, (10,10))
 
 
