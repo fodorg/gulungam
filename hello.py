@@ -13,7 +13,7 @@ fond = pygame.transform.scale(fond, (width, height))
 
 all_sprite_list = pygame.sprite.Group()
 
-# Make the walls. (x_pos, y_pos, width, height)
+#platforms
 platforms_list = pygame.sprite.Group()
 plat = Platform(400,400,50,50)
 platforms_list.add(plat)
@@ -39,27 +39,19 @@ all_sprite_list.add(perso)
 
 
 
-
+hitbefore = 0
 score = 0;
-
-
-
-#Rafraîchissement de l'écran
-pygame.display.flip()
+dir = 0; #dir = 1 > droite dir = -1 > gauche
 
 
 #BOUCLE INFINIE
 
 continuer = 1
-dir = 0; #dir = 1 > droite dir = -1 > gauche
-
-# BOUCLE D'ACCUEIL
-
-
-
 while continuer:
     # Limitation de vitesse de la boucle
     pygame.time.Clock().tick(fps)
+
+    #events
     for event in pygame.event.get():
         if event.type == QUIT:
             continuer = 0
@@ -76,29 +68,29 @@ while continuer:
                 dir = 0;
 
 
-
-
-
-
-
-
     perso.bondir()
 
+    #collision
     block_hit_list = pygame.sprite.spritecollide(perso, platforms_list, False)
     for block in block_hit_list:
-        if dir != 0:
-            dir = 0
-        # si le perso descend
-        elif perso.v > 0:
-            perso.v = -vitesse
-        elif perso.v < 0:
-            perso.v = vitesse
+        if hitbefore == 0:
+            if perso.rect.y+(perso.rect.height/2) < block.rect.y+(block.rect.height/2):
+                perso.v = -vitesse
+            else:
+                perso.v = -perso.v
+        hitbefore = 1
 
+    if len(block_hit_list) == 0:
+        hitbefore = 0;
+
+    #update des pos du fond et des elems
     fondx = fondx-dir;
     score = score +dir;
     for platform in platforms_list:
         platform.rect.x = platform.rect.x-dir
 
+
+    #affichage du fond
     fenetre.blit(fond, (fondx, 0))
     if fondx <= -width or fondx >= width:
         fondx = 0
@@ -107,19 +99,11 @@ while continuer:
     elif fondx > 0:
         fenetre.blit(fond, (fondx-width, 0))
 
-
-
-
-
     #hitbox
     #pygame.draw.rect(fenetre, (255, 0, 0), pygame.Rect(perso.hitbox[0], perso.hitbox[1], perso.hitbox[2], perso.hitbox[3]))
 
+    #affichage des sprites
     all_sprite_list.update()
-
     all_sprite_list.draw(fenetre)
-#    fenetre.blit(perso.image,(perso.x, perso.y))
-
-
-
 
     pygame.display.flip()
