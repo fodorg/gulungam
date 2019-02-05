@@ -95,6 +95,8 @@ def window_nameSelect():
 	fenetre.blit(plan2, (0, 0))
 	fenetre.blit(plan1, (0, 0))
 
+	pygame.display.flip()
+
 
 
 #########################             MAIN               ################################################################
@@ -121,7 +123,8 @@ while continuer:
 					window_highScores()
 
 				if 361 < event.pos[0] < 661 and 278 < event.pos[1] < 425: # CLIC ON START
-					print("CLIC START")
+					status = "nameSelect"
+					window_nameSelect()
 
 
 				if 361 < event.pos[0] < 661 and 601 < event.pos[1] < 751:  # CLIC ON QUITTER
