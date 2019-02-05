@@ -7,8 +7,10 @@ from functions import *
 pygame.init();
 
 fenetre = pygame.display.set_mode((width,height))
-fond = pygame.image.load(background).convert()
-fond = pygame.transform.scale(fond, (width, height))
+fond = []
+for i in range(len(backgrounds)):
+    fond.append(pygame.image.load(backgrounds[i]).convert())
+    fond[i] = pygame.transform.scale(fond[i], (width, height))
 
 
 
@@ -80,6 +82,7 @@ while continuer:
                 perso.v = -vitesse
             else:
                 perso.v = -perso.v
+            perso.changeimg()
         hitbefore = 1
 
     if len(block_hit_list) == 0:
@@ -92,15 +95,17 @@ while continuer:
         platform.rect.x = platform.rect.x-dir
 
 
-    #affichage du fond
-    fenetre.blit(fond, (fondx, 0))
-    if fondx <= -width or fondx >= width:
-        fondx = 0
-    if fondx < 0:
-        fenetre.blit(fond, (fondx+width, 0))
-    elif fondx > 0:
-        fenetre.blit(fond, (fondx-width, 0))
-
+    #affichage des fonds
+    i = 0
+    for background in backgrounds:
+        fenetre.blit(fond[i], (fondx*i, 0))
+        if fondx <= -width or fondx >= width:
+            fondx = 0
+        if fondx < 0:
+            fenetre.blit(fond[i], (fondx+width, 0))
+        elif fondx > 0:
+            fenetre.blit(fond[i], (fondx-width, 0))
+        i = i+1
     #hitbox
     #pygame.draw.rect(fenetre, (255, 0, 0), pygame.Rect(perso.hitbox[0], perso.hitbox[1], perso.hitbox[2], perso.hitbox[3]))
 
@@ -111,7 +116,6 @@ while continuer:
     pygame.display.flip()
 
     if i == fps*2:
-        print(i)
         i = 0
         #getSpritesVisible(all_sprite_visible, score, all_sprite_list)
     i = i+1

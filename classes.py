@@ -8,7 +8,7 @@ class Perso(pygame.sprite.Sprite):
         super().__init__()
         # Sprites du personnage
         # Position du personnage en cases et en pixels
-        self.image = pygame.image.load(persoImg).convert_alpha()
+        self.image = pygame.image.load(persoImgDesc).convert_alpha()
         #self.image = pygame.transform.scale(self.image, (100, 133))
         self.a = acceleration
         self.v = -vitesse
@@ -23,8 +23,19 @@ class Perso(pygame.sprite.Sprite):
         self.hitbox = (self.rect.x+20, self.rect.y, 60, 100)
         if self.rect.y > 500:
             self.v = -vitesse
+            self.changeimg();
         else:
             self.v = self.v + self.a
+        if self.v == 0 or self.v > -vitesse+(self.a*2):
+            self.changeimg()
+
+    def changeimg(self):
+        if self.v == -vitesse:
+            self.image = pygame.image.load(persoImgBounce).convert_alpha()
+        elif self.v < 0:
+            self.image = pygame.image.load(persoImgMont).convert_alpha()
+        else:
+            self.image = pygame.image.load(persoImgDesc).convert_alpha()
 
 
 class Platform(pygame.sprite.Sprite):
