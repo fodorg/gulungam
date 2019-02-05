@@ -28,16 +28,30 @@ def window_highScores(): # High score display
 	fenetre.blit(txt_title, (380, 20))
 
 	# TABLE
+	color = (255, 252, 244) # color of the line
 	pygame.draw.rect(fenetre, (26, 103, 219), [40, 90, 936, 638])
-	pygame.draw.line(fenetre, (0, 0, 0,), [512, 90], [512, 728], 3)
-	for i in range(12):
+	pygame.draw.line(fenetre, color, [512, 90], [512, 728], 3)
+	pygame.draw.line(fenetre, color, [40, 90], [975, 90], 3)
+	pygame.draw.line(fenetre, color, [975, 90], [975, 728], 3)
+	pygame.draw.line(fenetre, color, [40, 90], [40, 728], 3)
+	pygame.draw.line(fenetre, color, [40, 728], [975, 728], 3)
+
+	for i in range(10):
+		pygame.draw.line(fenetre, color, [40, (i+1)*58+90], [975, (i+1)*58+90], 3)
+
+	# TEXT IN TABLE
+	txt_name = bigFont.render("NAME", True, color)
+	fenetre.blit(txt_name, (220, 100))
+	txt_score = bigFont.render("SCORE", True, color)
+	fenetre.blit(txt_score, (665, 100))
+
 
 
 	pygame.display.flip()
 
 ######################### MAIN #######################
 pygame.init()
-fenetre = pygame.display.set_mode((1024, 768), RESIZABLE)
+fenetre = pygame.display.set_mode((1024, 768))
 
 window_main()
 
