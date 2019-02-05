@@ -15,8 +15,8 @@ def window_main(): # Menu display
 	fenetre.blit(plan2, (0, 0))
 	fenetre.blit(plan1, (0, 0))
 	fenetre.blit(buttons, (0, 0))
-	font = pygame.font.SysFont(None, 50) # FONT
 
+	# font = pygame.font.SysFont(None, 50) # FONT
 	# # NEW GAME
 	# pygame.draw.rect(fenetre, (204, 255, 204), [425, 300, 200, 50])
 	# txt_newGame = font.render("New Game", True, (0, 0, 0))
@@ -73,6 +73,32 @@ def window_highScores(): # High score display
 
 	pygame.display.flip()
 
+def window_end():
+	fenetre.fill((255, 252, 244))  # BACKGROUND
+	plan1 = pygame.image.load("images/plan1.png").convert_alpha()
+	plan2 = pygame.image.load("images/plan2.png").convert_alpha()
+	plan3 = pygame.image.load("images/plan3.png").convert_alpha()
+	plan4 = pygame.image.load("images/plan4.png").convert_alpha()
+	fenetre.blit(plan4, (0, 0))
+	fenetre.blit(plan3, (0, 0))
+	fenetre.blit(plan2, (0, 0))
+	fenetre.blit(plan1, (0, 0))
+
+def window_nameSelect():
+	fenetre.fill((255, 252, 244))  # BACKGROUND
+	plan1 = pygame.image.load("images/plan1.png").convert_alpha()
+	plan2 = pygame.image.load("images/plan2.png").convert_alpha()
+	plan3 = pygame.image.load("images/plan3.png").convert_alpha()
+	plan4 = pygame.image.load("images/plan4.png").convert_alpha()
+	fenetre.blit(plan4, (0, 0))
+	fenetre.blit(plan3, (0, 0))
+	fenetre.blit(plan2, (0, 0))
+	fenetre.blit(plan1, (0, 0))
+
+	pygame.display.flip()
+
+
+
 #########################             MAIN               ################################################################
 pygame.init()
 fenetre = pygame.display.set_mode((1024, 768))
@@ -97,7 +123,9 @@ while continuer:
 					window_highScores()
 
 				if 361 < event.pos[0] < 661 and 278 < event.pos[1] < 425: # CLIC ON START
-					print("CLIC START")
+					status = "nameSelect"
+					window_nameSelect()
+
 
 				if 361 < event.pos[0] < 661 and 601 < event.pos[1] < 751:  # CLIC ON QUITTER
 					continuer = 0
