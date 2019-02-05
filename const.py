@@ -1,6 +1,6 @@
 width=1024
 height=768
-fps = 45
+fps = 45   # 45 for sound
 
 fondx = 0
 
