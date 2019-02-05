@@ -77,6 +77,9 @@ def window_highScores(): # High score display
 pygame.init()
 fenetre = pygame.display.set_mode((1024, 768))
 
+pygame.mixer.music.load("sound/musique_menu.wav")
+pygame.mixer.music.play(-1)
+
 window_main()
 
 continuer = 1
