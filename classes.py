@@ -75,7 +75,7 @@ class Perso(Sprit):
 
 class Platform(Sprit):
 
-    def __init__(self, x, y, w, h,img):
+    def __init__(self,img, x, y, w, h):
         super().__init__()
         img = "images/"+img
         self.image = pygame.image.load(img).convert_alpha()
@@ -87,7 +87,7 @@ class Platform(Sprit):
 
 class Speeder(Sprit):
 
-    def __init__(self, x, y, w, h,img):
+    def __init__(self,img, x, y, w, h):
         super().__init__()
         img = "images/"+img
         self.image = pygame.image.load(img).convert_alpha()

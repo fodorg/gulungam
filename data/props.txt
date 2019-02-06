@@ -9,9 +9,7 @@
 
 # s,1200,500,40,40
 
-p,600,450,50,50,blocVert.png
-p,800,400,50,50,blocVert.png
-p,1000,350,50,50,blocVert.png
-p,1300,400,50,500,blocVert.png
+p,blocVert.png,600,450,50,50
+
 
 
