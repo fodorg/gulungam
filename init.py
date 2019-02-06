@@ -12,7 +12,7 @@ all_sprite_visible = pygame.sprite.Group()
 
 #platforms
 platforms_list = pygame.sprite.Group()
-ralentisseurs_list = pygame.sprite.Group()
+blocksBuff_list = pygame.sprite.Group()
 
 
 f = open("data/props.txt", "r")
@@ -28,8 +28,8 @@ for line in f:
       plat = Platform(params[1],int(params[2]),int(params[3]),int(params[4]),int(params[5]))
       platforms_list.add(plat)
       all_sprite_list.add(plat)
-    elif params[0] == "r":
-      r = Ralentisseur(params[1],int(params[2]),int(params[3]),int(params[4]),int(params[5]))
-      ralentisseurs_list.add(r)
-      all_sprite_list.add(r)
+    elif params[0] == "r" : # or param = u
+      b = BlockBuff(params[0],params[1],int(params[2]),int(params[3]),int(params[4]),int(params[5]))
+      blocksBuff_list.add(b)
+      all_sprite_list.add(b)
 #
