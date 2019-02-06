@@ -83,7 +83,7 @@ while continuer:
         elif oldpbottom < block.rect.y:
             perso.v = -vitesse
             perso.rect.bottom = block.rect.y
-        else:
+        elif oldpy > block.rect.bottom :
             perso.v = -perso.v
             perso.rect.top=block.rect.bottom
         perso.changeimg()
