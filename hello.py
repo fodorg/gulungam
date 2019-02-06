@@ -74,12 +74,12 @@ while continuer:
         e.deplacer(dir)
 
     #collision platform
-    block_hit_list = pygame.sprite.spritecollide(perso, platforms_list, False)
+    block_hit_list = pygame.sprite.spritecollide(perso.hitb, platforms_list, False)
     for block in block_hit_list:
-        if perso.rect.right < block.rect.x+2*dir:
-            dir = (block.rect.x-perso.rect.right)
-        elif perso.rect.x > block.rect.right+2*dir:
-            dir = -(perso.rect.x-block.rect.right)
+        if perso.hitb.rect.right < block.rect.x+2*dir:
+            dir = (block.rect.x-perso.hitb.rect.right)
+        elif perso.hitb.rect.x > block.rect.right+2*dir:
+            dir = -(perso.hitb.rect.x-block.rect.right)
         elif oldpbottom < block.rect.y:
             perso.v = -vitesse
             perso.rect.bottom = block.rect.y
@@ -98,17 +98,18 @@ while continuer:
             e.deplacer(dir)
 
     #collision buffs
-    block_hit_list = pygame.sprite.spritecollide(perso, blocksBuff_list, False)
+    block_hit_list = pygame.sprite.spritecollide(perso.hitb, blocksBuff_list, True)
     for block in block_hit_list:
         print(perso.vh)
         if perso.addBuff(block.typeBuff) == 1: #retourne vrai si le buff est activé
-            if block.typeBuff == "r":
+            if block.typeBuff == "r" or block.typeBuff == "a":
                 if ctrldir > 0:
                     ctrldir = perso.vh
                 elif ctrldir < 0:
                     ctrldir = -perso.vh
-
-
+    print("a")
+    print(perso.hitb.rect)
+    print(perso.rect)
 
 
 
@@ -137,13 +138,19 @@ while continuer:
         duraBuff = 5 - (pygame.time.get_ticks() - perso.startBuff) / 1000  # calculate how many seconds
         if duraBuff < 0:#on enleve le buff
             perso.deBuff()
+            if ctrldir > 0:
+                ctrldir = perso.vh
+            elif ctrldir < 0:
+                ctrldir = -perso.vh
 
+        buffHud = pygame.Rect(0,0,duraBuff*50,20)
+        buffHud.centerx = width/2
 
-
+        pygame.draw.rect(fenetre, (153, 70, 0), buffHud)
 
 
     #affichege du score
-    text = font.render(str(score), True, (0, 128, 0))
+    text = font.render(str(int(score)), True, (0, 128, 0))
     text_rect = text.get_rect()
     text_rect.right = width-10  # align to right to 150px
     text_rect.y = 10
@@ -163,10 +170,15 @@ while continuer:
     fenetre.blit(text, (10,10))
 
 
+
+
     pygame.display.flip()
 
     if dir != 0:
         getSpritesVisible(all_sprite_visible, score, all_sprite_list,perso)
+
+
+
 
 
 
