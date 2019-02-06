@@ -105,7 +105,7 @@ def window_end():
 	txt_score = bigFont.render(str(score), True, color)
 	fenetre.blit(txt_score, (400, 300))
 
-
+	back = pygame.image.load("back.png")
 
 	pygame.display.flip()
 
