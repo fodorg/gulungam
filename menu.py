@@ -103,6 +103,9 @@ def window_end():
 
 	score = getAllScores()[-1]
 	txt_score = bigFont.render(str(score), True, color)
+	fenetre.blit(txt_score, (400, 300))
+
+
 
 	pygame.display.flip()
 
