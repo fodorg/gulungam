@@ -100,6 +100,7 @@ def window_nameSelect():
 	name = ""
 	txt_Name = font.render(name, True, (0, 0, 0))
 	fenetre.blit(txt_Name, (375, 350))
+
 	pygame.display.flip()
 
 	alphakeys = [K_a, K_z, K_e, K_r, K_t, K_y, K_u, K_i, K_o, K_p, K_q, K_s, K_d, K_f, K_g, K_h, K_j, K_k, K_l, K_m,
@@ -126,7 +127,7 @@ def window_nameSelect():
 					print("return")
 
 			if event.type == QUIT:
-				print("quit")
+				raise Exception("QUIT")
 
 
 
@@ -157,7 +158,10 @@ while continuer:
 
 				if 383 < event.pos[0] < 641 and 451 < event.pos[1] < 580: # CLIC ON START
 					status = "nameSelect"
-					window_nameSelect()
+					try:
+						window_nameSelect()
+					except:
+						continuer = 0
 
 				if 818 < event.pos[0] < 1014 and 660 < event.pos[1] < 758:  # CLIC ON QUITTER
 					continuer = 0
