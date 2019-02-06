@@ -14,10 +14,34 @@ def loadBackground():
 	fenetre.blit(plan3, (0, 0))
 	fenetre.blit(plan2, (0, 0))
 	fenetre.blit(plan1, (0, 0))
+	print("loadBackground")
 
-def window_main(): # Menu display
-	loadBackground()
-	buttons = pygame.image.load("images/Accueil_v2.png").convert_alpha()
+def window_menu(): # Menu display
+	buttons = pygame.image.load("images/menu.png").convert_alpha()
+	fenetre.blit(buttons, (0, 0))
+
+	pygame.display.flip()
+
+def window_menuStart(): # Menu mouseover START display
+	buttons = pygame.image.load("images/menu_start.png").convert_alpha()
+	fenetre.blit(buttons, (0, 0))
+
+	pygame.display.flip()
+
+def window_menuHighScore(): # Menu mouseover HIGHSCORE display
+	buttons = pygame.image.load("images/menu_highscores.png").convert_alpha()
+	fenetre.blit(buttons, (0, 0))
+
+	pygame.display.flip()
+
+def window_menuQuit(): # Menu mouseover QUITTER display
+	buttons = pygame.image.load("images/menu_quitter.png").convert_alpha()
+	fenetre.blit(buttons, (0, 0))
+
+	pygame.display.flip()
+
+def window_menuCred(): # Menu mouseover CREDITS display
+	buttons = pygame.image.load("images/menu_credits.png").convert_alpha()
 	fenetre.blit(buttons, (0, 0))
 
 	pygame.display.flip()
@@ -110,15 +134,16 @@ def window_nameSelect():
 #########################             MAIN               ################################################################
 pygame.init()
 fenetre = pygame.display.set_mode((1024, 768))
+loadBackground()
 
 pygame.mixer.music.load("sound/musique_menu.wav")
 pygame.mixer.music.play(-1)
 
-window_main()
+window_menu()
 
 continuer = 1
 status = "main"
-playerName = ""
+buttonStatus = "main"
 while continuer:
 
 	for event in pygame.event.get():
@@ -126,22 +151,58 @@ while continuer:
 			continuer = 0
 
 		if status == "main": # MAIN PAGE
-			if event.type == MOUSEBUTTONDOWN and event.button == 1: # RIGHT CLIC
-				if 362 < event.pos[0] < 662 and 438 < event.pos[1] < 588:  # CLIC ON HIGH SCORES
+			if event.type == MOUSEBUTTONDOWN and event.button == 1: # CLIC
+				if 383 < event.pos[0] < 641 and 601 < event.pos[1] < 730:  # CLIC ON HIGH SCORES
 					status = "highScores"
 					window_highScores()
 
-				if 361 < event.pos[0] < 661 and 278 < event.pos[1] < 425: # CLIC ON START
+				if 383 < event.pos[0] < 641 and 451 < event.pos[1] < 580: # CLIC ON START
 					status = "nameSelect"
 					window_nameSelect()
 
-				if 361 < event.pos[0] < 661 and 601 < event.pos[1] < 751:  # CLIC ON QUITTER
+				if 818 < event.pos[0] < 1014 and 660 < event.pos[1] < 758:  # CLIC ON QUITTER
 					continuer = 0
 
-				if 41 < event.pos[0] < 141 and 610 < event.pos[1] < 729:  # CLIC ON COGWhEEL
-					print("CLIC ENGRENAGE")
+				if 10 < event.pos[0] < 206 and 661 < event.pos[1] < 758:  # CLIC ON CREDITS
+					print("CLIC CREDIT")
+
+			if event.type == MOUSEMOTION: # MOTION
+				if 383 < event.pos[0] < 641 and 601 < event.pos[1] < 730:  # MOTION ON HIGH SCORES
+					print("mouse on HS")
+					if buttonStatus != "highScore":
+						loadBackground()
+						window_menuHighScore()
+						buttonStatus = "highScore"
+
+				elif 383 < event.pos[0] < 641 and 451 < event.pos[1] < 580: # MOTION ON START
+					print("mouse on START")
+					if buttonStatus != "start":
+						loadBackground()
+						window_menuStart()
+						buttonStatus = "start"
+
+				elif 818 < event.pos[0] < 1014 and 660 < event.pos[1] < 758:  # MOTION ON QUITTER
+					print("mouse on QUIT")
+					if buttonStatus != "quit":
+						loadBackground()
+						window_menuQuit()
+						buttonStatus = "quit"
+
+				elif 10 < event.pos[0] < 206 and 661 < event.pos[1] < 758:  # MOTION ON CREDITS
+					print("mouse on CREDS")
+					if buttonStatus != "cred":
+						loadBackground()
+						window_menuCred()
+						buttonStatus = "cred"
+
+				else:
+					if buttonStatus != "main":
+						print("mouse on NOTHING")
+						loadBackground()
+						window_menu()
+						buttonStatus = "main"
 
 		elif status == "highScores" and event.type == MOUSEBUTTONDOWN and event.button == 1 and 20 < event.pos[0] < 170 and 25 < event.pos[1] < 75:  # CLIC ON MENU
 			status = "main"
-			window_main()
+			window_menu()
 
