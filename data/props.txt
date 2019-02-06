@@ -122,7 +122,6 @@ a,2025,70,50,50
 p,blocVert2L.png,2000,140,100,50
 
 
-
 p,blocVert2H.png,2500,520,50,100
 p,blocVert5H.png,2650,370,50,250
 
@@ -133,7 +132,9 @@ p,blocVert.png,4250,420,50,50
 p,blocVert.png,4400,420,50,50
 p,blocVert2H.png,4500,520,50,100
 
+
 r,5500,570,50,50
+
 
 p,blocVert.png,6500,570,50,50
 p,blocVert2H.png,6550,520,50,100
@@ -145,6 +146,7 @@ p,blocVert.png,7050,370,50,50
 p,blocVert.png,7350,370,50,50
 p,blocVert.png,7350,420,50,50
 r,7350,570,50,50
+
 
 p,blocVert.png,8000,200,50,50
 p,blocVert.png,8200,400,50,50
@@ -161,3 +163,52 @@ p,blocVert.png,9600,570,50,50
 p,blocVert2L.png,9750,450,100,50
 p,blocVert5H.png,10100,370,50,250
 p,blocVert.png,10300,500,50,50
+
+
+p,blocVert.png,12000,250,50,50
+p,blocVert.png,12250,350,50,50
+p,blocVert.png,12400,500,50,50
+p,blocVert.png,12550,300,50,50
+p,blocVert5H.png,12700,370,50,250
+p,blocVert.png,12750,570,50,50
+
+
+p,blocVert.png,13600,470,50,50
+p,blocVert.png,13800,400,50,50
+p,blocVert.png,14000,350,50,50
+p,blocVert5H.png,14300,370,50,250
+
+
+
+p,blocVert.png,15000,570,50,50
+p,blocVert2H.png,15050,520,50,100
+p,blocVert3H.png,15100,470,50,150
+p,blocVert4H.png,15150,420,50,200
+p,blocVert5H.png,15200,370,50,250
+p,blocVert.png,15400,300,50,50
+p,blocVert.png,15080,200,50,50
+p,blocVert.png,14900,50,50,50
+p,blocVert3H.png,15500,470,50,150
+p,blocVert2H.png,15550,520,50,100
+p,blocVert.png,15600,570,50,50
+p,blocVert.png,15700,370,50,50
+p,blocVert.png,16000,340,50,50
+p,blocVert.png,15800,540,50,50
+
+
+
+p,blocVert2L.png,16500,570,100,50
+p,blocVert.png,16700,450,50,50
+p,blocVert2H.png,16850,470,50,100
+p,blocVert.png,17000,450,50,50
+p,blocVert.png,17100,100,50,50
+p,blocVert5H.png,17150,370,50,250
+p,blocVert4H.png,17200,420,50,200
+p,blocVert3H.png,17250,470,50,150
+p,blocVert2H.png,17300,520,50,100
+p,blocVert.png,17350,570,50,50
+p,blocVert.png,17800,510,50,50
+p,blocVert.png,17600,400,50,50
+p,blocVert.png,17950,350,50,50
+p,blocVert5H.png,18150,370,50,250
+
