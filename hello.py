@@ -38,8 +38,8 @@ while continuer:
     oldprect = perso.rect
 
     #pour gerer la colision
-    oldpbottom = perso.rect.bottom
-    oldpy = perso.rect.y
+    oldpbottom = perso.hitb.rect.bottom
+    oldpy = perso.hitb.rect.y
 
 
     #events
@@ -67,7 +67,7 @@ while continuer:
 
     #update des pos du fond et des elems
     for i in range(len(fonds)):
-        fondsx[i] = fondsx[i]-(dir*i/4);
+        fondsx[i] = fondsx[i]-(dir*vitessebackground[i]);
 
     score = score +dir
     for e in all_sprite_list:
@@ -91,7 +91,7 @@ while continuer:
     if len(block_hit_list)>0:
         # update des pos du fond et des elems
         for i in range(len(fonds)):
-            fondsx[i] = fondsx[i] - (dir * i / 4);
+            fondsx[i] = fondsx[i] - (dir * vitessebackground[i]);
 
         score = score + dir
         for e in all_sprite_list:
@@ -123,6 +123,9 @@ while continuer:
         fenetre.blit(fonds[i], (fondxi, 0))
 
     #affichage des sprites
+
+
+    pygame.draw.rect(fenetre, (153, 70, 0), perso.hitb.rect)
 
     all_sprite_visible.draw(fenetre)
 

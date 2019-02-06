@@ -32,16 +32,11 @@ class Perso(Sprit):
         self.rect.x = 400
         self.son = pygame.mixer.Sound("sound/ressort1.wav")
 
-        self.hitbox = self.rect
-        self.hitbox.x = self.rect.x+20
-        self.hitbox.width = self.rect.width-40
-
 
         self.hitb = hitb(self);
 
     def bondir(self, dir = 0):
         self.rect.x=self.rect.x+dir
-        self.hitbox.x = self.hitbox.x+dir
         self.rect.y = self.rect.y+self.v
         if self.rect.bottom > (height-148):
             self.v = -vitesse
@@ -131,7 +126,7 @@ class hitb(pygame.sprite.Sprite):
 
     def updt(self, perso):
         self.rect.x = perso.rect.x+20
-        self.rect.y = perso.rect.y
-        self.rect.h = perso.rect.h
+        self.rect.y = perso.rect.y+20
+        self.rect.h = 80
         self.rect.w = perso.rect.w-42
 
