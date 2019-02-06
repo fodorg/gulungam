@@ -4,7 +4,7 @@ fps = 60   # 45 for sound
 
 fondx = 0
 
-backgrounds = ["images/background.jpg","images/plan4.png","images/plan3.png","images/plan2.png","images/plan1.png"]
+backgrounds = ["images/background.png","images/plan4.png","images/plan3.png","images/plan2.png","images/plan1.png"]
 
 vitessebackground = [0,0.2,0.3,0.4,0.5]
 
