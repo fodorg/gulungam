@@ -1,7 +1,19 @@
 import pygame
 from const import *
 
-class Perso(pygame.sprite.Sprite):
+
+
+class Sprit(pygame.sprite.Sprite):
+
+    def __init__(self):#ajouter image
+        super().__init__()
+
+
+    def deplacer(self, dir = 0):
+        self.rect.x = self.rect.x-dir
+
+
+class Perso(Sprit):
     """Classe permettant de créer un personnage"""
 
     def __init__(self):
@@ -11,7 +23,9 @@ class Perso(pygame.sprite.Sprite):
         self.image = pygame.image.load(persoImgDesc).convert_alpha()
         #self.image = pygame.transform.scale(self.image, (100, 133))
         self.vh = vitesseDir
+        self.buff = ""
         self.a = acceleration
+        self.duraBuff = 0
         self.v = -vitesse
         self.rect = self.image.get_rect()
         self.rect.y = 600
@@ -45,8 +59,21 @@ class Perso(pygame.sprite.Sprite):
         self.rect.width = self.image.get_rect().width
         self.rect.height = self.image.get_rect().height
 
+    def ralenti(self):
+        self.vh = vitesseDir/2
+        self.buff = "slow"
+        self.startBuff = pygame.time.get_ticks()
+    def buff(self):
+        if self.buff != "":
+            self.duraBuff = 5 - (pygame.time.get_ticks() - self.startBuff) / 1000  # calculate how many seconds
+            if self.duraBuff < 0:#on enleve le buff
+                if self.buff == "slow":
+                    self.vh = vitesseDir
+            self.buff = ""
+    def deplacer(self, dir = 0):
+        return 0
 
-class Platform(pygame.sprite.Sprite):
+class Platform(Sprit):
 
     def __init__(self, x, y, w, h):
         super().__init__()
@@ -56,37 +83,18 @@ class Platform(pygame.sprite.Sprite):
         self.rect.y = y
         self.rect.x = x
 
-    # def collide(self, hitbox):
-    #     #return hitbox[0] + hitbox[2] > self.x and hitbox[0] < self.x + self.w and hitbox[1]+hitbox[3] > self.y and hitbox[1] < self.y + self.h
-    #     if hitbox[0] + hitbox[2] > self.x and hitbox[0] < self.x + self.w :
-    #         if hitbox[1]+hitbox[3] > self.y and hitbox[1]+hitbox[3] < self.y+(self.h/2):
-    #             return 1;
-    #         elif hitbox[1] < self.y+self.h and hitbox[1] > self.y+(self.h/2):
-    #             return -1;
-    #     return 0
-    def deplacer(self, dir = 0):
-        self.x = self.x+dir
 
-
-class Wall(pygame.sprite.Sprite):
+class Speeder(Sprit):
 
     def __init__(self, x, y, w, h):
         super().__init__()
         self.image = pygame.Surface([w, h])
-        self.image.fill((140, 51, 0))
+        self.image.fill((15, 51, 145))
         self.rect = self.image.get_rect()
         self.rect.y = y
         self.rect.x = x
 
-    # def collide(self, hitbox):
-    #     #return hitbox[0] + hitbox[2] > self.x and hitbox[0] < self.x + self.w and hitbox[1]+hitbox[3] > self.y and hitbox[1] < self.y + self.h
-    #     if hitbox[0] + hitbox[2] > self.x and hitbox[0] < self.x + self.w :
-    #         if hitbox[1]+hitbox[3] > self.y and hitbox[1]+hitbox[3] < self.y+(self.h/2):
-    #             return 1;
-    #         elif hitbox[1] < self.y+self.h and hitbox[1] > self.y+(self.h/2):
-    #             return -1;
-    #     return 0
-    def deplacer(self, dir = 0):
-        self.x = self.x+dir
+
+
 
 
