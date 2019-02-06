@@ -179,6 +179,6 @@ def game():
 
 
 
-
+    return score
 
 
