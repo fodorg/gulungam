@@ -1,4 +1,5 @@
 # ceci est un commentaire
+
 # type d'objet, x, y, longueur, largeur
 # p pour plateforme
 # a pour buff de vitesse
@@ -6,6 +7,11 @@
 # g pour antigravite
 # - pour diminer points
 # + pour ajouter points
+# t pout teleportation
+
+# m,x pour se deplacer de x pixels absolus
+
+m,1000
 
 a,200,550,50,50
 r,600,550,50,50

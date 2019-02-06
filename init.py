@@ -15,7 +15,7 @@ platforms_list = pygame.sprite.Group()
 blocksBuff_list = pygame.sprite.Group()
 
 listargs = ["p", "a", "g", "+", "-"]
-
+mv = 0
 f = open("data/props.txt", "r")
 
 for line in f:
@@ -24,13 +24,14 @@ for line in f:
   if len(params) >= 5:
     if len(params) == 5:
       params.insert(1,"blocNull.png")
-
     if params[0] == "p":
-      plat = Platform(params[1],int(params[2]),int(params[3]),int(params[4]),int(params[5]))
+      plat = Platform(params[1],mv+int(params[2]),int(params[3]),int(params[4]),int(params[5]))
       platforms_list.add(plat)
       all_sprite_list.add(plat)
     elif params[0] in listargs:
-      b = BlockBuff(params[0],params[1],int(params[2]),int(params[3]),int(params[4]),int(params[5]))
+      b = BlockBuff(params[0],params[1],mv+int(params[2]),int(params[3]),int(params[4]),int(params[5]))
       blocksBuff_list.add(b)
       all_sprite_list.add(b)
-#
+  if len(params) == 2:
+    if params[0] == "m":
+      mv = int(params[1])
