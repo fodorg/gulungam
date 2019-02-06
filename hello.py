@@ -40,8 +40,7 @@ while continuer:
     #pour gerer la colision
     oldpbottom = perso.rect.bottom
     oldpy = perso.rect.y
-    oldpx = perso.rect.x
-    oldpright = perso.rect.right
+
 
     #events
     for event in pygame.event.get():
@@ -77,17 +76,16 @@ while continuer:
     #collision platform
     block_hit_list = pygame.sprite.spritecollide(perso, platforms_list, False)
     for block in block_hit_list:
-        if oldpbottom < block.rect.y:
+        if perso.rect.right < block.rect.x+2*dir:
+            dir = (block.rect.x-perso.rect.right)
+        elif perso.rect.x > block.rect.right+2*dir:
+            dir = -(perso.rect.x-block.rect.right)
+        elif oldpbottom < block.rect.y:
             perso.v = -vitesse
             perso.rect.bottom = block.rect.y
-        elif oldpy > block.rect.bottom:
+        elif oldpy > block.rect.bottom :
             perso.v = -perso.v
             perso.rect.top=block.rect.bottom
-        else:
-            if perso.rect.centerx < block.rect.centerx:
-                dir = -(perso.rect.right-block.rect.x)
-            else:
-                dir = block.rect.right-perso.rect.x
         perso.changeimg()
     if len(block_hit_list)>0:
         # update des pos du fond et des elems
