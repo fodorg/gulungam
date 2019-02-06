@@ -9,12 +9,12 @@
 # p,blocVert.png,1300,400,50,500
 
 
-# p,blocVert.png,2000,250,50,50
-# p,blocVert.png,2250,350,50,50
-# p,blocVert.png,2400,500,50,50
-# p,blocVert.png,2550,300,50,50
-# p,blocVert.png,2700,400,50,500
-# p,blocVert.png,2750,570,50,50
+p,blocVert.png,2000,250,50,50
+p,blocVert.png,2250,350,50,50
+p,blocVert.png,2400,500,50,50
+p,blocVert.png,2550,300,50,50
+p,blocVert.png,2700,400,50,500
+p,blocVert.png,2750,570,50,50
 
 
 

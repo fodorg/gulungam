@@ -124,7 +124,7 @@ def window_nameSelect():
 					pygame.display.flip()
 
 				if event.key == K_RETURN and len(name) > 0:    # press on enter
-					print("return")
+					nameDone = True
 
 			if event.type == QUIT:
 				raise Exception("QUIT")
@@ -160,8 +160,9 @@ while continuer:
 					status = "nameSelect"
 					try:
 						window_nameSelect()
-					except:
-						continuer = 0
+					except Exception as exep:
+						if exep.args[0] == "QUIT":
+							continuer = 0
 
 				if 818 < event.pos[0] < 1014 and 660 < event.pos[1] < 758:  # CLIC ON QUITTER
 					continuer = 0
