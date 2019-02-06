@@ -87,6 +87,7 @@ while continuer:
             perso.v = -perso.v
             perso.rect.top=block.rect.bottom
         perso.changeimg()
+
     if len(block_hit_list)>0:
         # update des pos du fond et des elems
         for i in range(len(fonds)):
@@ -99,12 +100,13 @@ while continuer:
     #collision buffs
     block_hit_list = pygame.sprite.spritecollide(perso, blocksBuff_list, False)
     for block in block_hit_list:
-        perso.addBuff(block.typeBuff);
-        if block.typeBuff == "r":
-            if dir > 0:
-                dir = -perso.vh
-            else:
-                dir = perso.vh
+        print(perso.vh)
+        if perso.addBuff(block.typeBuff) == 1: #retourne vrai si le buff est activé
+            if block.typeBuff == "r":
+                if ctrldir > 0:
+                    ctrldir = perso.vh
+                elif ctrldir < 0:
+                    ctrldir = -perso.vh
 
 
 

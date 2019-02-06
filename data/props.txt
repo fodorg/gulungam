@@ -3,6 +3,9 @@
 # p pour plateforme
 # s pour buff de vitesse
 
+r,600,450,50,50
+
+
 # p,blocVert.png,600,450,50,50
 # p,blocVert.png,800,400,50,50
 # p,blocVert.png,1000,350,50,50

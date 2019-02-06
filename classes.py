@@ -60,10 +60,14 @@ class Perso(Sprit):
         self.rect.height = self.image.get_rect().height
 
     def addBuff(self, buff):
-        self.buff = buff
-        if buff == "r":
-            self.vh = vitesseDir/4
-            self.startBuff = pygame.time.get_ticks()
+        if self.buff != buff:
+            self.buff = buff
+            if buff == "r":
+                self.vh = vitesseDir/4
+                self.startBuff = pygame.time.get_ticks()
+            return 1
+        else:
+            return 0
 
     def deBuff(self):
         if self.buff == "r":
