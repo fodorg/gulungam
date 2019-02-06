@@ -15,4 +15,3 @@ acceleration = 3
 vitesse = 30
 vitesseDir = 15
 
-alphaKeys = []

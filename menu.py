@@ -72,16 +72,38 @@ def window_end():
 def window_nameSelect():
 	loadBackground()
 
-	pygame.draw.rect(fenetre, (255, 255, 255), [370, 350, 240, 45])  # Text input DIMENSION IMPORTANT
-	# font = pygame.font.SysFont(None, 60) # TEST FONT
-	# txt_testName = font.render("ABCDEFGH", True, (0, 0, 0))
-	# fenetre.blit(txt_testName, (375, 350))
-
-	for event in pygame.event.get():
-		if event.type == KEYDOWN:
-			print("rien")
-
+	pygame.draw.rect(fenetre, (255, 255, 255), [370, 350, 322, 45])  # Text input DIMENSION IMPORTANT
+	font = pygame.font.SysFont(None, 60) # TEXT FONT
+	name = "WWWWWWWW"
+	txt_Name = font.render(name, True, (0, 0, 0))
+	fenetre.blit(txt_Name, (375, 350))
 	pygame.display.flip()
+
+	alphakeys = [K_a, K_z, K_e, K_r, K_t, K_y, K_u, K_i, K_o, K_p, K_q, K_s, K_d, K_f, K_g, K_h, K_j, K_k, K_l, K_m,
+				 K_w, K_x, K_c, K_v, K_b, K_n]
+	# alphakeysTubles = [(K_a, "a"), (K_z, "z"), (K_e, "e"), (K_r, "r"), (K_t, "t"), (K_y, "y"), (K_u, "u"), (K_i, "i"), (K_o, "o"),
+	#              (K_p, "p"), (K_q, "q"), (K_s, "s"), (K_d, "d"), (K_f, "f"), (K_g, "g"), (K_h, "h"), (K_j, "j"), (K_k, "k"),
+	#              (K_l, "l"), (K_m, "m"), (K_w, "w"), (K_x, "x"), (K_c, "c"), (K_v, "v"), (K_b, "b"), (K_n, "n")]
+
+	nameDone = False
+	while not nameDone:
+		for event in pygame.event.get():
+			if event.type == KEYDOWN:
+				if event.key in alphakeys and len(name) < 8:
+					name = name + (event.unicode).upper()
+					txt_Name = font.render(name, True, (0, 0, 0))
+					fenetre.blit(txt_Name, (375, 350))
+					pygame.display.flip()
+
+				if event.key == K_BACKSPACE:
+					name = name[:-1]
+					pygame.draw.rect(fenetre, (255, 255, 255), [370, 350, 267, 45])
+					txt_Name = font.render(name, True, (0, 0, 0))
+					fenetre.blit(txt_Name, (375, 350))
+					pygame.display.flip()
+
+				if event.type == QUIT:
+					break
 
 
 
