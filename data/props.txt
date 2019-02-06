@@ -4,10 +4,14 @@
 # a pour buff de vitesse
 # r pour ralentir
 # g pour antigravite
+# - pour diminer points
+# + pour ajouter points
 
-
-#r,600,450,50,50
-#g,800,450,50,50
+a,200,550,50,50
+r,600,550,50,50
+g,800,550,50,50
++,900,550,50,50
+-,1000,550,50,50
 
 # p,blocVert.png,600,450,50,50
 # p,blocVert.png,800,400,50,50
