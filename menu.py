@@ -110,20 +110,20 @@ def window_nameSelect():
 	while not nameDone:
 		for event in pygame.event.get():
 			if event.type == KEYDOWN:
-				if event.key in alphakeys and len(name) < 8:
+				if event.key in alphakeys and len(name) < 8:  # press on letter
 					name = name + (event.unicode).upper()
 					txt_Name = font.render(name, True, (0, 0, 0))
 					fenetre.blit(txt_Name, (375, 350))
 					pygame.display.flip()
 
-				if event.key == K_BACKSPACE:
+				if event.key == K_BACKSPACE:                   # press on backspace
 					name = name[:-1]
 					pygame.draw.rect(fenetre, (255, 255, 255), [370, 350, 267, 45])
 					txt_Name = font.render(name, True, (0, 0, 0))
 					fenetre.blit(txt_Name, (375, 350))
 					pygame.display.flip()
 
-				if event.key == K_RETURN and len(name) > 0:
+				if event.key == K_RETURN and len(name) > 0:    # press on enter
 					print("return")
 
 			if event.type == QUIT:
