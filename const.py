@@ -6,10 +6,11 @@ fondx = 0
 
 backgrounds = ["images/background.jpg","images/plan4.png","images/plan3.png","images/plan2.png","images/plan1.png"]
 
+vitessebackground = [0,0.2,0.3,0.4,0.5]
 
 persoImgMont = "images/lapinm.png"
 persoImgDesc = "images/lapind.png"
-persoImgBounce = "images/lapinb.png"
+persoImgBounce = "images/lapinbou.png"
 
 acceleration = 3
 vitesse = 30
