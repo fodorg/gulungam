@@ -63,6 +63,7 @@ class Perso(Sprit):
         self.vh = vitesseDir/2
         self.buff = "slow"
         self.startBuff = pygame.time.get_ticks()
+
     def buff(self):
         if self.buff != "":
             self.duraBuff = 5 - (pygame.time.get_ticks() - self.startBuff) / 1000  # calculate how many seconds
@@ -85,7 +86,7 @@ class Platform(Sprit):
         self.rect.x = x
 
 
-class Speeder(Sprit):
+class Ralentisseur(Sprit):
 
     def __init__(self,img, x, y, w, h):
         super().__init__()
