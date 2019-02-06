@@ -3,20 +3,6 @@
 # p pour plateforme
 # s pour buff de vitesse
 
-# p,blocVert.png,600,450,50,50
-# p,blocVert.png,800,400,50,50
-# p,blocVert.png,1000,350,50,50
-# p,blocVert.png,1300,400,50,500
-
-
-# p,blocVert.png,2000,250,50,50
-# p,blocVert.png,2250,350,50,50
-# p,blocVert.png,2400,500,50,50
-# p,blocVert.png,2550,300,50,50
-# p,blocVert.png,2700,400,50,500
-# p,blocVert.png,2750,570,50,50
-
-
 
 # p,blocVert.png,3500,570,50,50
 # p,blocVert.png,3550,570,50,50
@@ -96,16 +82,15 @@
 p,blocVert.png,600,450,50,50
 p,blocVert.png,800,400,50,50
 p,blocVert.png,1000,350,50,50
-p,blocVert.png,1300,400,50,500
+p,blocVert5H.png,1300,370,50,250
 
 
 p,blocVert.png,2000,250,50,50
 p,blocVert.png,2250,350,50,50
 p,blocVert.png,2400,500,50,50
 p,blocVert.png,2550,300,50,50
-p,blocVert.png,2700,400,50,500
+p,blocVert5H.png,2700,370,50,250
 p,blocVert.png,2750,570,50,50
-
 
 
 p,blocVert.png,3500,570,50,50
@@ -123,11 +108,11 @@ p,blocVert.png,3700,520,50,50
 p,blocVert.png,3700,470,50,50
 p,blocVert.png,3700,420,50,50
 p,blocVert.png,3700,370,50,50
-p,blocVert.png,3750,570,50,50
-p,blocVert.png,3750,520,50,50
-p,blocVert.png,3750,470,50,50
-p,blocVert.png,3750,420,50,50
-p,blocVert.png,3750,370,50,50
+
+
+
+p,blocVert5H.png,3750,370,50,250
+
 p,blocVert.png,4050,370,50,50
 p,blocVert.png,4350,370,50,50
 p,blocVert.png,4350,420,50,50
