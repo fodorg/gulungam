@@ -87,10 +87,10 @@ def game():
                 dir = (block.rect.x-perso.hitb.rect.right)
             elif perso.hitb.rect.x > block.rect.right+2*dir:
                 dir = -(perso.hitb.rect.x-block.rect.right)
-            elif oldpbottom < block.rect.y:
+            elif oldpbottom <= block.rect.y:
                 print("hit")
                 perso.v = -vitesse
-                perso.rect.bottom = block.rect.y-20
+                perso.rect.bottom = block.rect.y
             elif oldpy > block.rect.bottom :
                 perso.v = -perso.v
                 perso.rect.top=block.rect.bottom
