@@ -45,8 +45,8 @@ def game():
         #events
         for event in pygame.event.get():
             if event.type == QUIT:
-                continuer = 0
                 print(score);
+                raise Exception("QUIT")
 
             if event.type == KEYDOWN:
                 if event.key == K_RIGHT:
@@ -161,7 +161,7 @@ def game():
         min = int(seconds/60)
         seconds = int(seconds%60)
         if seconds <= 0 and min == 0:
-            continuer = 0
+            raise Exception("END")
         if seconds >= 10:
             seconds = str(seconds)
         else:
