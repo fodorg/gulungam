@@ -107,9 +107,6 @@ while continuer:
                     ctrldir = perso.vh
                 elif ctrldir < 0:
                     ctrldir = -perso.vh
-    print("a")
-    print(perso.hitb.rect)
-    print(perso.rect)
 
 
 
