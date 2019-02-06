@@ -72,16 +72,38 @@ def window_end():
 def window_nameSelect():
 	loadBackground()
 
-	pygame.draw.rect(fenetre, (255, 255, 255), [370, 350, 240, 45])  # Text input DIMENSION IMPORTANT
-	# font = pygame.font.SysFont(None, 60) # TEST FONT
-	# txt_testName = font.render("ABCDEFGH", True, (0, 0, 0))
-	# fenetre.blit(txt_testName, (375, 350))
-
-	for event in pygame.event.get():
-		if event.type == KEYDOWN:
-			print("rien")
-
+	pygame.draw.rect(fenetre, (255, 255, 255), [370, 350, 322, 45])  # Text input DIMENSION IMPORTANT
+	font = pygame.font.SysFont(None, 60) # TEXT FONT
+	name = ""
+	txt_Name = font.render(name, True, (0, 0, 0))
+	fenetre.blit(txt_Name, (375, 350))
 	pygame.display.flip()
+
+	alphakeys = [K_a, K_z, K_e, K_r, K_t, K_y, K_u, K_i, K_o, K_p, K_q, K_s, K_d, K_f, K_g, K_h, K_j, K_k, K_l, K_m,
+				 K_w, K_x, K_c, K_v, K_b, K_n]
+
+	nameDone = False
+	while not nameDone:
+		for event in pygame.event.get():
+			if event.type == KEYDOWN:
+				if event.key in alphakeys and len(name) < 8:
+					name = name + (event.unicode).upper()
+					txt_Name = font.render(name, True, (0, 0, 0))
+					fenetre.blit(txt_Name, (375, 350))
+					pygame.display.flip()
+
+				if event.key == K_BACKSPACE:
+					name = name[:-1]
+					pygame.draw.rect(fenetre, (255, 255, 255), [370, 350, 267, 45])
+					txt_Name = font.render(name, True, (0, 0, 0))
+					fenetre.blit(txt_Name, (375, 350))
+					pygame.display.flip()
+
+				if event.key == K_RETURN and len(name) > 0:
+					print("return")
+
+			if event.type == QUIT:
+				print("quit")
 
 
 
@@ -112,7 +134,6 @@ while continuer:
 				if 361 < event.pos[0] < 661 and 278 < event.pos[1] < 425: # CLIC ON START
 					status = "nameSelect"
 					window_nameSelect()
-
 
 				if 361 < event.pos[0] < 661 and 601 < event.pos[1] < 751:  # CLIC ON QUITTER
 					continuer = 0
