@@ -5,9 +5,7 @@ from const import *
 from functions import *
 from init import *
 
-pygame.init();
 
-fenetre = pygame.display.set_mode((width,height))
 font = pygame.font.SysFont(None, 72)
 
 

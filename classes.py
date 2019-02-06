@@ -75,10 +75,11 @@ class Perso(Sprit):
 
 class Platform(Sprit):
 
-    def __init__(self, x, y, w, h):
+    def __init__(self, x, y, w, h,img):
         super().__init__()
-        self.image = pygame.Surface([w, h])
-        self.image.fill((153, 51, 0))
+        img = "images/"+img
+        self.image = pygame.image.load(img).convert_alpha()
+        self.image = pygame.transform.scale(self.image, (w, h))
         self.rect = self.image.get_rect()
         self.rect.y = y
         self.rect.x = x
@@ -86,10 +87,11 @@ class Platform(Sprit):
 
 class Speeder(Sprit):
 
-    def __init__(self, x, y, w, h):
+    def __init__(self, x, y, w, h,img):
         super().__init__()
-        self.image = pygame.Surface([w, h])
-        self.image.fill((15, 51, 145))
+        img = "images/"+img
+        self.image = pygame.image.load(img).convert_alpha()
+        self.image = pygame.transform.scale(self.image, (w, h))
         self.rect = self.image.get_rect()
         self.rect.y = y
         self.rect.x = x
