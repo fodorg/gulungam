@@ -105,7 +105,14 @@ def window_end():
 	txt_score = bigFont.render(str(score), True, color)
 	fenetre.blit(txt_score, (400, 300))
 
-	back = pygame.image.load("back.png")
+	back = pygame.image.load("images/back.png")
+	start = pygame.image.load("images/start.png")
+
+	back = pygame.transform.scale(back, (300, 150))
+	start = pygame.transform.scale(start, (300, 150))
+
+	fenetre.blit(back, (190, 600))
+	fenetre.blit(start, (500, 600))
 
 	pygame.display.flip()
 
@@ -304,3 +311,38 @@ while continuer:
 							fenetre.blit(back, (10, 10))
 							pygame.display.flip()
 							buttonStatus = "main"
+
+		elif status == "end":  # END
+			if event.type == MOUSEBUTTONDOWN and event.button == 1:   # CLIC
+				if 190 < event.pos[0] < 490 and 600 < event.pos[1] < 750:  # CLIC ON BACK
+					status = "main"
+					window_menu()
+
+				if 500 < event.pos[0] < 800 and 600 < event.pos[1] < 750:  # CLIC ON START
+					name = getAllScores()[len(getAllScores()) -2]
+					saveNew(name,game())
+					status = "end"
+					buttonStatus = "end"
+					window_end()
+
+			if event.type == MOUSEMOTION:
+				if 190 < event.pos[0] < 490 and 600 < event.pos[1] < 750:  # MOTION ON BACK
+					if buttonStatus != "back":
+						backOnClick = pygame.image.load("images/back_onclick.png")
+						backOnClick = pygame.transform.scale(backOnClick, (300, 150))
+						fenetre.blit(backOnClick, (190, 600))
+						pygame.display.flip()
+						buttonStatus = "back"
+
+				if 500 < event.pos[0] < 800 and 600 < event.pos[1] < 750:  # MOTION ON START
+					if buttonStatus != "start":
+						startOnClick = pygame.image.load("images/start_onclic.png")
+						startOnClick = pygame.transform.scale(startOnClick, (300, 150))
+						fenetre.blit(startOnClick, (500, 600))
+						pygame.display.flip()
+						buttonStatus = "start"
+
+				else:
+					if buttonStatus != "end":
+						window_end()
+						buttonStatus = "end"
