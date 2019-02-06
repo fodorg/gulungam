@@ -1,6 +1,6 @@
 def saveNew(name, score):
     file = open("save.txt", "a")
-    file.write(name + " ")
+    file.write(" " + name + " ")
     file.write(str(score) + " ")
     file.close()
 
@@ -30,17 +30,17 @@ def getAllScoresSorted():
     dataTuples.sort(key=lambda tup: tup[1], reverse=True)
     return dataTuples
 
-# emptyMemory()
-# saveNew("Audrey", 2800)
-# saveNew("Greg", 42)
-# saveNew("Adam", 984)
-# saveNew("Antoine", 4064)
-# saveNew("Manu", 100000)
-# saveNew("Nico", 73)
-# saveNew("Texas_Granger", 69)
-# saveNew("Bush", 911)
-# saveNew("Trump", 2020)
-# saveNew("God", 99999)
-# saveNew("Balec", 1)
-# print(getAllScoresSorted())
+emptyMemory()
+saveNew("Audrey", 2800)
+saveNew("Greg", 42)
+saveNew("Adam", 984)
+saveNew("Antoine", 4064)
+saveNew("Manu", 100000)
+saveNew("Nico", 73)
+saveNew("Texas_Granger", 69)
+saveNew("Bush", 911)
+saveNew("Trump", 2020)
+saveNew("God", 99999)
+saveNew("Balec", 1)
+print(getAllScoresSorted())
 # [('Manu', 1000000000), ('Antoine', 4064), ('Audrey', 2800), ('Adam', 984), ('Greg', 42)]

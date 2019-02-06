@@ -132,7 +132,6 @@ def window_nameSelect():
 					pygame.display.flip()
 
 				if event.key == K_RETURN and len(name) > 0:    # press on enter
-					print("name saved")
 					saveNew(name, game())  # game() doesn't exist yet, will in hello.py
 					raise Exception("END")
 
@@ -184,7 +183,6 @@ def window_nameSelect():
 
 			if event.type == MOUSEBUTTONDOWN and event.button == 1: # CLIC
 				if 383 < event.pos[0] < 641 and 451 < event.pos[1] < 580 and len(name) > 0:  # CLIC ON START
-					print("name saved clic")
 					saveNew(name, game())  # game() doesn't exist yet, will in hello.py
 					raise Exception("END")
 
