@@ -1,3 +1,6 @@
+# ceci est un commentaire
+# type d'objet, x, y, longueur, largeur
+# p pour olateforme
 p,700,400,50,50
 p,600,500,200,50
 p,900,200,100,50
