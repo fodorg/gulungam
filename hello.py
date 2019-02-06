@@ -117,7 +117,7 @@ while continuer:
     all_sprite_visible.draw(fenetre)
 
     #affichage du sol
-    pygame.draw.rect(fenetre, (153, 70, 0), pygame.Rect(0, height-150, width, 150))
+    pygame.draw.rect(fenetre, (153, 70, 0), pygame.Rect(0, height-148, width, 148))
 
 
 

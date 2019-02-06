@@ -37,7 +37,7 @@ class Perso(Sprit):
         self.rect.x=self.rect.x+dir
         self.rect.y = self.rect.y+self.v
         self.hitbox = (self.rect.x+20, self.rect.y, 60, 100)
-        if self.rect.bottom > (height-150):
+        if self.rect.bottom > (height-148):
             self.v = -vitesse
             self.changeimg();
         else:
