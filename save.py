@@ -1,6 +1,6 @@
 def saveNew(name, score):
     file = open("save.txt", "a")
-    file.write(name + " ")
+    file.write(" " + name + " ")
     file.write(str(score) + " ")
     file.close()
 

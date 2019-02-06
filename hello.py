@@ -157,7 +157,7 @@ def game():
         fenetre.blit(text,text_rect)
 
         #affichage du timer
-        seconds = 180-(pygame.time.get_ticks() - start_ticks) / 1000  # calculate how many seconds
+        seconds = 5-(pygame.time.get_ticks() - start_ticks) / 1000  # calculate how many seconds
         min = int(seconds/60)
         seconds = int(seconds%60)
         if seconds <= 0 and min == 0:
@@ -182,4 +182,3 @@ def game():
 
 
 
-game()
