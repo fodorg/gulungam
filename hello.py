@@ -5,9 +5,7 @@ from const import *
 from functions import *
 from init import *
 
-pygame.init();
 
-fenetre = pygame.display.set_mode((width,height))
 font = pygame.font.SysFont(None, 72)
 
 
@@ -73,10 +71,8 @@ while continuer:
         fondsx[i] = fondsx[i]-(dir*i/4);
 
     score = score +dir
-    for platform in platforms_list:
-        platform.rect.x = platform.rect.x-dir
-    for w in walls_list:
-        w.rect.x = w.rect.x-dir
+    for e in all_sprite_list:
+        e.deplacer(dir)
 
     #collision platform
     block_hit_list = pygame.sprite.spritecollide(perso, platforms_list, False)
@@ -99,20 +95,8 @@ while continuer:
             fondsx[i] = fondsx[i] - (dir * i / 4);
 
         score = score + dir
-        for platform in platforms_list:
-            platform.rect.x = platform.rect.x - dir
-        for w in walls_list:
-            w.rect.x = w.rect.x - dir
-
-
-
-    #collision wall
-    block_hit_list = pygame.sprite.spritecollide(perso, walls_list, False)
-    for block in block_hit_list:
-        print("")
-        # if hitbefore == 0:
-        #     #perso.vh = -perso.vh
-        # hitbefore = 1
+        for e in all_sprite_list:
+            e.deplacer(dir)
 
 
 
