@@ -1,7 +1,13 @@
 # ceci est un commentaire
 # type d'objet, x, y, longueur, largeur
 # p pour plateforme
-# s pour buff de vitesse
+# a pour buff de vitesse
+# r pour ralentir
+
+
+
+r,600,450,50,50
+a,800,450,50,50
 
 # p,blocVert.png,600,450,50,50
 # p,blocVert.png,800,400,50,50

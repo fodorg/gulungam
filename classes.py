@@ -30,13 +30,19 @@ class Perso(Sprit):
         self.rect = self.image.get_rect()
         self.rect.y = 600
         self.rect.x = 400
-        self.hitbox = (self.rect.x+20, self.rect.y, 60, 100)
         self.son = pygame.mixer.Sound("sound/ressort1.wav")
+
+        self.hitbox = self.rect
+        self.hitbox.x = self.rect.x+20
+        self.hitbox.width = self.rect.width-40
+
+
+        self.hitb = hitb(self);
 
     def bondir(self, dir = 0):
         self.rect.x=self.rect.x+dir
+        self.hitbox.x = self.hitbox.x+dir
         self.rect.y = self.rect.y+self.v
-        self.hitbox = (self.rect.x+20, self.rect.y, 60, 100)
         if self.rect.bottom > (height-148):
             self.v = -vitesse
             self.changeimg();
@@ -45,6 +51,7 @@ class Perso(Sprit):
             self.v = min(self.v, 25)
         if self.v == 0 or self.v > -vitesse+(self.a*2):
             self.changeimg()
+        self.hitb.updt(self);
 
     def changeimg(self):
         if self.v <= -vitesse:
@@ -59,20 +66,33 @@ class Perso(Sprit):
         self.rect.width = self.image.get_rect().width
         self.rect.height = self.image.get_rect().height
 
+        self.hitbox = pygame.Rect(440, self.rect.y, self.rect.w-40, self.rect.h)
+
     def addBuff(self, buff):
-        self.buff = buff
-        if buff == "r":
-            self.vh = vitesseDir/4
+        if self.buff != buff:
+            self.buff = buff
+            if buff == "r":
+                self.vh = vitesseDir/4
+            elif buff == "a":
+                self.vh = vitesseDir*2
             self.startBuff = pygame.time.get_ticks()
+            return 1
+        else:
+            return 0
 
     def deBuff(self):
-        if self.buff == "r":
+        if self.buff == "r" or self.buff == "a":
             self.vh = vitesseDir
         self.buff=""
 
 
     def deplacer(self, dir = 0):
         return 0
+
+    def collided(sprite, other):
+        """Check if the hitboxes of the two sprites collide."""
+        return sprite.hitbox.colliderect(other.hitbox)
+
 
 class Platform(Sprit):
 
@@ -102,6 +122,16 @@ class BlockBuff(Sprit):
         self.rect.x = x
 
 
+class hitb(pygame.sprite.Sprite):
 
+    def __init__(self,perso):
+        super().__init__()
+        self.rect = perso.image.get_rect()
+        self.updt(perso)
 
+    def updt(self, perso):
+        self.rect.x = perso.rect.x+20
+        self.rect.y = perso.rect.y
+        self.rect.h = perso.rect.h
+        self.rect.w = perso.rect.w-42
 
