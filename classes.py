@@ -115,9 +115,10 @@ class Platform(Sprit):
 
 class BlockBuff(Sprit):
 
-    def __init__(self,typeBuff,img, x, y, w, h):
+    def __init__(self,typeBuff, x, y, w, h,dest = 0):
         super().__init__()
         img = "images/buff"+typeBuff+".png"
+        self.dest = dest
         self.typeBuff = typeBuff
         self.image = pygame.image.load(img).convert_alpha()
         self.image = pygame.transform.scale(self.image, (w, h))

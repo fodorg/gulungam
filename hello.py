@@ -37,7 +37,7 @@ def game():
 
         # Limitation de vitesse de la boucle
         pygame.time.Clock().tick(fps)
-        oldprect = perso.rect
+
 
         #pour gerer la colision
         oldpbottom = perso.hitb.rect.bottom
@@ -122,6 +122,12 @@ def game():
                     score = score + malusPoints
                 elif block.typeBuff == "+":
                     score = score + bonusPoints
+                elif block.typeBuff == "t" : #tp
+                    for e in all_sprite_list:
+                        e.deplacer(block.dest-block.rect.x)
+                    tp(int(block.dest))
+                    getSpritesVisible(all_sprite_visible,score,all_sprite_list,perso)
+                    #perso.update()
         #affichage des fonds
         for i in range (len(fonds)):
             fondxi = fondsx[i]
@@ -135,7 +141,6 @@ def game():
             fenetre.blit(fonds[i], (fondxi, 0))
 
         #affichage des sprites
-        perso.update()
 
         pygame.draw.rect(fenetre, (153, 70, 0), perso.hitb.rect)
 
