@@ -26,6 +26,7 @@ def game():
 
     score = 0
     ctrldir = 0
+    ctrlnuage = 0
     dir = 0 #dir = 1 > droite dir = -1 > gauche
     vis = 0
 
@@ -53,16 +54,22 @@ def game():
                     ctrldir = perso.vh
                 elif event.key == K_LEFT:
                     ctrldir = -perso.vh
+                if event.key == K_UP:
+                    ctrlnuage = 1
+                elif event.key == K_DOWN:
+                    ctrlnuage =-1
                 elif event.key == K_ESCAPE:
                     continuer = 0
                     print(score)
 
             if event.type == KEYUP:
                 if event.key == K_RIGHT and ctrldir == perso.vh or event.key == K_LEFT and ctrldir == -perso.vh:
-                    ctrldir = 0;
-
+                    ctrldir = 0
+                if event.key == K_UP and ctrlnuage == 1 or event.key == K_DOWN and ctrlnuage == -1:
+                    ctrlnuage = 0
         dir = ctrldir
-        perso.bondir()
+
+        perso.bondir(ctrlnuage)
 
 
         #update des pos du fond et des elems
@@ -81,8 +88,9 @@ def game():
             elif perso.hitb.rect.x > block.rect.right+2*dir:
                 dir = -(perso.hitb.rect.x-block.rect.right)
             elif oldpbottom < block.rect.y:
+                print("hit")
                 perso.v = -vitesse
-                perso.rect.bottom = block.rect.y
+                perso.rect.bottom = block.rect.y-20
             elif oldpy > block.rect.bottom :
                 perso.v = -perso.v
                 perso.rect.top=block.rect.bottom
@@ -102,7 +110,7 @@ def game():
         for block in block_hit_list:
             print(perso.vh)
             if perso.addBuff(block.typeBuff) == 1: #retourne vrai si le buff est activé
-                if block.typeBuff == "r" or block.typeBuff == "a":
+                if block.typeBuff == "r" or block.typeBuff == "a" or block.typeBuff == "g":
                     if ctrldir > 0:
                         ctrldir = perso.vh
                     elif ctrldir < 0:
@@ -176,9 +184,6 @@ def game():
 
         if dir != 0:
             getSpritesVisible(all_sprite_visible, score, all_sprite_list,perso)
-
-
-
     return score
 
 
