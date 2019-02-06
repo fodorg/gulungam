@@ -35,8 +35,9 @@ class Perso(Sprit):
 
         self.hitb = hitb(self);
 
-    def bondir(self, dir = 0):
-        self.rect.x=self.rect.x+dir
+    def bondir(self, ctrlnuage = 0):
+        if self.a == 0:
+            self.v = -ctrlnuage*vitesse
         self.rect.y = self.rect.y+self.v
         if self.rect.bottom > (height-148):
             self.v = -vitesse
@@ -70,6 +71,9 @@ class Perso(Sprit):
                 self.vh = vitesseDir/4
             elif buff == "a":
                 self.vh = vitesseDir*2
+            elif buff == "g":
+                self.a = 0
+                self.v = 0
             self.startBuff = pygame.time.get_ticks()
             return 1
         else:
@@ -78,8 +82,12 @@ class Perso(Sprit):
     def deBuff(self):
         if self.buff == "r" or self.buff == "a":
             self.vh = vitesseDir
+        elif self.buff == "g":
+            self.a = acceleration
         self.buff=""
 
+    def nuage(self, v):
+        self.v = v;
 
     def deplacer(self, dir = 0):
         return 0
