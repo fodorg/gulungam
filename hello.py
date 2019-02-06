@@ -184,6 +184,6 @@ def game():
 
         if dir != 0:
             getSpritesVisible(all_sprite_visible, score, all_sprite_list,perso)
-    return score
+    return int(score)
 
 
