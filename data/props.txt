@@ -60,6 +60,7 @@
 # p,blocVert.png,5950,520,50,50
 # p,blocVert.png,5950,570,50,50
 
+
 p,blocVert.png,2500,520,50,50
 p,blocVert.png,2500,570,50,50
 
@@ -72,15 +73,42 @@ p,blocVert.png,2600,320,50,50
 p,blocVert.png,2650,270,50,50
 p,blocVert.png,2650,220,50,50
 
-p,blocVert.png,2700,220,50,50
-p,blocVert.png,2750,220,50,50
+
 p,blocVert.png,2800,220,50,50
 p,blocVert.png,2850,220,50,50
 
 p,blocVert.png,2900,220,50,50
 p,blocVert.png,2900,270,50,50
-
 p,blocVert.png,2900,270,50,50
+
+
+p,blocVert.png,3150,470,50,50
+p,blocVert.png,3200,470,50,50
+
+
+p,blocVert.png,3250,470,50,50
+p,blocVert.png,3250,420,50,50
+
+p,blocVert.png,3300,370,50,50
+p,blocVert.png,3300,320,50,50
+
+p,blocVert.png,3350,270,50,50
+p,blocVert.png,3350,220,50,50
+
+p,blocVert.png,3400,220,50,50
+p,blocVert.png,3450,220,50,50
+p,blocVert.png,3500,220,50,50
+p,blocVert.png,3550,220,50,50
+
+p,blocVert.png,3550,270,50,50
+
+p,blocVert.png,3600,320,50,50
+p,blocVert.png,3600,370,50,50
+
+p,blocVert.png,3650,420,50,50
+p,blocVert.png,3650,470,50,50
+
+p,blocVert.png,3850,470,50,50
 
 
 
