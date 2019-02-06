@@ -5,7 +5,7 @@ from save import *
 from hello import *
 
 def loadBackground():
-	background = pygame.image.load("images/background.jpg").convert_alpha()
+	background = pygame.image.load("images/background.png").convert_alpha()
 	plan1 = pygame.image.load("images/plan1.png").convert_alpha()
 	plan2 = pygame.image.load("images/plan2.png").convert_alpha()
 	plan3 = pygame.image.load("images/plan3.png").convert_alpha()
@@ -15,6 +15,7 @@ def loadBackground():
 	fenetre.blit(plan3, (0, 0))
 	fenetre.blit(plan2, (0, 0))
 	fenetre.blit(plan1, (0, 0))
+	pygame.display.flip()
 
 def window_menu(): # Menu display
 	buttons = pygame.image.load("images/menu.png").convert_alpha()
@@ -92,7 +93,18 @@ def window_highScores(): # High score display
 
 def window_end():
 	loadBackground()
-	print("window_end")
+
+	color = (255, 252, 244)
+	smallFont = pygame.font.Font("fonts/pixelart.ttf", 50) # FONT
+	bigFont = pygame.font.Font("fonts/pixelart.ttf", 70) # FONT
+
+	txt_sentence = smallFont.render("YOU SCORED", True, color)
+	fenetre.blit(txt_sentence, (350, 200))
+
+	score = getAllScores()[-1]
+	txt_score = bigFont.render(str(score), True, color)
+
+	pygame.display.flip()
 
 def window_nameSelect():
 	pseudo = pygame.image.load("images/pseudo.png")
@@ -132,7 +144,7 @@ def window_nameSelect():
 					pygame.display.flip()
 
 				if event.key == K_RETURN and len(name) > 0:    # press on enter
-					saveNew(name, game())  # game() doesn't exist yet, will in hello.py
+					#saveNew(name, game())  # ACTUAL GAME
 					raise Exception("END")
 
 			if event.type == MOUSEMOTION:
@@ -183,7 +195,7 @@ def window_nameSelect():
 
 			if event.type == MOUSEBUTTONDOWN and event.button == 1: # CLIC
 				if 383 < event.pos[0] < 641 and 451 < event.pos[1] < 580 and len(name) > 0:  # CLIC ON START
-					saveNew(name, game())  # game() doesn't exist yet, will in hello.py
+					saveNew(name, game())  # ACTUAL GAME
 					raise Exception("END")
 
 				if 10 < event.pos[0] < 160 and 10 < event.pos[1] < 85:  # CLIC ON BACK
@@ -231,6 +243,7 @@ while continuer:
 							buttonStatus = "main"
 						if exep.args[0] == "END":
 							status = "end"
+							buttonStatus = "end"
 							window_end()
 
 
