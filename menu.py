@@ -74,16 +74,13 @@ def window_nameSelect():
 
 	pygame.draw.rect(fenetre, (255, 255, 255), [370, 350, 322, 45])  # Text input DIMENSION IMPORTANT
 	font = pygame.font.SysFont(None, 60) # TEXT FONT
-	name = "WWWWWWWW"
+	name = ""
 	txt_Name = font.render(name, True, (0, 0, 0))
 	fenetre.blit(txt_Name, (375, 350))
 	pygame.display.flip()
 
 	alphakeys = [K_a, K_z, K_e, K_r, K_t, K_y, K_u, K_i, K_o, K_p, K_q, K_s, K_d, K_f, K_g, K_h, K_j, K_k, K_l, K_m,
 				 K_w, K_x, K_c, K_v, K_b, K_n]
-	# alphakeysTubles = [(K_a, "a"), (K_z, "z"), (K_e, "e"), (K_r, "r"), (K_t, "t"), (K_y, "y"), (K_u, "u"), (K_i, "i"), (K_o, "o"),
-	#              (K_p, "p"), (K_q, "q"), (K_s, "s"), (K_d, "d"), (K_f, "f"), (K_g, "g"), (K_h, "h"), (K_j, "j"), (K_k, "k"),
-	#              (K_l, "l"), (K_m, "m"), (K_w, "w"), (K_x, "x"), (K_c, "c"), (K_v, "v"), (K_b, "b"), (K_n, "n")]
 
 	nameDone = False
 	while not nameDone:
@@ -102,8 +99,11 @@ def window_nameSelect():
 					fenetre.blit(txt_Name, (375, 350))
 					pygame.display.flip()
 
-				if event.type == QUIT:
-					break
+				if event.key == K_RETURN and len(name) > 0:
+					print("return")
+
+			if event.type == QUIT:
+				print("quit")
 
 
 
@@ -134,7 +134,6 @@ while continuer:
 				if 361 < event.pos[0] < 661 and 278 < event.pos[1] < 425: # CLIC ON START
 					status = "nameSelect"
 					window_nameSelect()
-
 
 				if 361 < event.pos[0] < 661 and 601 < event.pos[1] < 751:  # CLIC ON QUITTER
 					continuer = 0
