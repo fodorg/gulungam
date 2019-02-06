@@ -3,7 +3,7 @@
 # p pour plateforme
 # a pour buff de vitesse
 # r pour ralentir
-
+# g pour antigravite
 
 
 #r,600,450,50,50
@@ -114,6 +114,14 @@
 
 p,blocVert.png,850,570,50,50
 p,blocVert2H.png,1000,520,50,100
+
+p,blocVert2H.png,1600,520,50,100
+g,1700,570,50,50
+p,blocVert2H.png,1800,520,50,100
+
+p,blocVert2L.png,2000,140,100,50
+
+
 
 p,blocVert2H.png,2500,520,50,100
 p,blocVert5H.png,2650,370,50,250
