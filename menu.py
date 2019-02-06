@@ -83,7 +83,9 @@ def window_highScores(): # High score display
 		fenetre.blit(txt_score, (525, i*58+165))
 		i += 1
 
-	pygame.image.load("images/back.png", (10, 10))
+	back = pygame.image.load("images/back.png")
+	back = pygame.transform.scale(back, (150, 75))
+	fenetre.blit(back, (10, 10))
 
 	pygame.display.flip()
 
@@ -191,7 +193,24 @@ while continuer:
 
 		elif status == "highScores":            # HIGH SCORES
 				if event.type == MOUSEBUTTONDOWN and event.button == 1:    # CLIC
-					if 20 < event.pos[0] < 170 and 25 < event.pos[1] < 75:  # CLIC ON BACK
+					if 10 < event.pos[0] < 160 and 10 < event.pos[1] < 85:  # CLIC ON BACK
 						status = "main"
 						window_menu()
+
+				if event.type == MOUSEMOTION:
+					if 10 < event.pos[0] < 160 and 10 < event.pos[1] < 85:  # MOTION ON BACK
+						if buttonStatus != "back":
+							backOnClick = pygame.image.load("images/back_onclick.png")
+							backOnClick = pygame.transform.scale(backOnClick, (150, 75))
+							fenetre.blit(backOnClick, (10, 10))
+							pygame.display.flip()
+							buttonStatus = "back"
+
+					else:
+						if buttonStatus != "main":
+							back = pygame.image.load("images/back.png")
+							back = pygame.transform.scale(back, (150, 75))
+							fenetre.blit(back, (10, 10))
+							pygame.display.flip()
+							buttonStatus = "main"
 
