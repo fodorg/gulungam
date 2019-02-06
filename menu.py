@@ -2,6 +2,7 @@
 import pygame
 from pygame.locals import *
 from save import *
+from hello import *
 
 def loadBackground():
 	background = pygame.image.load("images/background.jpg").convert_alpha()
@@ -14,7 +15,6 @@ def loadBackground():
 	fenetre.blit(plan3, (0, 0))
 	fenetre.blit(plan2, (0, 0))
 	fenetre.blit(plan1, (0, 0))
-	print("loadBackground")
 
 def window_menu(): # Menu display
 	buttons = pygame.image.load("images/menu.png").convert_alpha()
@@ -92,6 +92,7 @@ def window_highScores(): # High score display
 
 def window_end():
 	loadBackground()
+	print("window_end")
 
 def window_nameSelect():
 	pseudo = pygame.image.load("images/pseudo.png")
@@ -124,7 +125,6 @@ def window_nameSelect():
 					pygame.display.flip()
 
 				if event.key == K_BACKSPACE:                   # press on backspace
-					print("<- detected")
 					name = name[:-1]
 					pygame.draw.rect(fenetre, (255, 255, 255), [210, 350, 602, 58])
 					txt_Name = font.render(name, True, (0, 0, 0))
@@ -132,7 +132,8 @@ def window_nameSelect():
 					pygame.display.flip()
 
 				if event.key == K_RETURN and len(name) > 0:    # press on enter
-					nameDone = True
+					saveNew(name, game())  # game() doesn't exist yet, will in hello.py
+					raise Exception("END")
 
 			if event.type == MOUSEMOTION:
 				if 383 < event.pos[0] < 641 and 451 < event.pos[1] < 580:  # MOTION ON START
@@ -182,7 +183,8 @@ def window_nameSelect():
 
 			if event.type == MOUSEBUTTONDOWN and event.button == 1: # CLIC
 				if 383 < event.pos[0] < 641 and 451 < event.pos[1] < 580 and len(name) > 0:  # CLIC ON START
-					print("name saved")
+					saveNew(name, game())  # game() doesn't exist yet, will in hello.py
+					raise Exception("END")
 
 				if 10 < event.pos[0] < 160 and 10 < event.pos[1] < 85:  # CLIC ON BACK
 					raise Exception("BACK")
@@ -218,7 +220,7 @@ while continuer:
 
 				if 383 < event.pos[0] < 641 and 451 < event.pos[1] < 580: # CLIC ON START
 					status = "nameSelect"
-					try:
+					try:                           # EXCEPTION
 						window_nameSelect()
 					except Exception as exep:
 						if exep.args[0] == "QUIT":
@@ -227,6 +229,9 @@ while continuer:
 							window_menu()
 							status = "main"
 							buttonStatus = "main"
+						if exep.args[0] == "END":
+							status = "end"
+							window_end()
 
 
 				if 818 < event.pos[0] < 1014 and 660 < event.pos[1] < 758:  # CLIC ON QUITTER
