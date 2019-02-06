@@ -12,7 +12,7 @@ all_sprite_visible = pygame.sprite.Group()
 
 #platforms
 platforms_list = pygame.sprite.Group()
-speeders_list = pygame.sprite.Group()
+blocksBuff_list = pygame.sprite.Group()
 
 
 f = open("data/props.txt", "r")
@@ -22,14 +22,14 @@ for line in f:
   params = line.split(",")
   if len(params) >= 5:
     if len(params) == 5:
-      params.insert(0,"blocNull.png")
+      params.insert(1,"blocNull.png")
 
     if params[0] == "p":
       plat = Platform(params[1],int(params[2]),int(params[3]),int(params[4]),int(params[5]))
       platforms_list.add(plat)
       all_sprite_list.add(plat)
-    elif params[0] == "s":
-      s = Speeder(params[1],int(params[2]),int(params[3]),int(params[4]),int(params[5]))
-      speeders_list.add(s)
-      all_sprite_list.add(s)
+    elif params[0] == "r" : # or param = u
+      b = BlockBuff(params[0],params[1],int(params[2]),int(params[3]),int(params[4]),int(params[5]))
+      blocksBuff_list.add(b)
+      all_sprite_list.add(b)
 #

@@ -98,6 +98,18 @@ while continuer:
         for e in all_sprite_list:
             e.deplacer(dir)
 
+    #collision buffs
+    block_hit_list = pygame.sprite.spritecollide(perso, blocksBuff_list, False)
+    for block in block_hit_list:
+        perso.addBuff(block.typeBuff);
+        if block.typeBuff == "r":
+            if dir > 0:
+                dir = -perso.vh
+            else:
+                dir = perso.vh
+
+
+
 
 
     #affichage des fonds
@@ -117,9 +129,14 @@ while continuer:
     all_sprite_visible.draw(fenetre)
 
     #affichage du sol
-    pygame.draw.rect(fenetre, (153, 70, 0), pygame.Rect(0, height-150, width, 150))
+    pygame.draw.rect(fenetre, (153, 70, 0), pygame.Rect(0, height-148, width, 148))
 
 
+    #verif et affichage du buff
+    if perso.buff != "":
+        duraBuff = 5 - (pygame.time.get_ticks() - perso.startBuff) / 1000  # calculate how many seconds
+        if duraBuff < 0:#on enleve le buff
+            perso.deBuff()
 
 
 

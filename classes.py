@@ -37,7 +37,7 @@ class Perso(Sprit):
         self.rect.x=self.rect.x+dir
         self.rect.y = self.rect.y+self.v
         self.hitbox = (self.rect.x+20, self.rect.y, 60, 100)
-        if self.rect.bottom > (height-150):
+        if self.rect.bottom > (height-148):
             self.v = -vitesse
             self.changeimg();
         else:
@@ -59,17 +59,18 @@ class Perso(Sprit):
         self.rect.width = self.image.get_rect().width
         self.rect.height = self.image.get_rect().height
 
-    def ralenti(self):
-        self.vh = vitesseDir/2
-        self.buff = "slow"
-        self.startBuff = pygame.time.get_ticks()
-    def buff(self):
-        if self.buff != "":
-            self.duraBuff = 5 - (pygame.time.get_ticks() - self.startBuff) / 1000  # calculate how many seconds
-            if self.duraBuff < 0:#on enleve le buff
-                if self.buff == "slow":
-                    self.vh = vitesseDir
-            self.buff = ""
+    def addBuff(self, buff):
+        self.buff = buff
+        if buff == "r":
+            self.vh = vitesseDir/4
+            self.startBuff = pygame.time.get_ticks()
+
+    def deBuff(self):
+        if self.buff == "r":
+            self.vh = vitesseDir
+        self.buff=""
+
+
     def deplacer(self, dir = 0):
         return 0
 
@@ -85,11 +86,15 @@ class Platform(Sprit):
         self.rect.x = x
 
 
-class Speeder(Sprit):
+class BlockBuff(Sprit):
 
-    def __init__(self,img, x, y, w, h):
+    def __init__(self,typeBuff,img, x, y, w, h):
         super().__init__()
-        img = "images/"+img
+        if typeBuff == "r":
+            img = "images/"+img
+        else:
+            img = "images/"+img
+        self.typeBuff = typeBuff
         self.image = pygame.image.load(img).convert_alpha()
         self.image = pygame.transform.scale(self.image, (w, h))
         self.rect = self.image.get_rect()
