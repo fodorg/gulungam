@@ -8,20 +8,20 @@
 # p,900,200,100,50
 # p,1000,400,100,50
 
-r,1200,500,40,40
+#r,1200,500,40,40
 
-# p,blocVert.png,600,450,50,50
-# p,blocVert.png,800,400,50,50
-# p,blocVert.png,1000,350,50,50
-# p,blocVert.png,1300,400,50,500
+p,blocVert.png,600,450,50,50
+p,blocVert.png,800,400,50,50
+p,blocVert.png,1000,350,50,50
+p,blocVert.png,1300,400,50,500
 
 
-# p,blocVert.png,2000,250,50,50
-# p,blocVert.png,2250,350,50,50
-# p,blocVert.png,2400,500,50,50
-# p,blocVert.png,2550,300,50,50
-# p,blocVert.png,2700,400,50,500
-# p,blocVert.png,2750,570,50,50
+p,blocVert.png,2000,250,50,50
+p,blocVert.png,2250,350,50,50
+p,blocVert.png,2400,500,50,50
+p,blocVert.png,2550,300,50,50
+p,blocVert.png,2700,400,50,500
+p,blocVert.png,2750,570,50,50
 
 
 
