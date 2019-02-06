@@ -67,6 +67,7 @@ class Perso(Sprit):
     def addBuff(self, buff):
         if self.buff != buff:
             self.buff = buff
+            self.a = acceleration
             if buff == "r":
                 self.vh = vitesseDir/4
             elif buff == "a":
