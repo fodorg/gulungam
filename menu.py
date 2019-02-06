@@ -14,16 +14,40 @@ def loadBackground():
 	fenetre.blit(plan3, (0, 0))
 	fenetre.blit(plan2, (0, 0))
 	fenetre.blit(plan1, (0, 0))
+	print("loadBackground")
 
-def window_main(): # Menu display
-	loadBackground()
-	buttons = pygame.image.load("images/Accueil_v2.png").convert_alpha()
+def window_menu(): # Menu display
+	buttons = pygame.image.load("images/menu.png").convert_alpha()
+	fenetre.blit(buttons, (0, 0))
+
+	pygame.display.flip()
+
+def window_menuStart(): # Menu mouseover START display
+	buttons = pygame.image.load("images/menu_start.png").convert_alpha()
+	fenetre.blit(buttons, (0, 0))
+
+	pygame.display.flip()
+
+def window_menuHighScore(): # Menu mouseover HIGHSCORE display
+	buttons = pygame.image.load("images/menu_highscores.png").convert_alpha()
+	fenetre.blit(buttons, (0, 0))
+
+	pygame.display.flip()
+
+def window_menuQuit(): # Menu mouseover QUITTER display
+	buttons = pygame.image.load("images/menu_quitter.png").convert_alpha()
+	fenetre.blit(buttons, (0, 0))
+
+	pygame.display.flip()
+
+def window_menuCred(): # Menu mouseover CREDITS display
+	buttons = pygame.image.load("images/menu_credits.png").convert_alpha()
 	fenetre.blit(buttons, (0, 0))
 
 	pygame.display.flip()
 
 def window_highScores(): # High score display
-	fenetre.fill((104, 194, 226))  # BACKGROUND
+	loadBackground()
 	bigFont = pygame.font.SysFont(None, 60) # FONT
 	smallFont = pygame.font.SysFont(None, 40)
 
@@ -59,10 +83,7 @@ def window_highScores(): # High score display
 		fenetre.blit(txt_score, (525, i*58+165))
 		i += 1
 
-	# RETURN BUTTON
-	pygame.draw.rect(fenetre, (239, 151, 43), [20, 25, 150, 50])
-	txt_menu = bigFont.render("MENU", True, (0, 0, 0))
-	fenetre.blit(txt_menu, (25, 25))
+	pygame.image.load("images/back.png", (10, 10))
 
 	pygame.display.flip()
 
@@ -86,20 +107,20 @@ def window_nameSelect():
 	while not nameDone:
 		for event in pygame.event.get():
 			if event.type == KEYDOWN:
-				if event.key in alphakeys and len(name) < 8:
+				if event.key in alphakeys and len(name) < 8:  # press on letter
 					name = name + (event.unicode).upper()
 					txt_Name = font.render(name, True, (0, 0, 0))
 					fenetre.blit(txt_Name, (375, 350))
 					pygame.display.flip()
 
-				if event.key == K_BACKSPACE:
+				if event.key == K_BACKSPACE:                   # press on backspace
 					name = name[:-1]
-					pygame.draw.rect(fenetre, (255, 255, 255), [370, 350, 267, 45])
+					pygame.draw.rect(fenetre, (255, 255, 255), [370, 350, 322, 45])
 					txt_Name = font.render(name, True, (0, 0, 0))
 					fenetre.blit(txt_Name, (375, 350))
 					pygame.display.flip()
 
-				if event.key == K_RETURN and len(name) > 0:
+				if event.key == K_RETURN and len(name) > 0:    # press on enter
 					print("return")
 
 			if event.type == QUIT:
@@ -107,18 +128,19 @@ def window_nameSelect():
 
 
 
-#########################             MAIN               ################################################################
+#########################             MAIN               ###############################################################
 pygame.init()
 fenetre = pygame.display.set_mode((1024, 768))
+window_menu()
 
 pygame.mixer.music.load("sound/musique_menu.wav")
 pygame.mixer.music.play(-1)
 
-window_main()
+window_menu()
 
 continuer = 1
 status = "main"
-playerName = ""
+buttonStatus = "main"
 while continuer:
 
 	for event in pygame.event.get():
@@ -126,22 +148,50 @@ while continuer:
 			continuer = 0
 
 		if status == "main": # MAIN PAGE
-			if event.type == MOUSEBUTTONDOWN and event.button == 1: # RIGHT CLIC
-				if 362 < event.pos[0] < 662 and 438 < event.pos[1] < 588:  # CLIC ON HIGH SCORES
+			if event.type == MOUSEBUTTONDOWN and event.button == 1: # CLIC
+				if 383 < event.pos[0] < 641 and 601 < event.pos[1] < 730:  # CLIC ON HIGH SCORES
 					status = "highScores"
 					window_highScores()
 
-				if 361 < event.pos[0] < 661 and 278 < event.pos[1] < 425: # CLIC ON START
+				if 383 < event.pos[0] < 641 and 451 < event.pos[1] < 580: # CLIC ON START
 					status = "nameSelect"
 					window_nameSelect()
 
-				if 361 < event.pos[0] < 661 and 601 < event.pos[1] < 751:  # CLIC ON QUITTER
+				if 818 < event.pos[0] < 1014 and 660 < event.pos[1] < 758:  # CLIC ON QUITTER
 					continuer = 0
 
-				if 41 < event.pos[0] < 141 and 610 < event.pos[1] < 729:  # CLIC ON COGWhEEL
-					print("CLIC ENGRENAGE")
+				if 10 < event.pos[0] < 206 and 661 < event.pos[1] < 758:  # CLIC ON CREDITS
+					print("CLIC CREDIT")
 
-		elif status == "highScores" and event.type == MOUSEBUTTONDOWN and event.button == 1 and 20 < event.pos[0] < 170 and 25 < event.pos[1] < 75:  # CLIC ON MENU
-			status = "main"
-			window_main()
+			if event.type == MOUSEMOTION: # MOTION
+				if 383 < event.pos[0] < 641 and 601 < event.pos[1] < 730:  # MOTION ON HIGH SCORES
+					if buttonStatus != "highScore":
+						window_menuHighScore()
+						buttonStatus = "highScore"
+
+				elif 383 < event.pos[0] < 641 and 451 < event.pos[1] < 580: # MOTION ON START
+					if buttonStatus != "start":
+						window_menuStart()
+						buttonStatus = "start"
+
+				elif 818 < event.pos[0] < 1014 and 660 < event.pos[1] < 758:  # MOTION ON QUITTER
+					if buttonStatus != "quit":
+						window_menuQuit()
+						buttonStatus = "quit"
+
+				elif 10 < event.pos[0] < 206 and 661 < event.pos[1] < 758:  # MOTION ON CREDITS
+					if buttonStatus != "cred":
+						window_menuCred()
+						buttonStatus = "cred"
+
+				else:
+					if buttonStatus != "main":
+						window_menu()
+						buttonStatus = "main"
+
+		elif status == "highScores":            # HIGH SCORES
+				if event.type == MOUSEBUTTONDOWN and event.button == 1:    # CLIC
+					if 20 < event.pos[0] < 170 and 25 < event.pos[1] < 75:  # CLIC ON BACK
+						status = "main"
+						window_menu()
 
