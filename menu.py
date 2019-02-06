@@ -47,7 +47,7 @@ def window_menuCred(): # Menu mouseover CREDITS display
 	pygame.display.flip()
 
 def window_highScores(): # High score display
-	fenetre.fill((104, 194, 226))  # BACKGROUND
+	loadBackground()
 	bigFont = pygame.font.SysFont(None, 60) # FONT
 	smallFont = pygame.font.SysFont(None, 40)
 
@@ -83,10 +83,7 @@ def window_highScores(): # High score display
 		fenetre.blit(txt_score, (525, i*58+165))
 		i += 1
 
-	# RETURN BUTTON
-	pygame.draw.rect(fenetre, (239, 151, 43), [20, 25, 150, 50])
-	txt_menu = bigFont.render("MENU", True, (0, 0, 0))
-	fenetre.blit(txt_menu, (25, 25))
+	pygame.image.load("images/back.png", (10, 10))
 
 	pygame.display.flip()
 
@@ -118,7 +115,7 @@ def window_nameSelect():
 
 				if event.key == K_BACKSPACE:                   # press on backspace
 					name = name[:-1]
-					pygame.draw.rect(fenetre, (255, 255, 255), [370, 350, 267, 45])
+					pygame.draw.rect(fenetre, (255, 255, 255), [370, 350, 322, 45])
 					txt_Name = font.render(name, True, (0, 0, 0))
 					fenetre.blit(txt_Name, (375, 350))
 					pygame.display.flip()
@@ -131,10 +128,10 @@ def window_nameSelect():
 
 
 
-#########################             MAIN               ################################################################
+#########################             MAIN               ###############################################################
 pygame.init()
 fenetre = pygame.display.set_mode((1024, 768))
-loadBackground()
+window_menu()
 
 pygame.mixer.music.load("sound/musique_menu.wav")
 pygame.mixer.music.play(-1)
@@ -168,41 +165,33 @@ while continuer:
 
 			if event.type == MOUSEMOTION: # MOTION
 				if 383 < event.pos[0] < 641 and 601 < event.pos[1] < 730:  # MOTION ON HIGH SCORES
-					print("mouse on HS")
 					if buttonStatus != "highScore":
-						loadBackground()
 						window_menuHighScore()
 						buttonStatus = "highScore"
 
 				elif 383 < event.pos[0] < 641 and 451 < event.pos[1] < 580: # MOTION ON START
-					print("mouse on START")
 					if buttonStatus != "start":
-						loadBackground()
 						window_menuStart()
 						buttonStatus = "start"
 
 				elif 818 < event.pos[0] < 1014 and 660 < event.pos[1] < 758:  # MOTION ON QUITTER
-					print("mouse on QUIT")
 					if buttonStatus != "quit":
-						loadBackground()
 						window_menuQuit()
 						buttonStatus = "quit"
 
 				elif 10 < event.pos[0] < 206 and 661 < event.pos[1] < 758:  # MOTION ON CREDITS
-					print("mouse on CREDS")
 					if buttonStatus != "cred":
-						loadBackground()
 						window_menuCred()
 						buttonStatus = "cred"
 
 				else:
 					if buttonStatus != "main":
-						print("mouse on NOTHING")
-						loadBackground()
 						window_menu()
 						buttonStatus = "main"
 
-		elif status == "highScores" and event.type == MOUSEBUTTONDOWN and event.button == 1 and 20 < event.pos[0] < 170 and 25 < event.pos[1] < 75:  # CLIC ON MENU
-			status = "main"
-			window_menu()
+		elif status == "highScores":            # HIGH SCORES
+				if event.type == MOUSEBUTTONDOWN and event.button == 1:    # CLIC
+					if 20 < event.pos[0] < 170 and 25 < event.pos[1] < 75:  # CLIC ON BACK
+						status = "main"
+						window_menu()
 
