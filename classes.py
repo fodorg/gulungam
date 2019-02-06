@@ -28,7 +28,7 @@ class Perso(Sprit):
         self.duraBuff = 0
         self.v = -vitesse
         self.rect = self.image.get_rect()
-        self.rect.y = 600
+        self.rect.y = 500
         self.rect.x = 400
         self.son = pygame.mixer.Sound("sound/ressort1.wav")
 
@@ -37,17 +37,19 @@ class Perso(Sprit):
 
     def bondir(self, ctrlnuage = 0):
         if self.a == 0:
-            self.v = -ctrlnuage*vitesse
+            self.v = -ctrlnuage*vitesse/2
         self.rect.y = self.rect.y+self.v
-        if self.rect.bottom > (height-148):
+        self.hitb.updt(self)
+        if self.hitb.rect.bottom > (height-148):
             self.v = -vitesse
-            self.changeimg();
+            self.rect.y = height-148-100
+            self.changeimg()
         else:
             self.v = self.v + self.a
             self.v = min(self.v, 25)
         if self.v == 0 or self.v > -vitesse+(self.a*2):
             self.changeimg()
-        self.hitb.updt(self);
+        self.hitb.updt(self)
 
     def changeimg(self):
         if self.v <= -vitesse:
@@ -62,7 +64,7 @@ class Perso(Sprit):
         self.rect.width = self.image.get_rect().width
         self.rect.height = self.image.get_rect().height
 
-        self.hitbox = pygame.Rect(440, self.rect.y, self.rect.w-40, self.rect.h)
+        #self.hitbox = pygame.Rect(440, self.rect.y, self.rect.w-40, self.rect.h)
 
     def addBuff(self, buff):
         if self.buff != buff:
@@ -73,6 +75,7 @@ class Perso(Sprit):
             elif buff == "a":
                 self.vh = vitesseDir*2
             elif buff == "g":
+                self.vh = vitesseDir
                 self.a = 0
                 self.v = 0
             self.startBuff = pygame.time.get_ticks()
@@ -114,10 +117,7 @@ class BlockBuff(Sprit):
 
     def __init__(self,typeBuff,img, x, y, w, h):
         super().__init__()
-        if typeBuff == "r":
-            img = "images/"+img
-        else:
-            img = "images/"+img
+        img = "images/buff"+typeBuff+".png"
         self.typeBuff = typeBuff
         self.image = pygame.image.load(img).convert_alpha()
         self.image = pygame.transform.scale(self.image, (w, h))
@@ -137,5 +137,5 @@ class hitb(pygame.sprite.Sprite):
         self.rect.x = perso.rect.x+20
         self.rect.y = perso.rect.y+20
         self.rect.h = 80
-        self.rect.w = perso.rect.w-42
+        self.rect.w = 60
 

@@ -8,7 +8,6 @@ from init import *
 def game():
     font = pygame.font.SysFont(None, 72)
 
-
     fonds = []
     fondsx = []
     for i in range(len(backgrounds)):
@@ -34,6 +33,8 @@ def game():
     start_ticks=pygame.time.get_ticks() #starter tick
     continuer = 1
     while continuer:
+
+
         # Limitation de vitesse de la boucle
         pygame.time.Clock().tick(fps)
         oldprect = perso.rect
@@ -71,7 +72,6 @@ def game():
 
         perso.bondir(ctrlnuage)
 
-
         #update des pos du fond et des elems
         for i in range(len(fonds)):
             fondsx[i] = fondsx[i]-(dir*vitessebackground[i]);
@@ -83,17 +83,19 @@ def game():
         #collision platform
         block_hit_list = pygame.sprite.spritecollide(perso.hitb, platforms_list, False)
         for block in block_hit_list:
-            if perso.hitb.rect.right < block.rect.x+2*dir:
+            if perso.hitb.rect.right <= block.rect.x+dir:
                 dir = (block.rect.x-perso.hitb.rect.right)
-            elif perso.hitb.rect.x > block.rect.right+2*dir:
+            elif perso.hitb.rect.x >= block.rect.right+dir:
                 dir = -(perso.hitb.rect.x-block.rect.right)
             elif oldpbottom <= block.rect.y:
-                print("hit")
                 perso.v = -vitesse
-                perso.rect.bottom = block.rect.y
-            elif oldpy > block.rect.bottom :
+                perso.rect.y = block.rect.y-100
+                #print(perso.rect.x)
+                perso.hitb.updt(perso)
+            elif oldpy >= block.rect.bottom :
                 perso.v = -perso.v
-                perso.rect.top=block.rect.bottom
+                perso.rect.top=block.rect.bottom-20
+                perso.hitb.updt(perso)
             perso.changeimg()
 
         if len(block_hit_list)>0:
@@ -108,16 +110,18 @@ def game():
         #collision buffs
         block_hit_list = pygame.sprite.spritecollide(perso.hitb, blocksBuff_list, True)
         for block in block_hit_list:
-            print(perso.vh)
-            if perso.addBuff(block.typeBuff) == 1: #retourne vrai si le buff est activé
-                if block.typeBuff == "r" or block.typeBuff == "a" or block.typeBuff == "g":
-                    if ctrldir > 0:
-                        ctrldir = perso.vh
-                    elif ctrldir < 0:
-                        ctrldir = -perso.vh
-
-
-
+            if block.typeBuff == "r" or block.typeBuff == "a" or block.typeBuff == "g":
+                if perso.addBuff(block.typeBuff) == 1: #retourne vrai si le buff est activé
+                    if block.typeBuff == "r" or block.typeBuff == "a" or block.typeBuff == "g":
+                        if ctrldir > 0:
+                            ctrldir = perso.vh
+                        elif ctrldir < 0:
+                            ctrldir = -perso.vh
+            else:
+                if block.typeBuff == "-":
+                    score = score + malusPoints
+                elif block.typeBuff == "+":
+                    score = score + bonusPoints
         #affichage des fonds
         for i in range (len(fonds)):
             fondxi = fondsx[i]
@@ -131,7 +135,7 @@ def game():
             fenetre.blit(fonds[i], (fondxi, 0))
 
         #affichage des sprites
-
+        perso.update()
 
         pygame.draw.rect(fenetre, (153, 70, 0), perso.hitb.rect)
 
@@ -176,8 +180,6 @@ def game():
             seconds = "0"+str(seconds)
         text = font.render(str(min)+":"+seconds, True, (0, 128, 0))
         fenetre.blit(text, (10,10))
-
-
 
 
         pygame.display.flip()

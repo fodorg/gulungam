@@ -10,9 +10,11 @@ vitessebackground = [0,0.2,0.3,0.4,0.5]
 
 persoImgMont = "images/lapinm.png"
 persoImgDesc = "images/lapind.png"
-persoImgBounce = "images/lapinbou.png"
+persoImgBounce = "images/lapinb.png"
 
 acceleration = 3
 vitesse = 30
 vitesseDir = 15
 
+bonusPoints = 5000
+malusPoints = -5000
