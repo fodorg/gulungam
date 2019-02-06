@@ -2,12 +2,13 @@
 # type d'objet, x, y, longueur, largeur
 # p pour plateforme
 # s pour buff de vitesse
+# r pour ralenti
 # p,700,400,50,50
 # p,600,500,200,50
 # p,900,200,100,50
 # p,1000,400,100,50
 
-# s,1200,500,40,40
+r,1200,500,40,40
 
 p,blocVert.png,600,450,50,50
 p,blocVert.png,800,400,50,50
