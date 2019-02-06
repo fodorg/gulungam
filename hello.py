@@ -6,7 +6,6 @@ from functions import *
 from init import *
 
 def game():
-
     font = pygame.font.SysFont(None, 72)
 
 
@@ -39,8 +38,8 @@ def game():
         oldprect = perso.rect
 
         #pour gerer la colision
-        oldpbottom = perso.rect.bottom
-        oldpy = perso.rect.y
+        oldpbottom = perso.hitb.rect.bottom
+        oldpy = perso.hitb.rect.y
 
 
         #events
@@ -68,7 +67,7 @@ def game():
 
         #update des pos du fond et des elems
         for i in range(len(fonds)):
-            fondsx[i] = fondsx[i]-(dir*i/4);
+            fondsx[i] = fondsx[i]-(dir*vitessebackground[i]);
 
         score = score +dir
         for e in all_sprite_list:
@@ -92,7 +91,7 @@ def game():
         if len(block_hit_list)>0:
             # update des pos du fond et des elems
             for i in range(len(fonds)):
-                fondsx[i] = fondsx[i] - (dir * i / 4);
+                fondsx[i] = fondsx[i] - (dir * vitessebackground[i]);
 
             score = score + dir
             for e in all_sprite_list:
@@ -124,6 +123,9 @@ def game():
             fenetre.blit(fonds[i], (fondxi, 0))
 
         #affichage des sprites
+
+
+        pygame.draw.rect(fenetre, (153, 70, 0), perso.hitb.rect)
 
         all_sprite_visible.draw(fenetre)
 
@@ -176,7 +178,7 @@ def game():
             getSpritesVisible(all_sprite_visible, score, all_sprite_list,perso)
 
 
-    return score
+
 
 
 
