@@ -28,7 +28,7 @@ for line in f:
       plat = Platform(params[1],int(params[2]),int(params[3]),int(params[4]),int(params[5]))
       platforms_list.add(plat)
       all_sprite_list.add(plat)
-    elif params[0] == "r" or params[0] == "a":
+    elif params[0] == "r" or params[0] == "a" or params[0] == "g":
       b = BlockBuff(params[0],params[1],int(params[2]),int(params[3]),int(params[4]),int(params[5]))
       blocksBuff_list.add(b)
       all_sprite_list.add(b)
