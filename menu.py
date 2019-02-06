@@ -48,8 +48,8 @@ def window_menuCred(): # Menu mouseover CREDITS display
 
 def window_highScores(): # High score display
 	loadBackground()
-	bigFont = pygame.font.SysFont(None, 60) # FONT
-	smallFont = pygame.font.SysFont(None, 40)
+	bigFont = pygame.font.Font("fonts/pixelart.ttf", 40) # FONT
+	smallFont = pygame.font.Font("fonts/pixelart.ttf", 20)
 
 	# TITLE
 	txt_title = bigFont.render("HIGH SCORES", True, (0, 0, 0))
@@ -83,6 +83,7 @@ def window_highScores(): # High score display
 		fenetre.blit(txt_score, (525, i*58+165))
 		i += 1
 
+	# BACK
 	back = pygame.image.load("images/back.png")
 	back = pygame.transform.scale(back, (150, 75))
 	fenetre.blit(back, (10, 10))
@@ -93,19 +94,25 @@ def window_end():
 	loadBackground()
 
 def window_nameSelect():
-	loadBackground()
+	pseudo = pygame.image.load("images/pseudo.png")
+	fenetre.blit(pseudo,(0, 0))
 
-	pygame.draw.rect(fenetre, (255, 255, 255), [370, 350, 322, 45])  # Text input DIMENSION IMPORTANT
-	font = pygame.font.SysFont(None, 60) # TEXT FONT
+	pygame.draw.rect(fenetre, (255, 255, 255), [210, 350, 602, 58])  # Text input DIMENSION IMPORTANT
+	font = pygame.font.Font("fonts/pixelart.ttf", 60) # TEXT FONT
 	name = ""
 	txt_Name = font.render(name, True, (0, 0, 0))
-	fenetre.blit(txt_Name, (375, 350))
+	fenetre.blit(txt_Name, (215, 350))
+
+	back = pygame.image.load("images/back.png")
+	back = pygame.transform.scale(back, (150, 75))
+	fenetre.blit(back, (10, 10))
 
 	pygame.display.flip()
 
 	alphakeys = [K_a, K_z, K_e, K_r, K_t, K_y, K_u, K_i, K_o, K_p, K_q, K_s, K_d, K_f, K_g, K_h, K_j, K_k, K_l, K_m,
 				 K_w, K_x, K_c, K_v, K_b, K_n]
 
+	buttonPseudoStatus = "main"
 	nameDone = False
 	while not nameDone:
 		for event in pygame.event.get():
@@ -113,18 +120,72 @@ def window_nameSelect():
 				if event.key in alphakeys and len(name) < 8:  # press on letter
 					name = name + (event.unicode).upper()
 					txt_Name = font.render(name, True, (0, 0, 0))
-					fenetre.blit(txt_Name, (375, 350))
+					fenetre.blit(txt_Name, (215, 350))
 					pygame.display.flip()
 
 				if event.key == K_BACKSPACE:                   # press on backspace
+					print("<- detected")
 					name = name[:-1]
-					pygame.draw.rect(fenetre, (255, 255, 255), [370, 350, 322, 45])
+					pygame.draw.rect(fenetre, (255, 255, 255), [210, 350, 602, 58])
 					txt_Name = font.render(name, True, (0, 0, 0))
-					fenetre.blit(txt_Name, (375, 350))
+					fenetre.blit(txt_Name, (215, 350))
 					pygame.display.flip()
 
 				if event.key == K_RETURN and len(name) > 0:    # press on enter
 					nameDone = True
+
+			if event.type == MOUSEMOTION:
+				if 383 < event.pos[0] < 641 and 451 < event.pos[1] < 580:  # MOTION ON START
+					if buttonPseudoStatus != "start":
+						pseudo = pygame.image.load("images/pseudo start.png")
+						fenetre.blit(pseudo, (0, 0))
+
+						back = pygame.image.load("images/back.png")
+						back = pygame.transform.scale(back, (150, 75))
+						fenetre.blit(back, (10, 10))
+
+						pygame.draw.rect(fenetre, (255, 255, 255), [210, 350, 602, 58])
+						txt_Name = font.render(name, True, (0, 0, 0))
+						fenetre.blit(txt_Name, (215, 350))
+
+						pygame.display.flip()
+						buttonPseudoStatus = "start"
+
+				elif 10 < event.pos[0] < 160 and 10 < event.pos[1] < 85:  # MOTION ON BACK
+					if buttonPseudoStatus != "back":
+						backOnClick = pygame.image.load("images/back_onclick.png")
+						backOnClick = pygame.transform.scale(backOnClick, (150, 75))
+						fenetre.blit(backOnClick, (10, 10))
+
+						pygame.draw.rect(fenetre, (255, 255, 255), [210, 350, 602, 58])
+						txt_Name = font.render(name, True, (0, 0, 0))
+						fenetre.blit(txt_Name, (215, 350))
+
+						pygame.display.flip()
+						buttonPseudoStatus = "back"
+
+				else:
+					if buttonPseudoStatus != "main":
+						pseudo = pygame.image.load("images/pseudo.png")
+						fenetre.blit(pseudo, (0, 0))
+
+						back = pygame.image.load("images/back.png")
+						back = pygame.transform.scale(back, (150, 75))
+						fenetre.blit(back, (10, 10))
+
+						pygame.draw.rect(fenetre, (255, 255, 255), [210, 350, 602, 58])
+						txt_Name = font.render(name, True, (0, 0, 0))
+						fenetre.blit(txt_Name, (215, 350))
+
+						pygame.display.flip()
+						buttonPseudoStatus = "main"
+
+			if event.type == MOUSEBUTTONDOWN and event.button == 1: # CLIC
+				if 383 < event.pos[0] < 641 and 451 < event.pos[1] < 580 and len(name) > 0:  # CLIC ON START
+					print("name saved")
+
+				if 10 < event.pos[0] < 160 and 10 < event.pos[1] < 85:  # CLIC ON BACK
+					raise Exception("BACK")
 
 			if event.type == QUIT:
 				raise Exception("QUIT")
@@ -145,7 +206,6 @@ continuer = 1
 status = "main"
 buttonStatus = "main"
 while continuer:
-
 	for event in pygame.event.get():
 		if event.type == QUIT:
 			continuer = 0
@@ -163,6 +223,11 @@ while continuer:
 					except Exception as exep:
 						if exep.args[0] == "QUIT":
 							continuer = 0
+						if exep.args[0] == "BACK":
+							window_menu()
+							status = "main"
+							buttonStatus = "main"
+
 
 				if 818 < event.pos[0] < 1014 and 660 < event.pos[1] < 758:  # CLIC ON QUITTER
 					continuer = 0
@@ -218,4 +283,3 @@ while continuer:
 							fenetre.blit(back, (10, 10))
 							pygame.display.flip()
 							buttonStatus = "main"
-
