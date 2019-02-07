@@ -269,7 +269,7 @@ def game(name):
 
                 #all_sprite_visible.draw(fenetre)
 
-                transition -=40
+                transition -=60
                 pygame.time.Clock().tick(fps)
                 pygame.display.flip()
             getSpritesVisible(all_sprite_visible, score, all_sprite_list,perso)
