@@ -356,7 +356,6 @@ while continuer:
 			if event.type == MOUSEMOTION:
 				if 190 < event.pos[0] < 490 and 600 < event.pos[1] < 750:  # MOTION ON BACK
 					if buttonStatus != "back":
-						print("BACK should RED")
 						backOnClick = pygame.image.load("images/back_onclick.png")
 						backOnClick = pygame.transform.scale(backOnClick, (300, 150))
 						fenetre.blit(backOnClick, (190, 600))
