@@ -178,8 +178,6 @@ def game(name):
 
         #affichage des sprites
 
-#hitbox du perso
-        pygame.draw.rect(fenetre, (153, 70, 0), perso.hitb.rect)
 
         all_sprite_visible.draw(fenetre)
 
