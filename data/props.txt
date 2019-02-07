@@ -7,6 +7,7 @@
 # g pour antigravite
 # - pour diminer points
 # + pour ajouter points
+# ++ pour ajouter 2500 points
 # t pour teleportation (t,x,y,w,h,xdestination)
 
 # m,x pour se deplacer de x pixels absolus
