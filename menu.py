@@ -221,7 +221,7 @@ def window_nameSelect():
 pygame.init()
 fenetre = pygame.display.set_mode((1024, 768))
 window_menu()
-
+pygame.display.set_caption("the soul of Gulungan")
 pygame.mixer.music.load("sound/musique_menu.wav")
 pygame.mixer.music.play(-1)
 
