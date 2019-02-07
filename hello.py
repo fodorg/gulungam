@@ -19,6 +19,7 @@ def loadbackground(lvl):
 
 
 def game():
+    init()
     font = pygame.font.SysFont(None, 72)
 
     loadbackground(0)
@@ -199,13 +200,28 @@ def game():
 
         #transition
         if transition > 0:
-            while transition > -30:
+            while transition > -height:
+                #affichage du fond
+                if transition < 0:
+                    for i in range(len(fonds)):
+                        fondxi = fondsx[i]
+                        if fondxi <= -2 * width or fondxi >= 2 * width:
+                            fondxi = 0
+                            fondsx[i] = 0
+                        if fondxi < -width:
+                            fenetre.blit(fonds[i], ((fondxi) + (2 * width), 0))
+                        elif fondxi > 0:
+                            fenetre.blit(fonds[i], ((fondxi) - (2 * width), 0))
+                        fenetre.blit(fonds[i], (fondxi, 0))
+
+                #affichage du sol
                 pygame.draw.rect(fenetre, (153, 70, 0), pygame.Rect(0, transition, width, height))
                 pygame.display.flip()
+                if transition == 0 :
+                    loadbackground(lvl)
                 transition -=30
                 pygame.time.Clock().tick(fps)
                 pygame.display.flip()
-            loadbackground(lvl)
 
 
 
