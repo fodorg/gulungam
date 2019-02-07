@@ -46,7 +46,7 @@ def window_highScores(): # High score display
 	back = pygame.image.load("images/highscores.png").convert()
 	fenetre.blit(back, (0, 0))
 	bigFont = pygame.font.Font("fonts/pixelart.ttf", 40) # FONT
-	smallFont = pygame.font.Font("fonts/vcr.ttf", 20)
+	smallFont = pygame.font.Font("fonts/vcr.ttf", 30)
 
 	# TABLE
 	color = (255, 252, 244) # color of the line
@@ -153,7 +153,7 @@ def window_nameSelect():
 				if event.key == K_RETURN and len(name) > 0:    # press on enter
 					pygame.mixer.music.load("sound/musique_game.wav")
 					pygame.mixer.music.play(-1)
-					saveNew(name, game())  # ACTUAL GAME
+					game(name)  # ACTUAL GAME
 					pygame.mixer.music.load("sound/musique_menu.wav")
 					pygame.mixer.music.play(-1)
 					raise Exception("END")
@@ -208,7 +208,7 @@ def window_nameSelect():
 				if 383 < event.pos[0] < 650 and 287 < event.pos[1] < 451 and len(name) > 0:  # CLIC ON START
 					pygame.mixer.music.load("sound/musique_game.wav")
 					pygame.mixer.music.play(-1)
-					saveNew(name, game())  # ACTUAL GAME
+					game(name)  # ACTUAL GAME
 					pygame.mixer.music.load("sound/musique_menu.wav")
 					pygame.mixer.music.play(-1)
 					raise Exception("END")
@@ -336,7 +336,7 @@ while continuer:
 					try:                           # EXCEPTION
 						pygame.mixer.music.load("sound/musique_game.wav")
 						pygame.mixer.music.play(-1)
-						saveNew(name,game())
+						game(name)   # ACTUAL GAME
 					except Exception as exep:
 						if exep.args[0] == "QUIT":
 							continuer = 0

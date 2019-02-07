@@ -4,12 +4,15 @@ from classes import *
 from const import *
 from functions import *
 from init import *
+from save import *
 
 fonds = []
 fondsx = []
 
 def loadbackground(lvl):
+    print (lvl)
     lvl = lvl % len(backgrounds)
+    print(len(backgrounds))
     fonds.clear()
     fondsx.clear()
     for i in range(len(backgrounds[lvl])):
@@ -18,7 +21,7 @@ def loadbackground(lvl):
         #fonds[i] = pygame.transform.scale(fonds[i], (width*2, height))
 
 
-def game():
+def game(name):
     totalDir = 0
 
     init()
@@ -60,7 +63,7 @@ def game():
         #events
         for event in pygame.event.get():
             if event.type == QUIT:
-                continuer = 0
+                raise Exception("QUIT")
                 print(score);
 
             if event.type == KEYDOWN:
@@ -75,7 +78,7 @@ def game():
                 elif event.key == K_r:
                     init()
                 elif event.key == K_ESCAPE:
-                    continuer = 0
+                    raise Exception("BACK")
                     print(score)
 
             if event.type == KEYUP:
@@ -140,9 +143,11 @@ def game():
                     score = score + malusPoints
                 elif block.typeBuff == "+":
                     score = score + bonusPoints
+                elif block.typeBuff == "++":
+                    score = score + bonusPoints*2
                 elif block.typeBuff == "t" : #tp
                     transition = 600
-                    lvl =+ 1
+                    lvl += 1
         #affichage des fonds
         for i in range (len(fonds)):
             fondxi = fondsx[i]
@@ -183,12 +188,22 @@ def game():
                     ctrldir = perso.vh
                 elif ctrldir < 0:
                     ctrldir = -perso.vh
-
+            if perso.buff == "r":
+                color = (200, 0, 0)
+                buffText = font.render("SLOW", True, color)
+            elif perso.buff == "g":
+                color = (200,200,200)
+                buffText = font.render("LEVITATION", True, color)
+            else :
+                color = (0,0,200)
+                buffText = font.render("SPEED", True, color)
             buffHud = pygame.Rect(0,0,duraBuff*50,20)
             buffHud.centerx = width/2
-
-            pygame.draw.rect(fenetre, (153, 70, 0), buffHud)
-
+            pygame.draw.rect(fenetre, color, buffHud)
+            text_r = buffText.get_rect()
+            text_r.centerx = width/2  # align to right to 150px
+            text_r.top = 25
+            fenetre.blit(buffText, text_r)
 
         #affichege du score
         text = font.render(str(int(score)), True, (255, 255, 255))
@@ -202,7 +217,8 @@ def game():
         min = int(seconds/60)
         seconds = int(seconds%60)
         if seconds <= 0 and min == 0:
-            continuer = 0
+            saveNew(name,int(score))
+            raise Exception("END")
         if seconds >= 10:
             seconds = str(seconds)
         else:
@@ -253,7 +269,7 @@ def game():
 
                 #all_sprite_visible.draw(fenetre)
 
-                transition -=40
+                transition -=60
                 pygame.time.Clock().tick(fps)
                 pygame.display.flip()
             getSpritesVisible(all_sprite_visible, score, all_sprite_list,perso)
