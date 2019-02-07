@@ -10,7 +10,9 @@ fonds = []
 fondsx = []
 
 def loadbackground(lvl):
+    print (lvl)
     lvl = lvl % len(backgrounds)
+    print(len(backgrounds))
     fonds.clear()
     fondsx.clear()
     for i in range(len(backgrounds[lvl])):
@@ -145,7 +147,7 @@ def game(name):
                     score = score + bonusPoints*2
                 elif block.typeBuff == "t" : #tp
                     transition = 600
-                    lvl =+ 1
+                    lvl += 1
         #affichage des fonds
         for i in range (len(fonds)):
             fondxi = fondsx[i]
@@ -267,7 +269,7 @@ def game(name):
 
                 #all_sprite_visible.draw(fenetre)
 
-                transition -=40
+                transition -=60
                 pygame.time.Clock().tick(fps)
                 pygame.display.flip()
             getSpritesVisible(all_sprite_visible, score, all_sprite_list,perso)
