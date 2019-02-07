@@ -19,13 +19,13 @@ def loadbackground(lvl):
         fondsx.append(0)
         fonds.append(pygame.image.load(backgrounds[lvl][i]).convert_alpha())
         #fonds[i] = pygame.transform.scale(fonds[i], (width*2, height))
-
+    ground = pygame.image.load("images/foreground"+str(lvl)+".png").convert_alpha()
 
 def game(name):
     totalDir = 0
 
     init()
-    ground = pygame.image.load("images/foreground.png").convert_alpha()
+    ground = pygame.image.load("images/foreground1.png").convert_alpha()
     groundx = 0
 
     font = pygame.font.Font("fonts/vcr.ttf", 40)
