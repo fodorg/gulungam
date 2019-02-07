@@ -12,6 +12,8 @@ vitessebackground = [0,0.2,0.3,0.4,0.5]
 persoImgMont = "images/lapinm.png"
 persoImgDesc = "images/lapind.png"
 persoImgBounce = "images/lapinb.png"
+persoImgMontNuage = "images/lapinnuagem.png"
+persoImgDescNuage = "images/lapinnuaged.png"
 
 acceleration = 3
 vitesse = 30
