@@ -46,7 +46,7 @@ def window_highScores(): # High score display
 	back = pygame.image.load("images/highscores.png").convert()
 	fenetre.blit(back, (0, 0))
 	bigFont = pygame.font.Font("fonts/pixelart.ttf", 40) # FONT
-	smallFont = pygame.font.Font("fonts/vcr.ttf", 20)
+	smallFont = pygame.font.Font("fonts/vcr.ttf", 30)
 
 	# TABLE
 	color = (255, 252, 244) # color of the line
