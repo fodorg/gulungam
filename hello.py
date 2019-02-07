@@ -198,7 +198,7 @@ def game():
 
         #transition
         if transition > 0:
-            while transition > 0:
+            while transition > -30:
                 pygame.draw.rect(fenetre, (153, 70, 0), pygame.Rect(0, transition, width, height))
                 pygame.display.flip()
                 transition -=30
