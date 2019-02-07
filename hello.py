@@ -72,6 +72,8 @@ def game():
                     ctrlnuage = 1
                 elif event.key == K_DOWN:
                     ctrlnuage =-1
+                elif event.key == K_r:
+                    init()
                 elif event.key == K_ESCAPE:
                     continuer = 0
                     print(score)
