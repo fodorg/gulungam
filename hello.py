@@ -97,12 +97,12 @@ def game():
                 corrdir = -(perso.hitb.rect.x-block.rect.right)
             elif oldpbottom <= block.rect.y:
                 perso.v = -vitesse
-                perso.rect.y = block.rect.y-100
+                perso.rect.y = block.rect.y-110
                 #print(perso.rect.x)
                 perso.hitb.updt(perso)
             elif oldpy >= block.rect.bottom :
                 perso.v = -perso.v
-                perso.rect.top=block.rect.bottom-20
+                perso.rect.top=block.rect.bottom-30
                 perso.hitb.updt(perso)
             perso.changeimg()
 
@@ -151,6 +151,7 @@ def game():
 
         #affichage des sprites
 
+#hitbox du perso
         pygame.draw.rect(fenetre, (153, 70, 0), perso.hitb.rect)
 
         all_sprite_visible.draw(fenetre)
@@ -198,7 +199,7 @@ def game():
 
         #transition
         if transition > 0:
-            while transition > 0:
+            while transition > -30:
                 pygame.draw.rect(fenetre, (153, 70, 0), pygame.Rect(0, transition, width, height))
                 pygame.display.flip()
                 transition -=30
