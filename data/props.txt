@@ -149,63 +149,77 @@ p,blocVert2H.png,1800,520,50,100
 #a,2025,70,50,50
 p,blocVert2L.png,2000,140,100,50
 
-##
+## patern 1
 p,blocVert2H.png,2500,520,50,100
 p,blocVert5H.png,2650,370,50,250
-
-##
-p,blocVert2H.png,3000,520,50,100
-p,blocVert.png,3200,570,50,50
-r,3200,520,50,50
+-,2850,570,50,50
+-,2900,570,50,50
+-,2950,570,50,50
 
 
-##
+
+## patern 2
+p,blocVert2H.png,3200,520,50,100
+p,blocVert.png,3400,570,50,50
+r,3400,520,50,50
+
+
+## patern 3
 p,blocVert2H.png,4000,520,50,100
 p,blocVert.png,4100,420,50,50
 p,blocVert.png,4250,420,50,50
 p,blocVert.png,4400,420,50,50
 p,blocVert2H.png,4500,520,50,100
 
-##
+## patern 1
 p,blocVert2H.png,5000,520,50,100
 p,blocVert5H.png,5150,370,50,250
 
 
-##
+## patern 5
 p,blocVert.png,6500,570,50,50
 p,blocVert2H.png,6550,520,50,100
 p,blocVert3H.png,6600,470,50,150
 p,blocVert4H.png,6650,420,50,200
 p,blocVert5H.png,6700,370,50,250
 p,blocVert5H.png,6750,370,50,250
++,6800,570,50,50
 p,blocVert.png,7050,370,50,50
 p,blocVert.png,7350,370,50,50
 p,blocVert.png,7350,420,50,50
 r,7350,570,50,50
 
-##
+## trou longueur
+p,blocVert.png,7850,570,50,50
+p,blocVert3H.png,7900,470,50,150
+t,7950,570,300,100,100000
+p,blocVert2H.png,8450,520,50,100
+
+
+
+
+## patern 6
 p,blocVert.png,9600,570,50,50
 p,blocVert2L.png,9750,450,100,50
 p,blocVert5H.png,10100,370,50,250
 p,blocVert.png,10300,500,50,50
 
-##
-
+## patern 3
 p,blocVert2H.png,11000,520,50,100
 p,blocVert.png,11100,420,50,50
 p,blocVert.png,11250,420,50,50
 p,blocVert.png,11400,420,50,50
 p,blocVert2H.png,11500,520,50,100
 
-##
+## patern 1
 p,blocVert2H.png,13000,520,50,100
 p,blocVert5H.png,13150,370,50,250
 
-##
+## patern 1
 p,blocVert2H.png,14000,520,50,100
 p,blocVert5H.png,14150,370,50,250
 
-##
+## patern 6 deb
 p,blocVert.png,15000,570,50,50
 p,blocVert2H.png,15050,520,50,100
 p,blocVert3H.png,15100,470,50,150
@@ -218,6 +232,7 @@ t,15250,520,250,100,100000
 ################################################################
 SUITE DU LEVEL 1 SI TROU ESQUIVE
 
+## patern 6 fin
 p,blocVert.png,15400,300,50,50
 p,blocVert.png,15080,200,50,50
 p,blocVert.png,14900,50,50,50
@@ -228,6 +243,7 @@ p,blocVert.png,15700,370,50,50
 p,blocVert.png,16000,340,50,50
 p,blocVert.png,15800,540,50,50
 
+## patern 7
 g,17900,570,50,50
 r,18400,570,50,50
 r,18800,570,50,50
@@ -248,25 +264,42 @@ p,blocVert4H.png,20000,320,50,200
 RAJOUTER QUELQUE CHOSE
 
 
-##
+## patern 8
 p,blocVert.png,24500,570,50,50
 p,blocVert2H.png,24550,520,50,100
 p,blocVert.png,24600,570,50,50
-
 p,blocVert.png,25000,470,50,50
 p,blocVert2H.png,25050,420,50,100
-
 p,blocVert2H.png,25200,320,50,100
 p,blocVert.png,25250,320,50,50
-
 p,blocVert.png,25450,220,50,50
 p,blocVert2H.png,25500,170,50,100
+p,blocVert2H.png,25700,70,50,100
+p,blocVert.png,25750,70,50,50
+p,blocVert.png,25900,150,50,50
+p,blocVert2H.png,25950,100,50,100
+p,blocVert2H.png,26200,170,50,100
+p,blocVert.png,26250,170,50,50
+p,blocVert.png,26400,420,50,50
+p,blocVert2H.png,26450,370,50,100
 
-p,blocVert2H.png,25500,170,50,100
-p,blocVert.png,25550,170,50,50
 
+## patern 2
+p,blocVert2H.png,26800,520,50,100
+p,blocVert.png,27000,570,50,50
+r,27000,520,50,50
 
-
+## patern 5
+p,blocVert.png,28500,570,50,50
+p,blocVert2H.png,28550,520,50,100
+p,blocVert3H.png,28600,470,50,150
+p,blocVert4H.png,28650,420,50,200
+p,blocVert5H.png,28700,370,50,250
+p,blocVert5H.png,28750,370,50,250
+p,blocVert.png,29050,370,50,50
+p,blocVert.png,29350,370,50,50
+p,blocVert.png,29350,420,50,50
+r,29350,570,50,50
 
 
 
