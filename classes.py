@@ -14,7 +14,6 @@ class Sprit(pygame.sprite.Sprite):
 
 
 class Perso(Sprit):
-    """Classe permettant de créer un personnage"""
 
     def __init__(self):
         super().__init__()
@@ -54,8 +53,7 @@ class Perso(Sprit):
     def changeimg(self):
         if self.a == 0:
           print("eee")
-        elif self.v <= -vitesse:
-            self.son.play()
+        elif self.v <= -vitesse+(self.a*2):
             self.image = pygame.image.load(persoImgBounce).convert_alpha()
         elif self.v < 0:
             self.image = pygame.image.load(persoImgMont).convert_alpha()
@@ -138,7 +136,7 @@ class hitb(pygame.sprite.Sprite):
 
     def updt(self, perso):
         self.rect.x = perso.rect.x+20
-        self.rect.y = perso.rect.y+20
+        self.rect.y = perso.rect.y+30
         self.rect.h = 80
         self.rect.w = 60
 
