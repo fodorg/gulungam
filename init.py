@@ -14,7 +14,7 @@ all_sprite_visible = pygame.sprite.Group()
 platforms_list = pygame.sprite.Group()
 blocksBuff_list = pygame.sprite.Group()
 
-listargs = ["p", "a", "g", "+", "-"]
+listargs = ["p", "r", "a", "g", "+", "-"]
 mv = 0
 f = open("data/props.txt", "r")
 
