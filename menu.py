@@ -48,10 +48,6 @@ def window_highScores(): # High score display
 	bigFont = pygame.font.Font("fonts/pixelart.ttf", 40) # FONT
 	smallFont = pygame.font.Font("fonts/vcr.ttf", 20)
 
-	# TITLE
-	txt_title = bigFont.render("HIGH SCORES", True, (0, 0, 0))
-	fenetre.blit(txt_title, (380, 20))
-
 	# TABLE
 	color = (255, 252, 244) # color of the line
 	pygame.draw.rect(fenetre, (26, 103, 219), [40, 90, 936, 638])
