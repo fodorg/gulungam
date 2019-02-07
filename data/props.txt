@@ -311,10 +311,10 @@ p,blocVert.png,24500,570,50,50
 p,blocVert2H.png,24550,520,50,100
 p,blocVert.png,24600,570,50,50
 
-p,blocVert.png,25000,445,50,50
-p,blocVert2H.png,25050,395,50,100
-p,blocVert2H.png,25200,295,50,100
-p,blocVert.png,25250,295,50,50
+p,blocVert.png,25000,470,50,50
+p,blocVert2H.png,25050,420,50,100
+p,blocVert2H.png,25200,320,50,100
+p,blocVert.png,25250,320,50,50
 
 
 
