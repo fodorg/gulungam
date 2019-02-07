@@ -235,12 +235,11 @@ def game():
                         fenetre.blit(ground, (groundx - (2 * width), transition))
                     fenetre.blit(ground, (groundx, transition))
                 else:
-
                     if groundx < -width:
-                        fenetre.blit(ground, (groundx + (2 * width), transition))
+                        fenetre.blit(ground, (groundx + (2 * width), transition+2*height))
                     elif groundx > 0:
-                        fenetre.blit(ground, (groundx - (2 * width), transition))
-                    fenetre.blit(ground, (groundx, transition))
+                        fenetre.blit(ground, (groundx - (2 * width), transition+2*height))
+                    fenetre.blit(ground, (groundx, transition+2*height))
                 pygame.display.flip()
                 if transition == 0 :
                     loadbackground(lvl)
