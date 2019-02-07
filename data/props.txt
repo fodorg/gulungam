@@ -423,17 +423,7 @@ p,blocVert.png,8350,370,50,50
 p,blocVert.png,8350,420,50,50
 r,8350,570,50,50
 
-## patern 5
-p,blocVert.png,28500,570,50,50
-p,blocVert2H.png,28550,520,50,100
-p,blocVert3H.png,28600,470,50,150
-p,blocVert4H.png,28650,420,50,200
-p,blocVert5H.png,28700,370,50,250
-p,blocVert5H.png,28750,370,50,250
-p,blocVert.png,29050,370,50,50
-p,blocVert.png,29350,370,50,50
-p,blocVert.png,29350,420,50,50
-r,29350,570,50,50
+
 
 ########################################################
 
