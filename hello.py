@@ -216,7 +216,7 @@ def game(name):
             textB = font.render(buffT, True, (255, 255, 255))
             textB_rect = textB.get_rect()
             textB_rect.right = width - 10  # align to right to 150px
-            textB_rect.y = 60
+            textB_rect.y = 50
             fenetre.blit(textB, textB_rect)
 
         #affichege du score
