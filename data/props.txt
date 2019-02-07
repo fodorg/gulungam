@@ -545,7 +545,7 @@ p,blocVert4H.png,21600,320,50,200
 p,blocVert6H.png,21800,0,50,300
 p,blocVert4H.png,22000,320,50,200
 
-+
+
 p,blocVert.png,23000,250,50,50
 p,blocVert.png,23250,350,50,50
 p,blocVert.png,23400,500,50,50
