@@ -149,11 +149,10 @@ def game(name):
                     score = score + bonusPoints
                     buffT = "+ " + str(bonusPoints)
                 elif block.typeBuff == "++":
-                    score = score + bonusPoints*2
-                    buffT = "+ " + str(2*malusPoints)
+                    score = score + bonusPoints1
+                    buffT = "+ " + str(bonusPoints1)
                 elif block.typeBuff == "t" : #tp
                     transition = 600
-                    lvl += 1
         #affichage des fonds
         for i in range (len(fonds)):
             fondxi = fondsx[i]
@@ -278,6 +277,7 @@ def game(name):
                     fenetre.blit(ground, (groundx, transition+2*height))
                 pygame.display.flip()
                 if transition == 0 :
+                    lvl = int(totalDir/100000)
                     loadbackground(lvl)
 
 

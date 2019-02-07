@@ -22,5 +22,7 @@ acceleration = 3
 vitesse = 30
 vitesseDir = 15
 
-bonusPoints = 2500
-malusPoints = -2500
+bonusPoints = 500
+bonusPoints1 = 2500
+
+malusPoints = -500
