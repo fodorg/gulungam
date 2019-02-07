@@ -4,6 +4,7 @@ from classes import *
 from const import *
 from functions import *
 from init import *
+from save import *
 
 fonds = []
 fondsx = []
@@ -18,7 +19,7 @@ def loadbackground(lvl):
         #fonds[i] = pygame.transform.scale(fonds[i], (width*2, height))
 
 
-def game():
+def game(name):
     totalDir = 0
 
     init()
@@ -60,7 +61,7 @@ def game():
         #events
         for event in pygame.event.get():
             if event.type == QUIT:
-                continuer = 0
+                raise Exception("QUIT")
                 print(score);
 
             if event.type == KEYDOWN:
@@ -75,7 +76,7 @@ def game():
                 elif event.key == K_r:
                     init()
                 elif event.key == K_ESCAPE:
-                    continuer = 0
+                    raise Exception("BACK")
                     print(score)
 
             if event.type == KEYUP:
@@ -198,11 +199,12 @@ def game():
         fenetre.blit(text,text_rect)
 
         #affichage du timer
-        seconds = 180-(pygame.time.get_ticks() - start_ticks) / 1000  # calculate how many seconds
+        seconds = 10-(pygame.time.get_ticks() - start_ticks) / 1000  # calculate how many seconds
         min = int(seconds/60)
         seconds = int(seconds%60)
         if seconds <= 0 and min == 0:
-            continuer = 0
+            saveNew(name,int(score))
+            raise Exception("END")
         if seconds >= 10:
             seconds = str(seconds)
         else:
