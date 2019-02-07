@@ -12,9 +12,7 @@ ground = 0
 
 def loadbackground(lvl):
     global ground
-    print (lvl)
     lvl = lvl % len(backgrounds)
-    print(len(backgrounds))
     fonds.clear()
     fondsx.clear()
     for i in range(len(backgrounds[lvl])):
@@ -22,7 +20,6 @@ def loadbackground(lvl):
         fonds.append(pygame.image.load(backgrounds[lvl][i]).convert_alpha())
         #fonds[i] = pygame.transform.scale(fonds[i], (width*2, height))
     ground = pygame.image.load("images/foreground"+str(lvl)+".png").convert_alpha()
-    print(ground)
 
 def game(name):
     global ground
@@ -70,7 +67,6 @@ def game(name):
         for event in pygame.event.get():
             if event.type == QUIT:
                 raise Exception("QUIT")
-                print(score);
 
             if event.type == KEYDOWN:
                 if event.key == K_RIGHT:
@@ -85,7 +81,6 @@ def game(name):
                     init()
                 elif event.key == K_ESCAPE:
                     raise Exception("BACK")
-                    print(score)
 
             if event.type == KEYUP:
                 if event.key == K_RIGHT and ctrldir == perso.vh or event.key == K_LEFT and ctrldir == -perso.vh:
