@@ -9,6 +9,7 @@ fenetre = pygame.display.set_mode((width,height))
 
 all_sprite_list = pygame.sprite.Group()
 all_sprite_visible = pygame.sprite.Group()
+all_sprite_trans = pygame.sprite.Group()
 
 # platforms
 platforms_list = pygame.sprite.Group()
