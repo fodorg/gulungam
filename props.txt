@@ -15,11 +15,13 @@
 
 #############################################################################
 
-DEBUT DU JEU
+#DEBUT DU JEU
 
 p,blocVert2L.png,0,70,100,50
 p,blocVert2L.png,300,70,100,50
 p,blocVert2L.png,600,70,100,50
+
+
 
 p,blocVert.png,850,570,50,50
 p,blocVert2H.png,1000,520,50,100
@@ -77,7 +79,7 @@ r,7350,570,50,50
 ## trou longueur
 p,blocVert.png,7850,570,50,50
 p,blocVert3H.png,7900,470,50,150
-t,7950,570,300,100,94150
+t,7950,570,300,50,94150
 p,blocVert2H.png,8250,520,50,100
 p,blocVert.png,8300,570,50,50
 

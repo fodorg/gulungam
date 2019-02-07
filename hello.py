@@ -192,7 +192,7 @@ def game(name):
                 elif ctrldir < 0:
                     ctrldir = -perso.vh
             if perso.buff == "r":
-                color = (200, 0, 0)
+                color = (0, 200, 0)
                 buffText = font.render("SLOW", True, color)
             elif perso.buff == "g":
                 color = (200,200,200)
