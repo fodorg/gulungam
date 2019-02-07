@@ -37,7 +37,7 @@ def game():
 
         # Limitation de vitesse de la boucle
         pygame.time.Clock().tick(fps)
-        oldprect = perso.rect
+
 
         #pour gerer la colision
         oldpbottom = perso.hitb.rect.bottom
@@ -81,12 +81,13 @@ def game():
             e.deplacer(dir)
 
         #collision platform
+        corrdir = 0
         block_hit_list = pygame.sprite.spritecollide(perso.hitb, platforms_list, False)
         for block in block_hit_list:
             if perso.hitb.rect.right <= block.rect.x+dir:
-                dir = (block.rect.x-perso.hitb.rect.right)
+                corrdir = (block.rect.x-perso.hitb.rect.right)
             elif perso.hitb.rect.x >= block.rect.right+dir:
-                dir = -(perso.hitb.rect.x-block.rect.right)
+                corrdir = -(perso.hitb.rect.x-block.rect.right)
             elif oldpbottom <= block.rect.y:
                 perso.v = -vitesse
                 perso.rect.y = block.rect.y-100
@@ -101,11 +102,11 @@ def game():
         if len(block_hit_list)>0:
             # update des pos du fond et des elems
             for i in range(len(fonds)):
-                fondsx[i] = fondsx[i] - (dir * vitessebackground[i]);
+                fondsx[i] = fondsx[i] - (corrdir * vitessebackground[i]);
 
-            score = score + dir
+            score = score + corrdir
             for e in all_sprite_list:
-                e.deplacer(dir)
+                e.deplacer(corrdir)
 
         #collision buffs
         block_hit_list = pygame.sprite.spritecollide(perso.hitb, blocksBuff_list, True)
@@ -122,6 +123,12 @@ def game():
                     score = score + malusPoints
                 elif block.typeBuff == "+":
                     score = score + bonusPoints
+                elif block.typeBuff == "t" : #tp
+                    for e in all_sprite_list:
+                        e.deplacer(block.dest-block.rect.x)
+                    tp(int(block.dest))
+                    getSpritesVisible(all_sprite_visible,score,all_sprite_list,perso)
+                    #perso.update()
         #affichage des fonds
         for i in range (len(fonds)):
             fondxi = fondsx[i]
@@ -135,7 +142,6 @@ def game():
             fenetre.blit(fonds[i], (fondxi, 0))
 
         #affichage des sprites
-        perso.update()
 
         pygame.draw.rect(fenetre, (153, 70, 0), perso.hitb.rect)
 
