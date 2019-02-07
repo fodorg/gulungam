@@ -43,9 +43,10 @@ def window_menuCred(): # Menu mouseover CREDITS display
 
 
 def window_highScores(): # High score display
-	loadBackground()
+	back = pygame.image.load("images/highscores.png").convert()
+	fenetre.blit(back, (0, 0))
 	bigFont = pygame.font.Font("fonts/pixelart.ttf", 40) # FONT
-	smallFont = pygame.font.Font("fonts/pixelart.ttf", 20)
+	smallFont = pygame.font.Font("fonts/vcr.ttf", 20)
 
 	# TITLE
 	txt_title = bigFont.render("HIGH SCORES", True, (0, 0, 0))
