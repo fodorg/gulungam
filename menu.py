@@ -5,11 +5,11 @@ from save import *
 from hello import *
 
 def loadBackground():
-	background = pygame.image.load("images/background.png").convert_alpha()
-	plan1 = pygame.image.load("images/plan1.png").convert_alpha()
-	plan2 = pygame.image.load("images/plan2.png").convert_alpha()
-	plan3 = pygame.image.load("images/plan3.png").convert_alpha()
-	plan4 = pygame.image.load("images/plan4.png").convert_alpha()
+	background = pygame.image.load("images/background1.png").convert_alpha()
+	plan1 = pygame.image.load("images/plan11.png").convert_alpha()
+	plan2 = pygame.image.load("images/plan12.png").convert_alpha()
+	plan3 = pygame.image.load("images/plan13.png").convert_alpha()
+	plan4 = pygame.image.load("images/plan14.png").convert_alpha()
 	fenetre.blit(background, (0, 0))
 	fenetre.blit(plan4, (0, 0))
 	fenetre.blit(plan3, (0, 0))
@@ -21,31 +21,26 @@ def window_menu(): # Menu display
 	buttons = pygame.image.load("images/menu.png").convert_alpha()
 	fenetre.blit(buttons, (0, 0))
 
-	pygame.display.flip()
 
 def window_menuStart(): # Menu mouseover START display
 	buttons = pygame.image.load("images/menu_start.png").convert_alpha()
 	fenetre.blit(buttons, (0, 0))
 
-	pygame.display.flip()
 
 def window_menuHighScore(): # Menu mouseover HIGHSCORE display
 	buttons = pygame.image.load("images/menu_highscores.png").convert_alpha()
 	fenetre.blit(buttons, (0, 0))
 
-	pygame.display.flip()
 
 def window_menuQuit(): # Menu mouseover QUITTER display
 	buttons = pygame.image.load("images/menu_quitter.png").convert_alpha()
 	fenetre.blit(buttons, (0, 0))
 
-	pygame.display.flip()
 
 def window_menuCred(): # Menu mouseover CREDITS display
 	buttons = pygame.image.load("images/menu_credits.png").convert_alpha()
 	fenetre.blit(buttons, (0, 0))
 
-	pygame.display.flip()
 
 def window_highScores(): # High score display
 	loadBackground()
@@ -89,7 +84,6 @@ def window_highScores(): # High score display
 	back = pygame.transform.scale(back, (150, 75))
 	fenetre.blit(back, (10, 10))
 
-	pygame.display.flip()
 
 def window_end():
 	loadBackground()
@@ -114,7 +108,6 @@ def window_end():
 	fenetre.blit(back, (190, 600))
 	fenetre.blit(start, (500, 600))
 
-	pygame.display.flip()
 
 def window_nameSelect():
 	pseudo = pygame.image.load("images/pseudo.png")
@@ -154,7 +147,7 @@ def window_nameSelect():
 					pygame.display.flip()
 
 				if event.key == K_RETURN and len(name) > 0:    # press on enter
-					#saveNew(name, game())  # ACTUAL GAME
+					saveNew(name, game())  # ACTUAL GAME
 					raise Exception("END")
 
 			if event.type == MOUSEMOTION:
@@ -301,7 +294,6 @@ while continuer:
 							backOnClick = pygame.image.load("images/back_onclick.png")
 							backOnClick = pygame.transform.scale(backOnClick, (150, 75))
 							fenetre.blit(backOnClick, (10, 10))
-							pygame.display.flip()
 							buttonStatus = "back"
 
 					else:
@@ -309,7 +301,6 @@ while continuer:
 							back = pygame.image.load("images/back.png")
 							back = pygame.transform.scale(back, (150, 75))
 							fenetre.blit(back, (10, 10))
-							pygame.display.flip()
 							buttonStatus = "main"
 
 		elif status == "end":  # END
@@ -328,21 +319,29 @@ while continuer:
 			if event.type == MOUSEMOTION:
 				if 190 < event.pos[0] < 490 and 600 < event.pos[1] < 750:  # MOTION ON BACK
 					if buttonStatus != "back":
+						print("BACK should RED")
 						backOnClick = pygame.image.load("images/back_onclick.png")
 						backOnClick = pygame.transform.scale(backOnClick, (300, 150))
 						fenetre.blit(backOnClick, (190, 600))
-						pygame.display.flip()
 						buttonStatus = "back"
 
-				if 500 < event.pos[0] < 800 and 600 < event.pos[1] < 750:  # MOTION ON START
+				elif 500 < event.pos[0] < 800 and 600 < event.pos[1] < 750:  # MOTION ON START
 					if buttonStatus != "start":
 						startOnClick = pygame.image.load("images/start_onclic.png")
 						startOnClick = pygame.transform.scale(startOnClick, (300, 150))
 						fenetre.blit(startOnClick, (500, 600))
-						pygame.display.flip()
 						buttonStatus = "start"
 
 				else:
 					if buttonStatus != "end":
-						window_end()
+						back = pygame.image.load("images/back.png")
+						start = pygame.image.load("images/start.png")
+
+						back = pygame.transform.scale(back, (300, 150))
+						start = pygame.transform.scale(start, (300, 150))
+
+						fenetre.blit(back, (190, 600))
+						fenetre.blit(start, (500, 600))
 						buttonStatus = "end"
+
+	pygame.display.flip()

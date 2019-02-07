@@ -5,24 +5,31 @@ from const import *
 from functions import *
 from init import *
 
+fonds = []
+fondsx = []
+
+def loadbackground(lvl):
+    lvl = lvl % len(backgrounds)
+    fonds.clear()
+    fondsx.clear()
+    for i in range(len(backgrounds[lvl])):
+        fondsx.append(0)
+        fonds.append(pygame.image.load(backgrounds[lvl][i]).convert_alpha())
+        #fonds[i] = pygame.transform.scale(fonds[i], (width*2, height))
+
+
 def game():
     font = pygame.font.SysFont(None, 72)
 
-    fonds = []
-    fondsx = []
-    for i in range(len(backgrounds)):
-        fondsx.append(0)
-        fonds.append(pygame.image.load(backgrounds[i]).convert_alpha())
-        #fonds[i] = pygame.transform.scale(fonds[i], (width*2, height))
-
+    loadbackground(0)
 
 
     perso = Perso()
     all_sprite_list.add(perso)
 
     getSpritesVisible(all_sprite_visible,0,all_sprite_list, perso)
-
-
+    lvl = 0
+    transition = 0
     score = 0
     ctrldir = 0
     ctrlnuage = 0
@@ -84,9 +91,9 @@ def game():
         corrdir = 0
         block_hit_list = pygame.sprite.spritecollide(perso.hitb, platforms_list, False)
         for block in block_hit_list:
-            if perso.hitb.rect.right <= block.rect.x+dir:
+            if perso.hitb.rect.right <= block.rect.x+dir*2:
                 corrdir = (block.rect.x-perso.hitb.rect.right)
-            elif perso.hitb.rect.x >= block.rect.right+dir:
+            elif perso.hitb.rect.x >= block.rect.right+dir*2:
                 corrdir = -(perso.hitb.rect.x-block.rect.right)
             elif oldpbottom <= block.rect.y:
                 perso.v = -vitesse
@@ -128,7 +135,8 @@ def game():
                         e.deplacer(block.dest-block.rect.x)
                     tp(int(block.dest))
                     getSpritesVisible(all_sprite_visible,score,all_sprite_list,perso)
-                    #perso.update()
+                    transition = 600
+                    lvl =+ 1
         #affichage des fonds
         for i in range (len(fonds)):
             fondxi = fondsx[i]
@@ -186,6 +194,18 @@ def game():
             seconds = "0"+str(seconds)
         text = font.render(str(min)+":"+seconds, True, (0, 128, 0))
         fenetre.blit(text, (10,10))
+
+
+        #transition
+        if transition > 0:
+            while transition > 0:
+                pygame.draw.rect(fenetre, (153, 70, 0), pygame.Rect(0, transition, width, height))
+                pygame.display.flip()
+                transition -=30
+                pygame.time.Clock().tick(fps)
+                pygame.display.flip()
+            loadbackground(lvl)
+
 
 
         pygame.display.flip()
