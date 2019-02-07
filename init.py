@@ -23,7 +23,7 @@ def init():
   platforms_list.empty()
   blocksBuff_list.empty()
 
-  listargs = ["p", "r", "a", "g", "+", "-"]
+  listargs = ["p", "r", "a", "g", "+", "-", "++"]
   mv = 0
   f = open("data/props.txt", "r")
 

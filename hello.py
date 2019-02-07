@@ -141,6 +141,8 @@ def game(name):
                     score = score + malusPoints
                 elif block.typeBuff == "+":
                     score = score + bonusPoints
+                elif block.typeBuff == "++":
+                    score = score + bonusPoints*2
                 elif block.typeBuff == "t" : #tp
                     transition = 600
                     lvl =+ 1
