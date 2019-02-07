@@ -144,16 +144,15 @@ def game(name):
                 timerBuff = pygame.time.get_ticks()
                 if block.typeBuff == "-":
                     score = score + malusPoints
-                    buffT = "- "+str(malusPoints)
+                    buffT = str(malusPoints)
                 elif block.typeBuff == "+":
                     score = score + bonusPoints
                     buffT = "+ " + str(bonusPoints)
                 elif block.typeBuff == "++":
-                    score = score + bonusPoints*2
-                    buffT = "+ " + str(2*malusPoints)
+                    score = score + bonusPoints1
+                    buffT = "+ " + str(bonusPoints1)
                 elif block.typeBuff == "t" : #tp
                     transition = 600
-                    lvl += 1
         #affichage des fonds
         for i in range (len(fonds)):
             fondxi = fondsx[i]
@@ -179,8 +178,6 @@ def game(name):
 
         #affichage des sprites
 
-#hitbox du perso
-        pygame.draw.rect(fenetre, (153, 70, 0), perso.hitb.rect)
 
         all_sprite_visible.draw(fenetre)
 
@@ -278,6 +275,7 @@ def game(name):
                     fenetre.blit(ground, (groundx, transition+2*height))
                 pygame.display.flip()
                 if transition == 0 :
+                    lvl = int(totalDir/100000)
                     loadbackground(lvl)
 
 
