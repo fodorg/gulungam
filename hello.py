@@ -137,8 +137,6 @@ def game():
                 elif block.typeBuff == "t" : #tp
                     for e in all_sprite_list:
                         e.deplacer(block.dest-block.rect.x)
-                    tp(int(block.dest))
-                    getSpritesVisible(all_sprite_visible,score,all_sprite_list,perso)
                     transition = 600
                     lvl =+ 1
         #affichage des fonds
@@ -158,7 +156,7 @@ def game():
             groundx = 0
         if groundx < -width:
             fenetre.blit(ground, (groundx + (2 * width), height-148))
-        elif fondxi > 0:
+        elif groundx > 0:
             fenetre.blit(ground, (groundx - (2 * width), height-148))
         fenetre.blit(ground, (groundx, height-148))
 
@@ -211,9 +209,13 @@ def game():
 
         #transition
         if transition > 0:
-            while transition > -height:
+            while transition > -height-148:
                 #affichage du fond
-                if transition < 0:
+                if transition > 0:
+                    print("a")
+                elif transition == 0:
+                    tp(int(block.dest))
+                else :
                     for i in range(len(fonds)):
                         fondxi = fondsx[i]
                         if fondxi <= -2 * width or fondxi >= 2 * width:
@@ -224,16 +226,31 @@ def game():
                         elif fondxi > 0:
                             fenetre.blit(fonds[i], ((fondxi) - (2 * width), 0))
                         fenetre.blit(fonds[i], (fondxi, 0))
-
                 #affichage du sol
-                pygame.draw.rect(fenetre, (153, 70, 0), pygame.Rect(0, transition, width, height))
+                if transition > -height:
+
+                    if groundx < -width:
+                        fenetre.blit(ground, (groundx + (2 * width), transition))
+                    elif groundx > 0:
+                        fenetre.blit(ground, (groundx - (2 * width), transition))
+                    fenetre.blit(ground, (groundx, transition))
+                else:
+
+                    if groundx < -width:
+                        fenetre.blit(ground, (groundx + (2 * width), transition))
+                    elif groundx > 0:
+                        fenetre.blit(ground, (groundx - (2 * width), transition))
+                    fenetre.blit(ground, (groundx, transition))
                 pygame.display.flip()
                 if transition == 0 :
                     loadbackground(lvl)
-                transition -=30
+
+
+                #all_sprite_visible.draw(fenetre)
+
+                transition -=40
                 pygame.time.Clock().tick(fps)
                 pygame.display.flip()
-
 
 
         pygame.display.flip()
