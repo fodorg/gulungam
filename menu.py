@@ -5,11 +5,11 @@ from save import *
 from hello import *
 
 def loadBackground():
-	background = pygame.image.load("images/background.png").convert_alpha()
-	plan1 = pygame.image.load("images/plan1.png").convert_alpha()
-	plan2 = pygame.image.load("images/plan2.png").convert_alpha()
-	plan3 = pygame.image.load("images/plan3.png").convert_alpha()
-	plan4 = pygame.image.load("images/plan4.png").convert_alpha()
+	background = pygame.image.load("images/background1.png").convert_alpha()
+	plan1 = pygame.image.load("images/plan11.png").convert_alpha()
+	plan2 = pygame.image.load("images/plan12.png").convert_alpha()
+	plan3 = pygame.image.load("images/plan13.png").convert_alpha()
+	plan4 = pygame.image.load("images/plan14.png").convert_alpha()
 	fenetre.blit(background, (0, 0))
 	fenetre.blit(plan4, (0, 0))
 	fenetre.blit(plan3, (0, 0))

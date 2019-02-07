@@ -9,7 +9,7 @@ fonds = []
 fondsx = []
 
 def loadbackground(lvl):
-
+    lvl = lvl % len(backgrounds)
     for i in range(len(backgrounds[lvl])):
         fondsx.append(0)
         fonds.append(pygame.image.load(backgrounds[lvl][i]).convert_alpha())
