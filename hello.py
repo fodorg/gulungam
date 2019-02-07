@@ -19,15 +19,17 @@ def loadbackground(lvl):
         fondsx.append(0)
         fonds.append(pygame.image.load(backgrounds[lvl][i]).convert_alpha())
         #fonds[i] = pygame.transform.scale(fonds[i], (width*2, height))
-
+    ground = pygame.image.load("images/foreground"+str(lvl)+".png").convert_alpha()
 
 def game(name):
     totalDir = 0
 
     init()
-    ground = pygame.image.load("images/foreground.png").convert_alpha()
+    ground = pygame.image.load("images/foreground1.png").convert_alpha()
     groundx = 0
-
+    timerBuff = 0
+    buffText = ""
+    buffT = ""
     font = pygame.font.Font("fonts/vcr.ttf", 40)
 
     loadbackground(0)
@@ -139,12 +141,16 @@ def game(name):
                         elif ctrldir < 0:
                             ctrldir = -perso.vh
             else:
+                timerBuff = pygame.time.get_ticks()
                 if block.typeBuff == "-":
                     score = score + malusPoints
+                    buffT = "- "+str(malusPoints)
                 elif block.typeBuff == "+":
                     score = score + bonusPoints
+                    buffT = "+ " + str(bonusPoints)
                 elif block.typeBuff == "++":
                     score = score + bonusPoints*2
+                    buffT = "+ " + str(2*malusPoints)
                 elif block.typeBuff == "t" : #tp
                     transition = 600
                     lvl += 1
@@ -180,6 +186,7 @@ def game(name):
 
 
         #verif et affichage du buff
+        buffText = ""
         if perso.buff != "":
             duraBuff = 5 - (pygame.time.get_ticks() - perso.startBuff) / 1000  # calculate how many seconds
             if duraBuff < 0:#on enleve le buff
@@ -204,6 +211,13 @@ def game(name):
             text_r.centerx = width/2  # align to right to 150px
             text_r.top = 25
             fenetre.blit(buffText, text_r)
+        #affichage bonus
+        if (2 - (pygame.time.get_ticks() - timerBuff) / 1000) > 0:
+            textB = font.render(buffT, True, (255, 255, 255))
+            textB_rect = textB.get_rect()
+            textB_rect.right = width - 10  # align to right to 150px
+            textB_rect.y = 60
+            fenetre.blit(textB, textB_rect)
 
         #affichege du score
         text = font.render(str(int(score)), True, (255, 255, 255))
