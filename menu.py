@@ -221,7 +221,7 @@ def window_nameSelect():
 pygame.init()
 fenetre = pygame.display.set_mode((1024, 768))
 window_menu()
-
+pygame.display.set_caption("the soul of Gulungan")
 pygame.mixer.music.load("sound/musique_menu.wav")
 pygame.mixer.music.play(-1)
 
@@ -249,14 +249,17 @@ while continuer:
 						if exep.args[0] == "QUIT":
 							continuer = 0
 						if exep.args[0] == "BACK":
+							pygame.mixer.music.load("sound/musique_menu.wav")
+							pygame.mixer.music.play(-1)
 							window_menu()
 							status = "main"
 							buttonStatus = "main"
 						if exep.args[0] == "END":
+							pygame.mixer.music.load("sound/musique_menu.wav")
+							pygame.mixer.music.play(-1)
 							status = "end"
 							buttonStatus = "end"
 							window_end()
-
 
 				if 818 < event.pos[0] < 1014 and 660 < event.pos[1] < 758:  # CLIC ON QUITTER
 					continuer = 0
@@ -319,10 +322,31 @@ while continuer:
 
 				if 500 < event.pos[0] < 800 and 600 < event.pos[1] < 750:  # CLIC ON START
 					name = getAllScores()[len(getAllScores()) -2]
-					saveNew(name,game())
-					status = "end"
-					buttonStatus = "end"
-					window_end()
+					# pygame.mixer.music.load("sound/musique_game.wav")
+					# pygame.mixer.music.play(-1)
+					# saveNew(name, game())  # ACTUAL GAME
+					# pygame.mixer.music.load("sound/musique_menu.wav")
+					# pygame.mixer.music.play(-1)
+					# raise Exception("END")
+					try:                           # EXCEPTION
+						pygame.mixer.music.load("sound/musique_game.wav")
+						pygame.mixer.music.play(-1)
+						saveNew(name,game())
+					except Exception as exep:
+						if exep.args[0] == "QUIT":
+							continuer = 0
+						if exep.args[0] == "BACK":
+							pygame.mixer.music.load("sound/musique_menu.wav")
+							pygame.mixer.music.play(-1)
+							window_menu()
+							status = "main"
+							buttonStatus = "main"
+						if exep.args[0] == "END":
+							pygame.mixer.music.load("sound/musique_menu.wav")
+							pygame.mixer.music.play(-1)
+							status = "end"
+							buttonStatus = "end"
+							window_end()
 
 			if event.type == MOUSEMOTION:
 				if 190 < event.pos[0] < 490 and 600 < event.pos[1] < 750:  # MOTION ON BACK
