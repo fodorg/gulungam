@@ -147,7 +147,7 @@ def window_nameSelect():
 					pygame.display.flip()
 
 				if event.key == K_RETURN and len(name) > 0:    # press on enter
-					#saveNew(name, game())  # ACTUAL GAME
+					saveNew(name, game())  # ACTUAL GAME
 					raise Exception("END")
 
 			if event.type == MOUSEMOTION:
