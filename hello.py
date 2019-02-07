@@ -10,6 +10,8 @@ fondsx = []
 
 def loadbackground(lvl):
     lvl = lvl % len(backgrounds)
+    fonds.clear()
+    fondsx.clear()
     for i in range(len(backgrounds[lvl])):
         fondsx.append(0)
         fonds.append(pygame.image.load(backgrounds[lvl][i]).convert_alpha())
@@ -134,6 +136,7 @@ def game():
                     tp(int(block.dest))
                     getSpritesVisible(all_sprite_visible,score,all_sprite_list,perso)
                     transition = 600
+                    lvl =+ 1
         #affichage des fonds
         for i in range (len(fonds)):
             fondxi = fondsx[i]
@@ -195,13 +198,13 @@ def game():
 
         #transition
         if transition > 0:
-            while transition > 0:
+            while transition > -30:
                 pygame.draw.rect(fenetre, (153, 70, 0), pygame.Rect(0, transition, width, height))
                 pygame.display.flip()
                 transition -=30
                 pygame.time.Clock().tick(fps)
                 pygame.display.flip()
-
+            loadbackground(lvl)
 
 
 
