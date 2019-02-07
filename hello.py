@@ -25,7 +25,7 @@ def game():
     ground = pygame.image.load("images/foreground.png").convert_alpha()
     groundx = 0
 
-    font = pygame.font.SysFont(None, 72)
+    font = pygame.font.Font("fonts/vcr.ttf", 40)
 
     loadbackground(0)
 
@@ -191,7 +191,7 @@ def game():
 
 
         #affichege du score
-        text = font.render(str(int(score)), True, (0, 128, 0))
+        text = font.render(str(int(score)), True, (255, 255, 255))
         text_rect = text.get_rect()
         text_rect.right = width-10  # align to right to 150px
         text_rect.y = 10
@@ -207,7 +207,7 @@ def game():
             seconds = str(seconds)
         else:
             seconds = "0"+str(seconds)
-        text = font.render(str(min)+":"+seconds, True, (0, 128, 0))
+        text = font.render(str(min)+":"+seconds, True, (255, 255, 255))
         fenetre.blit(text, (10,10))
 
 
