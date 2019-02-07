@@ -147,7 +147,11 @@ def window_nameSelect():
 					pygame.display.flip()
 
 				if event.key == K_RETURN and len(name) > 0:    # press on enter
+					pygame.mixer.music.load("sound/musique_game.wav")
+					pygame.mixer.music.play(-1)
 					saveNew(name, game())  # ACTUAL GAME
+					pygame.mixer.music.load("sound/musique_menu.wav")
+					pygame.mixer.music.play(-1)
 					raise Exception("END")
 
 			if event.type == MOUSEMOTION:
@@ -198,7 +202,11 @@ def window_nameSelect():
 
 			if event.type == MOUSEBUTTONDOWN and event.button == 1: # CLIC
 				if 383 < event.pos[0] < 641 and 451 < event.pos[1] < 580 and len(name) > 0:  # CLIC ON START
+					pygame.mixer.music.load("sound/musique_game.wav")
+					pygame.mixer.music.play(-1)
 					saveNew(name, game())  # ACTUAL GAME
+					pygame.mixer.music.load("sound/musique_menu.wav")
+					pygame.mixer.music.play(-1)
 					raise Exception("END")
 
 				if 10 < event.pos[0] < 160 and 10 < event.pos[1] < 85:  # CLIC ON BACK
