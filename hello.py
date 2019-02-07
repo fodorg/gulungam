@@ -20,6 +20,9 @@ def loadbackground(lvl):
 
 def game():
     init()
+    ground = pygame.image.load("images/foreground.png").convert_alpha()
+    groundx = 0
+
     font = pygame.font.SysFont(None, 72)
 
     loadbackground(0)
@@ -83,7 +86,7 @@ def game():
         #update des pos du fond et des elems
         for i in range(len(fonds)):
             fondsx[i] = fondsx[i]-(dir*vitessebackground[i]);
-
+        groundx= groundx -dir
         score = score +dir
         for e in all_sprite_list:
             e.deplacer(dir)
@@ -111,7 +114,7 @@ def game():
             # update des pos du fond et des elems
             for i in range(len(fonds)):
                 fondsx[i] = fondsx[i] - (corrdir * vitessebackground[i]);
-
+            groundx = groundx - corrdir
             score = score + corrdir
             for e in all_sprite_list:
                 e.deplacer(corrdir)
@@ -150,15 +153,23 @@ def game():
                 fenetre.blit(fonds[i], ((fondxi)-(2*width), 0))
             fenetre.blit(fonds[i], (fondxi, 0))
 
+        # affichage du sol
+        if groundx <= -2 * width or groundx >= 2 * width:
+            groundx = 0
+        if groundx < -width:
+            fenetre.blit(ground, (groundx + (2 * width), height-148))
+        elif fondxi > 0:
+            fenetre.blit(ground, (groundx - (2 * width), height-148))
+        fenetre.blit(ground, (groundx, height-148))
+
+        #pygame.draw.rect(fenetre, (153, 70, 0), pygame.Rect(0, height - 148, width, 148))
+
         #affichage des sprites
 
 #hitbox du perso
         pygame.draw.rect(fenetre, (153, 70, 0), perso.hitb.rect)
 
         all_sprite_visible.draw(fenetre)
-
-        #affichage du sol
-        pygame.draw.rect(fenetre, (153, 70, 0), pygame.Rect(0, height-148, width, 148))
 
 
         #verif et affichage du buff
