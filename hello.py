@@ -72,6 +72,8 @@ def game():
                     ctrlnuage = 1
                 elif event.key == K_DOWN:
                     ctrlnuage =-1
+                elif event.key == K_r:
+                    init()
                 elif event.key == K_ESCAPE:
                     continuer = 0
                     print(score)
@@ -89,7 +91,7 @@ def game():
         for i in range(len(fonds)):
             fondsx[i] = fondsx[i]-(dir*vitessebackground[i]);
         groundx= groundx -dir
-        score = score +dir
+        score = max(score +dir, 0)
         totalDir  = totalDir+dir
         for e in all_sprite_list:
             e.deplacer(dir)
@@ -139,8 +141,6 @@ def game():
                 elif block.typeBuff == "+":
                     score = score + bonusPoints
                 elif block.typeBuff == "t" : #tp
-                    for e in all_sprite_list:
-                        e.deplacer(block.dest-block.rect.x)
                     transition = 600
                     lvl =+ 1
         #affichage des fonds
@@ -218,8 +218,9 @@ def game():
                 if transition == 0:
                     tp(int(block.dest))
                     totalDir = totalDir + block.dest
+                    init()
                     for e in all_sprite_list:
-                        e.deplacer(corrdir)
+                        e.deplacer(totalDir)
                 else :
                     for i in range(len(fonds)):
                         fondxi = fondsx[i]
