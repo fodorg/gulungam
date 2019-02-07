@@ -161,19 +161,19 @@ p,blocVert5H.png,2650,370,50,250
 ## patern 2
 p,blocVert2H.png,3200,520,50,100
 p,blocVert.png,3400,570,50,50
-r,3400,520,50,50
-
 
 ## patern 3
 p,blocVert2H.png,4000,520,50,100
 p,blocVert.png,4100,420,50,50
 p,blocVert.png,4250,420,50,50
 p,blocVert.png,4400,420,50,50
+r,4450,570,50,50
 p,blocVert2H.png,4500,520,50,100
 
 ## patern 1
 p,blocVert2H.png,5000,520,50,100
 p,blocVert5H.png,5150,370,50,250
++,5450,270,50,50
 
 
 ## patern 5
@@ -200,6 +200,7 @@ p,blocVert.png,8300,570,50,50
 ## patern 6
 p,blocVert.png,9600,570,50,50
 p,blocVert2L.png,9750,450,100,50
+-,10050,520,50,50
 p,blocVert5H.png,10100,370,50,250
 p,blocVert.png,10300,500,50,50
 
@@ -208,15 +209,20 @@ p,blocVert2H.png,11000,520,50,100
 p,blocVert.png,11100,420,50,50
 p,blocVert.png,11250,420,50,50
 p,blocVert.png,11400,420,50,50
+r,11450,570,50,50
 p,blocVert2H.png,11500,520,50,100
 
 ## patern 1
 p,blocVert2H.png,13000,520,50,100
 p,blocVert5H.png,13150,370,50,250
++,13450,270,50,50
+
 
 ## patern 1
 p,blocVert2H.png,14000,520,50,100
 p,blocVert5H.png,14150,370,50,250
+-,14350,420,50,50
+-,14400,420,50,50
 
 ## patern 6 deb
 p,blocVert.png,15000,570,50,50
@@ -242,6 +248,14 @@ p,blocVert.png,15700,370,50,50
 p,blocVert.png,16000,340,50,50
 p,blocVert.png,15800,540,50,50
 
+## patern 3
+p,blocVert2H.png,16400,520,50,100
+p,blocVert.png,16500,420,50,50
+p,blocVert.png,16650,420,50,50
+p,blocVert.png,16800,420,50,50
+r,16950,570,50,50
+p,blocVert2H.png,16900,520,50,100
+
 ## patern 7
 g,17900,570,50,50
 r,18400,570,50,50
@@ -260,7 +274,18 @@ p,blocVert4H.png,19600,320,50,200
 p,blocVert6H.png,19800,0,50,300
 p,blocVert4H.png,20000,320,50,200
 
-RAJOUTER QUELQUE CHOSE
+
+## patern 2
+p,blocVert2H.png,21200,520,50,100
+p,blocVert.png,21400,570,50,50
+
+## patern 2
+p,blocVert2H.png,22200,520,50,100
+p,blocVert.png,22400,570,50,50
+
+## patern 2
+p,blocVert2H.png,23200,520,50,100
+p,blocVert.png,23400,570,50,50
 
 
 ## patern 8
@@ -274,13 +299,16 @@ p,blocVert.png,25250,320,50,50
 p,blocVert.png,25450,220,50,50
 p,blocVert2H.png,25500,170,50,100
 p,blocVert2H.png,25700,70,50,100
+-,25750,20,50,50
 p,blocVert.png,25750,70,50,50
 p,blocVert.png,25900,150,50,50
 p,blocVert2H.png,25950,100,50,100
 p,blocVert2H.png,26200,170,50,100
+-,26200,120,50,50
 p,blocVert.png,26250,170,50,50
 p,blocVert.png,26400,420,50,50
 p,blocVert2H.png,26450,370,50,100
+p,blocVert7H,26500,220,50,350
 
 
 ## patern 2
