@@ -193,9 +193,8 @@ r,7350,570,50,50
 p,blocVert.png,7850,570,50,50
 p,blocVert3H.png,7900,470,50,150
 t,7950,570,300,100,100000
-p,blocVert2H.png,8450,520,50,100
-
-
+p,blocVert2H.png,8250,520,50,100
+p,blocVert.png,8300,570,50,50
 
 
 ## patern 6
