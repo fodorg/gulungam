@@ -52,7 +52,10 @@ class Perso(Sprit):
 
     def changeimg(self):
         if self.a == 0:
-          print("eee")
+            if(self.v > 0):
+                self.image = pygame.image.load(persoImgDescNuage).convert_alpha()
+            else:
+                self.image = pygame.image.load(persoImgMontNuage).convert_alpha()
         elif self.v <= -vitesse+(self.a*2):
             self.son.play()
             self.image = pygame.image.load(persoImgBounce).convert_alpha()
