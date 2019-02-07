@@ -54,6 +54,7 @@ class Perso(Sprit):
         if self.a == 0:
           print("eee")
         elif self.v <= -vitesse+(self.a*2):
+            self.son.play()
             self.image = pygame.image.load(persoImgBounce).convert_alpha()
         elif self.v < 0:
             self.image = pygame.image.load(persoImgMont).convert_alpha()
