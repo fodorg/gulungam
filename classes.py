@@ -52,7 +52,9 @@ class Perso(Sprit):
         self.hitb.updt(self)
 
     def changeimg(self):
-        if self.v <= -vitesse:
+        if self.a == 0:
+          print("eee")
+        elif self.v <= -vitesse:
             self.son.play()
             self.image = pygame.image.load(persoImgBounce).convert_alpha()
         elif self.v < 0:
