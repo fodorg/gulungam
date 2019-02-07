@@ -28,7 +28,7 @@ class Perso(Sprit):
         self.v = -vitesse
         self.rect = self.image.get_rect()
         self.rect.y = 500
-        self.rect.x = 400
+        self.rect.centerx = width/2
         self.son = pygame.mixer.Sound("sound/ressort1.wav")
 
 
