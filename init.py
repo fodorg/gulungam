@@ -8,6 +8,7 @@ pygame.init();
 fenetre = pygame.display.set_mode((width,height))
 
 all_sprite_list = pygame.sprite.Group()
+
 all_sprite_visible = pygame.sprite.Group()
 
 # platforms

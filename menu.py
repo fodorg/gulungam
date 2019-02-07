@@ -43,13 +43,10 @@ def window_menuCred(): # Menu mouseover CREDITS display
 
 
 def window_highScores(): # High score display
-	loadBackground()
+	back = pygame.image.load("images/highscores.png").convert()
+	fenetre.blit(back, (0, 0))
 	bigFont = pygame.font.Font("fonts/pixelart.ttf", 40) # FONT
-	smallFont = pygame.font.Font("fonts/pixelart.ttf", 20)
-
-	# TITLE
-	txt_title = bigFont.render("HIGH SCORES", True, (0, 0, 0))
-	fenetre.blit(txt_title, (380, 20))
+	smallFont = pygame.font.Font("fonts/vcr.ttf", 20)
 
 	# TABLE
 	color = (255, 252, 244) # color of the line
@@ -108,16 +105,23 @@ def window_end():
 	fenetre.blit(back, (190, 600))
 	fenetre.blit(start, (500, 600))
 
+def window_credits():
+	back = pygame.image.load("images/credits.png")
+	fenetre.blit(back, (0, 0))
+
+	back = pygame.image.load("images/back.png")
+	back = pygame.transform.scale(back, (150, 75))
+	fenetre.blit(back, (10, 10))
 
 def window_nameSelect():
 	pseudo = pygame.image.load("images/pseudo.png")
 	fenetre.blit(pseudo,(0, 0))
 
-	pygame.draw.rect(fenetre, (255, 255, 255), [210, 350, 602, 58])  # Text input DIMENSION IMPORTANT
+	pygame.draw.rect(fenetre, (255, 255, 255), [210, 200, 602, 58])  # Text input DIMENSION IMPORTANT
 	font = pygame.font.Font("fonts/pixelart.ttf", 60) # TEXT FONT
 	name = ""
 	txt_Name = font.render(name, True, (0, 0, 0))
-	fenetre.blit(txt_Name, (215, 350))
+	fenetre.blit(txt_Name, (215, 200))
 
 	back = pygame.image.load("images/back.png")
 	back = pygame.transform.scale(back, (150, 75))
@@ -136,14 +140,14 @@ def window_nameSelect():
 				if event.key in alphakeys and len(name) < 8:  # press on letter
 					name = name + (event.unicode).upper()
 					txt_Name = font.render(name, True, (0, 0, 0))
-					fenetre.blit(txt_Name, (215, 350))
+					fenetre.blit(txt_Name, (215, 200))
 					pygame.display.flip()
 
 				if event.key == K_BACKSPACE:                   # press on backspace
 					name = name[:-1]
-					pygame.draw.rect(fenetre, (255, 255, 255), [210, 350, 602, 58])
+					pygame.draw.rect(fenetre, (255, 255, 255), [210, 200, 602, 58])
 					txt_Name = font.render(name, True, (0, 0, 0))
-					fenetre.blit(txt_Name, (215, 350))
+					fenetre.blit(txt_Name, (215, 200))
 					pygame.display.flip()
 
 				if event.key == K_RETURN and len(name) > 0:    # press on enter
@@ -155,7 +159,7 @@ def window_nameSelect():
 					raise Exception("END")
 
 			if event.type == MOUSEMOTION:
-				if 383 < event.pos[0] < 641 and 451 < event.pos[1] < 580:  # MOTION ON START
+				if 383 < event.pos[0] < 650 and 287 < event.pos[1] < 451:  # MOTION ON START
 					if buttonPseudoStatus != "start":
 						pseudo = pygame.image.load("images/pseudo start.png")
 						fenetre.blit(pseudo, (0, 0))
@@ -164,9 +168,9 @@ def window_nameSelect():
 						back = pygame.transform.scale(back, (150, 75))
 						fenetre.blit(back, (10, 10))
 
-						pygame.draw.rect(fenetre, (255, 255, 255), [210, 350, 602, 58])
+						pygame.draw.rect(fenetre, (255, 255, 255), [210, 200, 602, 58])
 						txt_Name = font.render(name, True, (0, 0, 0))
-						fenetre.blit(txt_Name, (215, 350))
+						fenetre.blit(txt_Name, (215, 200))
 
 						pygame.display.flip()
 						buttonPseudoStatus = "start"
@@ -177,9 +181,9 @@ def window_nameSelect():
 						backOnClick = pygame.transform.scale(backOnClick, (150, 75))
 						fenetre.blit(backOnClick, (10, 10))
 
-						pygame.draw.rect(fenetre, (255, 255, 255), [210, 350, 602, 58])
+						pygame.draw.rect(fenetre, (255, 255, 255), [210, 200, 602, 58])
 						txt_Name = font.render(name, True, (0, 0, 0))
-						fenetre.blit(txt_Name, (215, 350))
+						fenetre.blit(txt_Name, (215, 200))
 
 						pygame.display.flip()
 						buttonPseudoStatus = "back"
@@ -193,15 +197,15 @@ def window_nameSelect():
 						back = pygame.transform.scale(back, (150, 75))
 						fenetre.blit(back, (10, 10))
 
-						pygame.draw.rect(fenetre, (255, 255, 255), [210, 350, 602, 58])
+						pygame.draw.rect(fenetre, (255, 255, 255), [210, 200, 602, 58])
 						txt_Name = font.render(name, True, (0, 0, 0))
-						fenetre.blit(txt_Name, (215, 350))
+						fenetre.blit(txt_Name, (215, 200))
 
 						pygame.display.flip()
 						buttonPseudoStatus = "main"
 
 			if event.type == MOUSEBUTTONDOWN and event.button == 1: # CLIC
-				if 383 < event.pos[0] < 641 and 451 < event.pos[1] < 580 and len(name) > 0:  # CLIC ON START
+				if 383 < event.pos[0] < 650 and 287 < event.pos[1] < 451 and len(name) > 0:  # CLIC ON START
 					pygame.mixer.music.load("sound/musique_game.wav")
 					pygame.mixer.music.play(-1)
 					saveNew(name, game())  # ACTUAL GAME
@@ -265,7 +269,8 @@ while continuer:
 					continuer = 0
 
 				if 10 < event.pos[0] < 206 and 661 < event.pos[1] < 758:  # CLIC ON CREDITS
-					print("CLIC CREDIT")
+					status = "credits"
+					window_credits()
 
 			if event.type == MOUSEMOTION: # MOTION
 				if 383 < event.pos[0] < 641 and 601 < event.pos[1] < 730:  # MOTION ON HIGH SCORES
@@ -375,5 +380,26 @@ while continuer:
 						fenetre.blit(back, (190, 600))
 						fenetre.blit(start, (500, 600))
 						buttonStatus = "end"
+
+		elif status == "credits":
+			if event.type == MOUSEBUTTONDOWN and event.button == 1:   # CLIC
+				if 10 < event.pos[0] < 160 and 10 < event.pos[1] < 85:  # CLIC ON BACK
+					status = "main"
+					window_menu()
+
+			if event.type == MOUSEMOTION:   # MOTION
+				if 10 < event.pos[0] < 160 and 10 < event.pos[1] < 85:  # MOTION ON BACK
+					if buttonStatus != "back":
+						backOnClick = pygame.image.load("images/back_onclick.png")
+						backOnClick = pygame.transform.scale(backOnClick, (150, 75))
+						fenetre.blit(backOnClick, (10, 10))
+						buttonStatus != "back"
+
+				else:
+					if buttonStatus != "main":
+						back = pygame.image.load("images/back.png")
+						back = pygame.transform.scale(back, (150, 75))
+						fenetre.blit(back, (10, 10))
+						buttonStatus != "main"
 
 	pygame.display.flip()

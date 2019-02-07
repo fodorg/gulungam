@@ -19,11 +19,13 @@ def loadbackground(lvl):
 
 
 def game():
+    totalDir = 0
+
     init()
     ground = pygame.image.load("images/foreground.png").convert_alpha()
     groundx = 0
 
-    font = pygame.font.SysFont(None, 72)
+    font = pygame.font.Font("fonts/vcr.ttf", 40)
 
     loadbackground(0)
 
@@ -88,6 +90,7 @@ def game():
             fondsx[i] = fondsx[i]-(dir*vitessebackground[i]);
         groundx= groundx -dir
         score = score +dir
+        totalDir  = totalDir+dir
         for e in all_sprite_list:
             e.deplacer(dir)
 
@@ -116,6 +119,7 @@ def game():
                 fondsx[i] = fondsx[i] - (corrdir * vitessebackground[i]);
             groundx = groundx - corrdir
             score = score + corrdir
+            totalDir = totalDir + corrdir
             for e in all_sprite_list:
                 e.deplacer(corrdir)
 
@@ -137,8 +141,6 @@ def game():
                 elif block.typeBuff == "t" : #tp
                     for e in all_sprite_list:
                         e.deplacer(block.dest-block.rect.x)
-                    tp(int(block.dest))
-                    getSpritesVisible(all_sprite_visible,score,all_sprite_list,perso)
                     transition = 600
                     lvl =+ 1
         #affichage des fonds
@@ -158,7 +160,7 @@ def game():
             groundx = 0
         if groundx < -width:
             fenetre.blit(ground, (groundx + (2 * width), height-148))
-        elif fondxi > 0:
+        elif groundx > 0:
             fenetre.blit(ground, (groundx - (2 * width), height-148))
         fenetre.blit(ground, (groundx, height-148))
 
@@ -189,7 +191,7 @@ def game():
 
 
         #affichege du score
-        text = font.render(str(int(score)), True, (0, 128, 0))
+        text = font.render(str(int(score)), True, (255, 255, 255))
         text_rect = text.get_rect()
         text_rect.right = width-10  # align to right to 150px
         text_rect.y = 10
@@ -205,15 +207,20 @@ def game():
             seconds = str(seconds)
         else:
             seconds = "0"+str(seconds)
-        text = font.render(str(min)+":"+seconds, True, (0, 128, 0))
+        text = font.render(str(min)+":"+seconds, True, (255, 255, 255))
         fenetre.blit(text, (10,10))
 
 
         #transition
         if transition > 0:
-            while transition > -height:
+            while transition > -height-148:
                 #affichage du fond
-                if transition < 0:
+                if transition == 0:
+                    tp(int(block.dest))
+                    totalDir = totalDir + block.dest
+                    for e in all_sprite_list:
+                        e.deplacer(corrdir)
+                else :
                     for i in range(len(fonds)):
                         fondxi = fondsx[i]
                         if fondxi <= -2 * width or fondxi >= 2 * width:
@@ -224,16 +231,31 @@ def game():
                         elif fondxi > 0:
                             fenetre.blit(fonds[i], ((fondxi) - (2 * width), 0))
                         fenetre.blit(fonds[i], (fondxi, 0))
-
                 #affichage du sol
-                pygame.draw.rect(fenetre, (153, 70, 0), pygame.Rect(0, transition, width, height))
+                if transition > -height:
+
+                    if groundx < -width:
+                        fenetre.blit(ground, (groundx + (2 * width), transition))
+                    elif groundx > 0:
+                        fenetre.blit(ground, (groundx - (2 * width), transition))
+                    fenetre.blit(ground, (groundx, transition))
+                else:
+                    if groundx < -width:
+                        fenetre.blit(ground, (groundx + (2 * width), transition+2*height))
+                    elif groundx > 0:
+                        fenetre.blit(ground, (groundx - (2 * width), transition+2*height))
+                    fenetre.blit(ground, (groundx, transition+2*height))
                 pygame.display.flip()
                 if transition == 0 :
                     loadbackground(lvl)
-                transition -=30
+
+
+                #all_sprite_visible.draw(fenetre)
+
+                transition -=40
                 pygame.time.Clock().tick(fps)
                 pygame.display.flip()
-
+            getSpritesVisible(all_sprite_visible, score, all_sprite_list,perso)
 
 
         pygame.display.flip()
