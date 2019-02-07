@@ -144,7 +144,7 @@ def game(name):
                 timerBuff = pygame.time.get_ticks()
                 if block.typeBuff == "-":
                     score = score + malusPoints
-                    buffT = "- "+str(malusPoints)
+                    buffT = str(malusPoints)
                 elif block.typeBuff == "+":
                     score = score + bonusPoints
                     buffT = "+ " + str(bonusPoints)
