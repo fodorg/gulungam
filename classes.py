@@ -71,6 +71,8 @@ class Perso(Sprit):
         #self.hitbox = pygame.Rect(440, self.rect.y, self.rect.w-40, self.rect.h)
 
     def addBuff(self, buff):
+        if buf == "g":
+            self.startBuff = pygame.time.get_ticks()
         if self.buff != buff:
             self.buff = buff
             self.a = acceleration
