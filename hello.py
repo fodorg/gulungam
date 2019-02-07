@@ -5,23 +5,28 @@ from const import *
 from functions import *
 from init import *
 
+fonds = []
+fondsx = []
+
+def loadbackground(lvl):
+
+    for i in range(len(backgrounds[lvl])):
+        fondsx.append(0)
+        fonds.append(pygame.image.load(backgrounds[lvl][i]).convert_alpha())
+        #fonds[i] = pygame.transform.scale(fonds[i], (width*2, height))
+
+
 def game():
     font = pygame.font.SysFont(None, 72)
 
-    fonds = []
-    fondsx = []
-    for i in range(len(backgrounds)):
-        fondsx.append(0)
-        fonds.append(pygame.image.load(backgrounds[i]).convert_alpha())
-        #fonds[i] = pygame.transform.scale(fonds[i], (width*2, height))
-
+    loadbackground(0)
 
 
     perso = Perso()
     all_sprite_list.add(perso)
 
     getSpritesVisible(all_sprite_visible,0,all_sprite_list, perso)
-
+    lvl = 0
     transition = 0
     score = 0
     ctrldir = 0
