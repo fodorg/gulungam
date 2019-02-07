@@ -185,12 +185,22 @@ def game():
                     ctrldir = perso.vh
                 elif ctrldir < 0:
                     ctrldir = -perso.vh
-
+            if perso.buff == "r":
+                color = (200, 0, 0)
+                buffText = font.render("SLOW", True, color)
+            elif perso.buff == "g":
+                color = (200,200,200)
+                buffText = font.render("LEVITATION", True, color)
+            else :
+                color = (0,0,200)
+                buffText = font.render("SPEED", True, color)
             buffHud = pygame.Rect(0,0,duraBuff*50,20)
             buffHud.centerx = width/2
-
-            pygame.draw.rect(fenetre, (153, 70, 0), buffHud)
-
+            pygame.draw.rect(fenetre, color, buffHud)
+            text_r = buffText.get_rect()
+            text_r.centerx = width/2  # align to right to 150px
+            text_r.top = 25
+            fenetre.blit(buffText, text_r)
 
         #affichege du score
         text = font.render(str(int(score)), True, (255, 255, 255))
