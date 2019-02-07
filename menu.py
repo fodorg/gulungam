@@ -105,6 +105,13 @@ def window_end():
 	fenetre.blit(back, (190, 600))
 	fenetre.blit(start, (500, 600))
 
+def window_credits():
+	back = pygame.image.load("images/credits.png")
+	fenetre.blit(back, (0, 0))
+
+	back = pygame.image.load("images/back.png")
+	back = pygame.transform.scale(back, (150, 75))
+	fenetre.blit(back, (10, 10))
 
 def window_nameSelect():
 	pseudo = pygame.image.load("images/pseudo.png")
@@ -262,7 +269,8 @@ while continuer:
 					continuer = 0
 
 				if 10 < event.pos[0] < 206 and 661 < event.pos[1] < 758:  # CLIC ON CREDITS
-					print("CLIC CREDIT")
+					status = "credits"
+					window_credits()
 
 			if event.type == MOUSEMOTION: # MOTION
 				if 383 < event.pos[0] < 641 and 601 < event.pos[1] < 730:  # MOTION ON HIGH SCORES
@@ -372,5 +380,26 @@ while continuer:
 						fenetre.blit(back, (190, 600))
 						fenetre.blit(start, (500, 600))
 						buttonStatus = "end"
+
+		elif status == "credits":
+			if event.type == MOUSEBUTTONDOWN and event.button == 1:   # CLIC
+				if 10 < event.pos[0] < 160 and 10 < event.pos[1] < 85:  # CLIC ON BACK
+					status = "main"
+					window_menu()
+
+			if event.type == MOUSEMOTION:   # MOTION
+				if 10 < event.pos[0] < 160 and 10 < event.pos[1] < 85:  # MOTION ON BACK
+					if buttonStatus != "back":
+						backOnClick = pygame.image.load("images/back_onclick.png")
+						backOnClick = pygame.transform.scale(backOnClick, (150, 75))
+						fenetre.blit(backOnClick, (10, 10))
+						buttonStatus != "back"
+
+				else:
+					if buttonStatus != "main":
+						back = pygame.image.load("images/back.png")
+						back = pygame.transform.scale(back, (150, 75))
+						fenetre.blit(back, (10, 10))
+						buttonStatus != "main"
 
 	pygame.display.flip()
