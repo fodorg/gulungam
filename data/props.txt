@@ -6,33 +6,29 @@
 # r pour ralentir
 # g pour antigravite
 # - pour diminer points
-# + pour ajouter 5000 points
-# ++ pour ajouter 10000 points
+# + pour ajouter points
 # t pour teleportation (t,x,y,w,h,xdestination)
 
 # m,x pour se deplacer de x pixels absolus
-t,600,600,50,50,200000
 
 
-m,200000
-a,200,550,50,50
-r,600,550,50,50
-g,800,550,50,50
-++,900,550,50,50
-+,1000,550,50,50
+#a,200,550,50,50
+#r,600,550,50,50
+#g,800,550,50,50
+#+,900,550,50,50
+#-,1000,550,50,50
 
-m,1000000
-t,600,600,50,50,100000
+#t,600,600,50,50,100000
 
 
-t,-1300,600,50,50,100000
+#t,-1300,600,50,50,100000
 
-m,100000
+#m,100000
 
 #t,200,600,50,50,100
 
-p,600,520,50,50
-m,0
+#p,600,520,50,50
+#m,0
 
 # p,blocVert.png,600,450,50,50
 # p,blocVert.png,800,400,50,50
@@ -142,7 +138,7 @@ p,blocVert2L.png,0,70,100,50
 p,blocVert2L.png,300,70,100,50
 p,blocVert2L.png,600,70,100,50
 
-t,700,570,50,50,25400
+#t,700,570,50,50,25400
 p,blocVert.png,850,570,50,50
 p,blocVert2H.png,1000,520,50,100
 p,blocVert2H.png,1600,520,50,100
@@ -381,7 +377,7 @@ r,2950,270,50,50
 r,3000,270,50,50
 +,3100,220,50,50
 
-## pattern 8
+## patern 8
 p,blocVert.png,4000,570,50,50
 p,blocVert2L.png,4150,450,100,50
 -,4450,370,50,50
@@ -407,10 +403,27 @@ a,6200,70,50,50
 r,6300,170,50,50
 r,6350,170,50,50
 
+## patern8
 p,blocVert.png,7000,570,50,50
 p,blocVert2L.png,7150,450,100,50
 p,blocVert5H.png,7500,370,50,250
+#t,7050,570,450,50,200000
 p,blocVert.png,7700,500,50,50
+
+## patern 5
+p,blocVert.png,9000,570,50,50
+p,blocVert2H.png,9050,520,50,100
+p,blocVert3H.png,9100,470,50,150
+p,blocVert4H.png,8650,420,50,200
+p,blocVert5H.png,8700,370,50,250
+p,blocVert5H.png,8750,370,50,250
++,8800,570,50,50
+p,blocVert.png,8050,370,50,50
+p,blocVert.png,8350,370,50,50
+p,blocVert.png,8350,420,50,50
+r,8350,570,50,50
+
+
 
 ########################################################
 
