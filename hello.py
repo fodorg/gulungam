@@ -4,6 +4,7 @@ from classes import *
 from const import *
 from functions import *
 from init import *
+from save import *
 
 fonds = []
 fondsx = []
@@ -18,7 +19,7 @@ def loadbackground(lvl):
         #fonds[i] = pygame.transform.scale(fonds[i], (width*2, height))
 
 
-def game():
+def game(name):
     totalDir = 0
 
     init()
@@ -60,7 +61,7 @@ def game():
         #events
         for event in pygame.event.get():
             if event.type == QUIT:
-                continuer = 0
+                raise Exception("QUIT")
                 print(score);
 
             if event.type == KEYDOWN:
@@ -75,7 +76,7 @@ def game():
                 elif event.key == K_r:
                     init()
                 elif event.key == K_ESCAPE:
-                    continuer = 0
+                    raise Exception("BACK")
                     print(score)
 
             if event.type == KEYUP:
@@ -140,6 +141,8 @@ def game():
                     score = score + malusPoints
                 elif block.typeBuff == "+":
                     score = score + bonusPoints
+                elif block.typeBuff == "++":
+                    score = score + bonusPoints*2
                 elif block.typeBuff == "t" : #tp
                     transition = 600
                     lvl =+ 1
@@ -183,12 +186,22 @@ def game():
                     ctrldir = perso.vh
                 elif ctrldir < 0:
                     ctrldir = -perso.vh
-
+            if perso.buff == "r":
+                color = (200, 0, 0)
+                buffText = font.render("SLOW", True, color)
+            elif perso.buff == "g":
+                color = (200,200,200)
+                buffText = font.render("LEVITATION", True, color)
+            else :
+                color = (0,0,200)
+                buffText = font.render("SPEED", True, color)
             buffHud = pygame.Rect(0,0,duraBuff*50,20)
             buffHud.centerx = width/2
-
-            pygame.draw.rect(fenetre, (153, 70, 0), buffHud)
-
+            pygame.draw.rect(fenetre, color, buffHud)
+            text_r = buffText.get_rect()
+            text_r.centerx = width/2  # align to right to 150px
+            text_r.top = 25
+            fenetre.blit(buffText, text_r)
 
         #affichege du score
         text = font.render(str(int(score)), True, (255, 255, 255))
@@ -198,11 +211,12 @@ def game():
         fenetre.blit(text,text_rect)
 
         #affichage du timer
-        seconds = 180-(pygame.time.get_ticks() - start_ticks) / 1000  # calculate how many seconds
+        seconds = 10-(pygame.time.get_ticks() - start_ticks) / 1000  # calculate how many seconds
         min = int(seconds/60)
         seconds = int(seconds%60)
         if seconds <= 0 and min == 0:
-            continuer = 0
+            saveNew(name,int(score))
+            raise Exception("END")
         if seconds >= 10:
             seconds = str(seconds)
         else:
