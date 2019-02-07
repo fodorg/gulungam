@@ -8,8 +8,10 @@ from save import *
 
 fonds = []
 fondsx = []
+ground = 0
 
 def loadbackground(lvl):
+    global ground
     print (lvl)
     lvl = lvl % len(backgrounds)
     print(len(backgrounds))
@@ -20,8 +22,10 @@ def loadbackground(lvl):
         fonds.append(pygame.image.load(backgrounds[lvl][i]).convert_alpha())
         #fonds[i] = pygame.transform.scale(fonds[i], (width*2, height))
     ground = pygame.image.load("images/foreground"+str(lvl)+".png").convert_alpha()
+    print(ground)
 
 def game(name):
+    global ground
     totalDir = 0
 
     init()
