@@ -250,17 +250,17 @@ p,blocVert4H.png,32000,320,50,200
 m,100000
 
 ## patern 3
-p,blocVert2H.png,2000,520,50,100
-p,blocVert.png,2100,420,50,50
-p,blocVert.png,2250,420,50,50
-p,blocVert.png,2400,420,50,50
-p,blocVert2H.png,2500,520,50,100
+p,blocOrange2H.png,2000,520,50,100
+p,blocOrange.png,2100,420,50,50
+p,blocOrange.png,2250,420,50,50
+p,blocOrange.png,2400,420,50,50
+p,blocOrange2H.png,2500,520,50,100
 
 r,2550,570,50,50
 r,2600,570,50,50
 
-p,blocVert.png,2500,270,50,50
-p,blocVert.png,2700,120,50,50
+p,blocOrange.png,2500,270,50,50
+p,blocOrange.png,2700,120,50,50
 
 
 r,2850,270,50,50
@@ -270,129 +270,129 @@ r,3000,270,50,50
 +,3100,220,50,50
 
 ## patern 8
-p,blocVert.png,4000,570,50,50
-p,blocVert2L.png,4150,450,100,50
+p,blocOrange.png,4000,570,50,50
+p,blocOrange2L.png,4150,450,100,50
 -,4450,370,50,50
-p,blocVert5H.png,4500,370,50,250
-p,blocVert.png,4700,500,50,50
+p,blocOrange5H.png,4500,370,50,250
+p,blocOrange.png,4700,500,50,50
 
 ## patern 3
-p,blocVert2H.png,5500,520,50,100
-p,blocVert.png,5600,420,50,50
-p,blocVert.png,5750,420,50,50
-p,blocVert.png,5900,420,50,50
+p,blocOrange2H.png,5500,520,50,100
+p,blocOrange.png,5600,420,50,50
+p,blocOrange.png,5750,420,50,50
+p,blocOrange.png,5900,420,50,50
 r,5950,570,50,50
-p,blocVert2H.png,6000,520,50,100
-p,blocVert.png,6000,270,50,50
+p,blocOrange2H.png,6000,520,50,100
+p,blocOrange.png,6000,270,50,50
 
 -,6050,570,50,50
 -,6100,570,50,50
 -,6150,570,50,50
 -,6200,570,50,50
 
-p,blocVert.png,6200,120,50,50
+p,blocOrange.png,6200,120,50,50
 a,6200,70,50,50
 r,6300,170,50,50
 r,6350,170,50,50
 
 ## patern8
-p,blocVert.png,7000,570,50,50
-p,blocVert2L.png,7150,450,100,50
-p,blocVert5H.png,7500,370,50,250
-t,7050,570,450,50,100000
-p,blocVert2L.png,7750,500,100,50
+p,blocOrange.png,7000,570,50,50
+p,blocOrange2L.png,7150,450,100,50
+p,blocOrange5H.png,7500,370,50,250
+t,7050,570,450,50,95000
+p,blocOrange2L.png,7750,500,100,50
 
 
 ## patern 5
-p,blocVert.png,9000,570,50,50
-p,blocVert2H.png,9050,520,50,100
-p,blocVert3H.png,9100,470,50,150
-p,blocVert4H.png,8650,420,50,200
-p,blocVert5H.png,8700,370,50,250
-p,blocVert5H.png,8750,370,50,250
+p,blocOrange.png,9000,570,50,50
+p,blocOrange2H.png,9050,520,50,100
+p,blocOrange3H.png,9100,470,50,150
+p,blocOrange4H.png,8650,420,50,200
+p,blocOrange5H.png,8700,370,50,250
+p,blocOrange5H.png,8750,370,50,250
 +,8800,570,50,50
-p,blocVert.png,8050,370,50,50
-p,blocVert.png,8350,370,50,50
-p,blocVert.png,8350,420,50,50
+p,blocOrange.png,8050,370,50,50
+p,blocOrange.png,8350,370,50,50
+p,blocOrange.png,8350,420,50,50
 r,8350,570,50,50
 
 
 ## patern 9
-t,9550,600,550,20,97500
+t,9550,600,550,20,92500
 -,10150,570,50,50
-t,10550,600,550,20,96500
+t,10550,600,550,20,91500
 
-p,blocVert.png,9500,520,50,50
-p,blocVert.png,9500,570,50,50
-p,blocVert.png,9550,470,50,50
-p,blocVert.png,9550,420,50,50
-p,blocVert.png,9600,370,50,50
-p,blocVert.png,9600,320,50,50
-p,blocVert.png,9650,270,50,50
-p,blocVert.png,9650,220,50,50
-p,blocVert.png,9800,220,50,50
-p,blocVert.png,9850,220,50,50
-p,blocVert.png,9900,220,50,50
-p,blocVert.png,9900,270,50,50
-p,blocVert.png,9900,270,50,50
+p,blocOrange.png,9500,520,50,50
+p,blocOrange.png,9500,570,50,50
+p,blocOrange.png,9550,470,50,50
+p,blocOrange.png,9550,420,50,50
+p,blocOrange.png,9600,370,50,50
+p,blocOrange.png,9600,320,50,50
+p,blocOrange.png,9650,270,50,50
+p,blocOrange.png,9650,220,50,50
+p,blocOrange.png,9800,220,50,50
+p,blocOrange.png,9850,220,50,50
+p,blocOrange.png,9900,220,50,50
+p,blocOrange.png,9900,270,50,50
+p,blocOrange.png,9900,270,50,50
 
 a,9900,0,50,50
-p,blocVert2H.png,10050,0,50,100
-p,blocVert.png,10200,470,50,50
-p,blocVert.png,10250,470,50,50
-p,blocVert.png,10250,420,50,50
-p,blocVert.png,10300,370,50,50
-p,blocVert.png,10300,320,50,50
-p,blocVert.png,10350,270,50,50
-p,blocVert4L.png,10350,220,200,50
-p,blocVert.png,10850,470,50,50
-p,blocVert.png,10900,470,50,50
-p,blocVert2H.png,10950,420,50,100
-p,blocVert2H.png,11000,320,50,100
-p,blocVert2H.png,11050,220,50,100
-p,blocVert2H.png,11300,320,50,100
-p,blocVert2H.png,11350,370,50,100
-p,blocVert4H.png,11400,420,50,200
+p,blocOrange2H.png,10050,0,50,100
+p,blocOrange.png,10200,470,50,50
+p,blocOrange.png,10250,470,50,50
+p,blocOrange.png,10250,420,50,50
+p,blocOrange.png,10300,370,50,50
+p,blocOrange.png,10300,320,50,50
+p,blocOrange.png,10350,270,50,50
+p,blocOrange4L.png,10350,220,200,50
+p,blocOrange.png,10850,470,50,50
+p,blocOrange.png,10900,470,50,50
+p,blocOrange2H.png,10950,420,50,100
+p,blocOrange2H.png,11000,320,50,100
+p,blocOrange2H.png,11050,220,50,100
+p,blocOrange2H.png,11300,320,50,100
+p,blocOrange2H.png,11350,370,50,100
+p,blocOrange4H.png,11400,420,50,200
 
 
 ## patern 9
 
-t,12550,600,550,20,94500
+t,12550,600,550,20,89500
 -,10150,570,50,50
-t,13550,600,550,20,93500
+t,13550,600,550,20,88500
 
-p,blocVert.png,12500,520,50,50
-p,blocVert.png,12500,570,50,50
-p,blocVert.png,12550,470,50,50
-p,blocVert.png,12550,420,50,50
-p,blocVert.png,12600,370,50,50
-p,blocVert.png,12600,320,50,50
-p,blocVert.png,12650,270,50,50
-p,blocVert.png,12650,220,50,50
-p,blocVert.png,12800,220,50,50
-p,blocVert.png,12850,220,50,50
-p,blocVert.png,12900,220,50,50
-p,blocVert.png,12900,270,50,50
-p,blocVert.png,12900,270,50,50
-p,blocVert2H.png,13050,0,50,100
-p,blocVert.png,13200,470,50,50
-p,blocVert.png,13250,470,50,50
-p,blocVert.png,13250,420,50,50
-p,blocVert.png,13300,370,50,50
-p,blocVert.png,13300,320,50,50
-p,blocVert.png,13350,270,50,50
-p,blocVert.png,13350,220,50,50
-p,blocVert.png,13400,220,50,50
-p,blocVert.png,13450,220,50,50
-p,blocVert.png,13500,220,50,50
-p,blocVert.png,13850,470,50,50
-p,blocVert.png,13900,470,50,50
-p,blocVert2H.png,13950,420,50,100
-p,blocVert2H.png,14000,320,50,100
-p,blocVert2H.png,14050,220,50,100
-p,blocVert2H.png,14300,320,50,100
-p,blocVert2H.png,14350,370,50,100
-p,blocVert4H.png,14400,420,50,200
+p,blocOrange.png,12500,520,50,50
+p,blocOrange.png,12500,570,50,50
+p,blocOrange.png,12550,470,50,50
+p,blocOrange.png,12550,420,50,50
+p,blocOrange.png,12600,370,50,50
+p,blocOrange.png,12600,320,50,50
+p,blocOrange.png,12650,270,50,50
+p,blocOrange.png,12650,220,50,50
+p,blocOrange.png,12800,220,50,50
+p,blocOrange.png,12850,220,50,50
+p,blocOrange.png,12900,220,50,50
+p,blocOrange.png,12900,270,50,50
+p,blocOrange.png,12900,270,50,50
+p,blocOrange2H.png,13050,0,50,100
+p,blocOrange.png,13200,470,50,50
+p,blocOrange.png,13250,470,50,50
+p,blocOrange.png,13250,420,50,50
+p,blocOrange.png,13300,370,50,50
+p,blocOrange.png,13300,320,50,50
+p,blocOrange.png,13350,270,50,50
+p,blocOrange.png,13350,220,50,50
+p,blocOrange.png,13400,220,50,50
+p,blocOrange.png,13450,220,50,50
+p,blocOrange.png,13500,220,50,50
+p,blocOrange.png,13850,470,50,50
+p,blocOrange.png,13900,470,50,50
+p,blocOrange2H.png,13950,420,50,100
+p,blocOrange2H.png,14000,320,50,100
+p,blocOrange2H.png,14050,220,50,100
+p,blocOrange2H.png,14300,320,50,100
+p,blocOrange2H.png,14350,370,50,100
+p,blocOrange4H.png,14400,420,50,200
 
 
 r,15600,570,50,50
@@ -403,25 +403,25 @@ r,15600,370,50,50
 r,15600,320,50,50
 
 #
-p,blocVert2L.png,16500,570,100,50
-p,blocVert.png,16700,450,50,50
-t,16750,600,100,20,91300
+p,blocOrange2L.png,16500,570,100,50
+p,blocOrange.png,16700,450,50,50
+t,16750,600,100,20,86300
 -,16850,420,50,50
-t,16900,600,100,20,91150
-p,blocVert2H.png,16850,470,50,100
-p,blocVert.png,17000,450,50,50
-p,blocVert.png,17100,100,50,50
-p,blocVert5H.png,17150,370,50,250
+t,16900,600,100,20,86150
+p,blocOrange2H.png,16850,470,50,100
+p,blocOrange.png,17000,450,50,50
+p,blocOrange.png,17100,100,50,50
+p,blocOrange5H.png,17150,370,50,250
 -,17200,370,50,50
-p,blocVert4H.png,17200,420,50,200
-p,blocVert3H.png,17250,470,50,150
-p,blocVert2H.png,17300,520,50,100
-p,blocVert.png,17350,570,50,50
-p,blocVert.png,17800,510,50,50
-p,blocVert.png,17600,400,50,50
-p,blocVert.png,17950,350,50,50
+p,blocOrange4H.png,17200,420,50,200
+p,blocOrange3H.png,17250,470,50,150
+p,blocOrange2H.png,17300,520,50,100
+p,blocOrange.png,17350,570,50,50
+p,blocOrange.png,17800,510,50,50
+p,blocOrange.png,17600,400,50,50
+p,blocOrange.png,17950,350,50,50
 -,18150,320,50,50
-p,blocVert5H.png,18150,370,50,250
+p,blocOrange5H.png,18150,370,50,250
 
 
 #labyrinthe
@@ -431,46 +431,46 @@ r,20800,570,50,50
 r,21200,570,50,50
 r,21600,570,50,50
 r,22000,570,50,50
-p,blocVert6H.png,20200,0,50,300
-t,20400,600,50,20,88150
-p,blocVert4H.png,20400,320,50,200
-p,blocVert6H.png,20600,0,50,300
-t,20800,600,50,20,87750
-p,blocVert4H.png,20800,320,50,200
-p,blocVert6H.png,21000,0,50,300
-t,21200,600,50,20,87350
-p,blocVert4H.png,21200,320,50,200
-p,blocVert6H.png,21400,0,50,300
-t,21600,600,50,20,86950
-p,blocVert4H.png,21600,320,50,200
-p,blocVert6H.png,21800,0,50,300
-t,22000,600,50,20,86550
-p,blocVert4H.png,22000,320,50,200
+p,blocOrange6H.png,20200,0,50,300
+t,20400,600,50,20,83150
+p,blocOrange4H.png,20400,320,50,200
+p,blocOrange6H.png,20600,0,50,300
+t,20800,600,50,20,82750
+p,blocOrange4H.png,20800,320,50,200
+p,blocOrange6H.png,21000,0,50,300
+t,21200,600,50,20,82350
+p,blocOrange4H.png,21200,320,50,200
+p,blocOrange6H.png,21400,0,50,300
+t,21600,600,50,20,81950
+p,blocOrange4H.png,21600,320,50,200
+p,blocOrange6H.png,21800,0,50,300
+t,22000,600,50,20,81550
+p,blocOrange4H.png,22000,320,50,200
 
 ##
-p,blocVert.png,23000,250,50,50
-p,blocVert.png,23250,350,50,50
-p,blocVert.png,23400,500,50,50
-p,blocVert.png,23550,300,50,50
-p,blocVert5H.png,23700,370,50,250
-p,blocVert.png,23750,570,50,50
+p,blocOrange.png,23000,250,50,50
+p,blocOrange.png,23250,350,50,50
+p,blocOrange.png,23400,500,50,50
+p,blocOrange.png,23550,300,50,50
+p,blocOrange5H.png,23700,370,50,250
+p,blocOrange.png,23750,570,50,50
 
 ##
-p,blocVert2L.png,24500,570,100,50
-p,blocVert.png,24700,450,50,50
+p,blocOrange2L.png,24500,570,100,50
+p,blocOrange.png,24700,450,50,50
 -,24850,420,50,50
-p,blocVert2H.png,24850,470,50,100
-p,blocVert.png,24000,450,50,50
-p,blocVert.png,24100,100,50,50
-p,blocVert5H.png,24150,370,50,250
-p,blocVert4H.png,24200,420,50,200
-p,blocVert3H.png,24250,470,50,150
-p,blocVert2H.png,24300,520,50,100
-p,blocVert.png,24350,570,50,50
-p,blocVert.png,24800,510,50,50
-p,blocVert.png,24600,400,50,50
-p,blocVert.png,24950,350,50,50
-p,blocVert5H.png,25150,370,50,250
+p,blocOrange2H.png,24850,470,50,100
+p,blocOrange.png,24000,450,50,50
+p,blocOrange.png,24100,100,50,50
+p,blocOrange5H.png,24150,370,50,250
+p,blocOrange4H.png,24200,420,50,200
+p,blocOrange3H.png,24250,470,50,150
+p,blocOrange2H.png,24300,520,50,100
+p,blocOrange.png,24350,570,50,50
+p,blocOrange.png,24800,510,50,50
+p,blocOrange.png,24600,400,50,50
+p,blocOrange.png,24950,350,50,50
+p,blocOrange5H.png,25150,370,50,250
 
 
 
@@ -682,7 +682,7 @@ p,blocBleu.png,6300,370,50,50
 
 t,6400,570,150,50,-500
 t,6600,570,150,50,-4700
-t,6800,570,150,50,95650
+t,6800,570,150,50,93650
 
 p,blocBleu.png,6500,400,50,50
 p,blocBleu.png,6600,500,50,50
@@ -698,7 +698,7 @@ p,blocBleu.png,7450,300,50,50
 +,7450,250,50,50
 +,7550,150,50,50
 r,7550,150,50,50
-t,7000,570,600,50,95450
+t,7000,570,600,50,93450
 p,blocBleu6H.png,7600,320,50,300
 p,blocBleu4H.png,7600,0,50,200
 
