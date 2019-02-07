@@ -205,7 +205,7 @@ def window_nameSelect():
 						buttonPseudoStatus = "main"
 
 			if event.type == MOUSEBUTTONDOWN and event.button == 1: # CLIC
-				if 383 < event.pos[0] < 641 and 451 < event.pos[1] < 580 and len(name) > 0:  # CLIC ON START
+				if 383 < event.pos[0] < 650 and 287 < event.pos[1] < 451 and len(name) > 0:  # CLIC ON START
 					pygame.mixer.music.load("sound/musique_game.wav")
 					pygame.mixer.music.play(-1)
 					saveNew(name, game())  # ACTUAL GAME
