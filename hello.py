@@ -19,6 +19,8 @@ def loadbackground(lvl):
 
 
 def game():
+    totalDir = 0
+
     init()
     ground = pygame.image.load("images/foreground.png").convert_alpha()
     groundx = 0
@@ -70,6 +72,8 @@ def game():
                     ctrlnuage = 1
                 elif event.key == K_DOWN:
                     ctrlnuage =-1
+                elif event.key == K_r:
+                    init()
                 elif event.key == K_ESCAPE:
                     continuer = 0
                     print(score)
@@ -88,6 +92,7 @@ def game():
             fondsx[i] = fondsx[i]-(dir*vitessebackground[i]);
         groundx= groundx -dir
         score = score +dir
+        totalDir  = totalDir+dir
         for e in all_sprite_list:
             e.deplacer(dir)
 
@@ -116,6 +121,7 @@ def game():
                 fondsx[i] = fondsx[i] - (corrdir * vitessebackground[i]);
             groundx = groundx - corrdir
             score = score + corrdir
+            totalDir = totalDir + corrdir
             for e in all_sprite_list:
                 e.deplacer(corrdir)
 
@@ -211,10 +217,11 @@ def game():
         if transition > 0:
             while transition > -height-148:
                 #affichage du fond
-                if transition > 0:
-                    print("a")
-                elif transition == 0:
+                if transition == 0:
                     tp(int(block.dest))
+                    totalDir = totalDir + block.dest
+                    for e in all_sprite_list:
+                        e.deplacer(corrdir)
                 else :
                     for i in range(len(fonds)):
                         fondxi = fondsx[i]
@@ -250,6 +257,7 @@ def game():
                 transition -=40
                 pygame.time.Clock().tick(fps)
                 pygame.display.flip()
+            getSpritesVisible(all_sprite_visible, score, all_sprite_list,perso)
 
 
         pygame.display.flip()
