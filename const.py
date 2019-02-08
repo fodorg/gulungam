@@ -10,7 +10,7 @@ backgrounds = [["images/background1.png","images/plan14.png","images/plan13.png"
                ["images/backgroundvert.png", "images/plan4vert.png", "images/plan3vert.png","images/plan2vert.png", "images/plan1vert.png"]
                ]
 
-vitessebackground = [0,0.2,0.3,0.4,0.5]
+vitessebackground = [0,0.05,0.1,0.3,0.8]
 
 persoImgMont = "images/lapinm.png"
 persoImgDesc = "images/lapind.png"
